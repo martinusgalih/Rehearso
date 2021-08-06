@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataCell" rowHeight="70" id="KGk-i7-Jjw" customClass="DataCell" customModule="Rehearso" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e79-dj-kJh">
+                        <rect key="frame" x="0.0" y="0.0" width="72" height="70"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqc-Qn-hgU">
+                                <rect key="frame" x="0.0" y="38" width="72" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="APR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cr-zs-gCk">
+                                <rect key="frame" x="0.0" y="15" width="72" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.175665617" green="0.34732723240000002" blue="0.82749861479999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0cr-zs-gCk" secondAttribute="trailing" id="9Qh-0U-iti"/>
+                            <constraint firstItem="eqc-Qn-hgU" firstAttribute="leading" secondItem="e79-dj-kJh" secondAttribute="leading" id="GWM-47-B2c"/>
+                            <constraint firstAttribute="width" constant="72" id="LIb-jZ-KOj"/>
+                            <constraint firstAttribute="trailing" secondItem="eqc-Qn-hgU" secondAttribute="trailing" id="LY0-yn-nKr"/>
+                            <constraint firstItem="0cr-zs-gCk" firstAttribute="leading" secondItem="e79-dj-kJh" secondAttribute="leading" id="Lmx-e0-sYX"/>
+                            <constraint firstItem="0cr-zs-gCk" firstAttribute="top" secondItem="e79-dj-kJh" secondAttribute="top" constant="15" id="Nr6-LW-2zv"/>
+                            <constraint firstAttribute="bottom" secondItem="eqc-Qn-hgU" secondAttribute="bottom" constant="15" id="cyT-4Z-jXA"/>
+                            <constraint firstItem="eqc-Qn-hgU" firstAttribute="top" secondItem="0cr-zs-gCk" secondAttribute="bottom" constant="5" id="h0l-on-jJ7"/>
+                            <constraint firstItem="eqc-Qn-hgU" firstAttribute="top" secondItem="0cr-zs-gCk" secondAttribute="bottom" constant="5" id="sQR-0A-SaL"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24/04/21" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peE-NX-ouH">
+                        <rect key="frame" x="90" y="36" width="54" height="19"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:02:03" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQX-VF-ySR">
+                        <rect key="frame" x="154" y="36" width="58" height="19"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Nama Cue Card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FsJ-t0-iHr">
+                        <rect key="frame" x="90" y="12" width="127" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="FsJ-t0-iHr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="90" id="2Vs-Wk-nUb"/>
+                    <constraint firstItem="e79-dj-kJh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3R2-dN-J0q"/>
+                    <constraint firstAttribute="bottom" secondItem="GQX-VF-ySR" secondAttribute="bottom" constant="15" id="CMZ-D0-cVc"/>
+                    <constraint firstItem="peE-NX-ouH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="90" id="GTU-Aj-Iub"/>
+                    <constraint firstItem="FsJ-t0-iHr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="XOa-Jr-HQt"/>
+                    <constraint firstAttribute="bottom" secondItem="peE-NX-ouH" secondAttribute="bottom" constant="15" id="ZpO-CK-piT"/>
+                    <constraint firstItem="GQX-VF-ySR" firstAttribute="leading" secondItem="peE-NX-ouH" secondAttribute="trailing" constant="10" id="bhh-Um-C6g"/>
+                    <constraint firstAttribute="bottom" secondItem="e79-dj-kJh" secondAttribute="bottom" id="n5t-ov-dkF"/>
+                    <constraint firstItem="e79-dj-kJh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="utQ-rs-70B"/>
+                    <constraint firstItem="GQX-VF-ySR" firstAttribute="top" secondItem="FsJ-t0-iHr" secondAttribute="bottom" constant="3" id="wHQ-nv-Acz"/>
+                    <constraint firstItem="peE-NX-ouH" firstAttribute="top" secondItem="FsJ-t0-iHr" secondAttribute="bottom" constant="3" id="wyk-55-7s8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="8"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="bulanPresent" destination="0cr-zs-gCk" id="GaG-L7-YvT"/>
+                <outlet property="cueCardNama" destination="FsJ-t0-iHr" id="D78-Gq-Oub"/>
+                <outlet property="tanggalCueCard" destination="peE-NX-ouH" id="zWL-mT-DEB"/>
+                <outlet property="tanggalPresent" destination="eqc-Qn-hgU" id="cw1-SJ-wne"/>
+                <outlet property="viewCell" destination="H2p-sc-9uM" id="BLw-SF-Nhm"/>
+                <outlet property="viewTglBln" destination="e79-dj-kJh" id="D5A-w7-7Xv"/>
+                <outlet property="waktuCueCard" destination="GQX-VF-ySR" id="3uU-oq-JM2"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="130.58035714285714"/>
+        </tableViewCell>
+    </objects>
+</document>
