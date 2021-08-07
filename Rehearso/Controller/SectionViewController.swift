@@ -1,53 +1,40 @@
 //
-//  SectionEditorController.swift
+//  SectionViewController.swift
 //  Rehearso
 //
-//  Created by Diana Febrina Lumbantoruan on 05/08/21.
+//  Created by Mohammad Sulthan on 07/08/21.
 //
 
 import UIKit
 
-class SectionEditorController: UIViewController {
+class SectionViewController: UIViewController {
 
-    @IBOutlet weak var viewSectionData: UIView!
-    @IBOutlet weak var viewIntro: UIView!
-    @IBOutlet weak var viewBody: UIView!
-    @IBOutlet weak var viewConclusion: UIView!
-    @IBOutlet weak var sectionTableView: UITableView!
-    @IBOutlet weak var titleLabel: UILabel!
-    
     var sectionData : [Section] = []
     var section: Section?
     var cueCard : [CueCard] = []
     var cueCardUpdate: CueCard?
-    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        sectionTableView.delegate = self
-        sectionTableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         if let cueCard = cueCardUpdate {
             titleLabel.text = cueCard.name
+            
             load()
             
         }
         guard let cueCard2 = cueCardUpdate else {
-            print("error cueCard")
-            return
+                        print("error cueCard")
+                        return
         }
-        
         CoreDataHelper.shared.setSection(part: "Introduction", cueCard: cueCard2)
         CoreDataHelper.shared.setSection(part: "Body", cueCard: cueCard2)
         CoreDataHelper.shared.setSection(part: "Conclusion", cueCard: cueCard2)
         print("Hasil\(cueCard.count)")
         load()
-        
-        
-        viewSectionData.dropShadow()
-//        viewIntro.dropShadow()
-//        viewBody.dropShadow()
-//        viewConclusion.dropShadow()
     }
-    
     private func load(){
         guard let cueCard = cueCardUpdate else {
             print("error load")
@@ -55,11 +42,13 @@ class SectionEditorController: UIViewController {
         }
         
         sectionData = CoreDataHelper.shared.fetchSection(cueCard: cueCard)
-        sectionTableView.reloadData()
+        tableView.reloadData()
     }
+
+
 }
 
-extension SectionEditorController: UITableViewDelegate, UITableViewDataSource {
+extension SectionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sectionData.count
     }
@@ -70,8 +59,6 @@ extension SectionEditorController: UITableViewDelegate, UITableViewDataSource {
         cell.sectionLabel.text = section.part
         return cell
     }
-    
-    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        if let vc = storyboard?.instantiateViewController(identifier: "IsiViewController") as? IsiViewController {
 //            vc.sections = self.sectionData[indexPath.row]
@@ -79,4 +66,7 @@ extension SectionEditorController: UITableViewDelegate, UITableViewDataSource {
 //            print("udah")
 //        }
 //    }
+    
+    
 }
+

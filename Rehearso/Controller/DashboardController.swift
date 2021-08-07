@@ -25,8 +25,6 @@ class DashboardController: UIViewController {
         
         tableViewRecents.delegate = self
         tableViewRecents.dataSource = self
-        
-        
     }
 }
 
