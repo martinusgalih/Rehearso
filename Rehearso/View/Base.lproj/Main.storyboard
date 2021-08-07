@@ -1131,7 +1131,6 @@
         <!--Isi View Controller-->
         <scene sceneID="bRM-Ri-Nzg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yoc-fQ-7rs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="bRL-3V-u9t" customClass="IsiViewController" customModule="Rehearso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ajM-qc-nHa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -1214,6 +1213,7 @@
                         <outlet property="isiTableView" destination="EjJ-Gt-rgW" id="Zi5-zW-gzQ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yoc-fQ-7rs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4318.840579710145" y="-569.19642857142856"/>
         </scene>

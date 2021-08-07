@@ -78,6 +78,7 @@ class NewCueCardController: UIViewController {
                 syncWithCalendarAction()
                 calendarSynced = true
             }
+            print(cueName, date, length, calendarSynced)
             CoreDataHelper.shared.setCueCard(name: cueName, date: date, length: length, synced: calendarSynced)
         }
         
@@ -134,7 +135,7 @@ class NewCueCardController: UIViewController {
     }
     
     func showDatePicker() {
-        datePresentationPicker.datePickerMode = .dateAndTime
+        datePresentationPicker.datePickerMode = .date
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
