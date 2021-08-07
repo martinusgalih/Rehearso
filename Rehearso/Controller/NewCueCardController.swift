@@ -22,6 +22,7 @@ class NewCueCardController: UIViewController {
     private var cueCardUpdate: CueCard?
     
     let datePresentationPicker = UIDatePicker()
+    let durationPresentationPicker = UIDatePicker()
     let eventStore = EKEventStore()
     
     override func viewDidLoad() {
@@ -29,26 +30,19 @@ class NewCueCardController: UIViewController {
         showDatePicker()
         showDurationPicker()
         viewPresentationData.dropShadow()
+        
+        let prefix = UILabel()
+        prefix.text = " detik "
+        // set font, color etc.
+        prefix.sizeToFit()
+
+        tfDuration.rightView = prefix
+        tfDuration.rightViewMode = .always // or .whileEditing
+        
         if syncToCalender.isOn {
             syncToCalender.setOn(true, animated: true)
         }
         syncToCalender.addTarget(self, action: #selector(askForCalendarPermission), for: .valueChanged)
-    }
-    
-    func showDurationPicker() {
-        datePresentationPicker.datePickerMode = .countDownTimer
-        
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.doneDatePicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.cancelDatePicker))
-        
-        toolbar.setItems([doneButton, spaceButton, cancelButton], animated: true)
-        
-        tfDuration.inputAccessoryView = toolbar
-        tfDuration.inputView = datePresentationPicker
     }
     
     @IBAction func btnCreatePresentation(_ sender: Any) {
@@ -158,10 +152,38 @@ class NewCueCardController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @objc func  doneDatePicker() {
+    @objc func doneDatePicker() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         tfDateOfPresentation.text = formatter.string(from: datePresentationPicker.date)
+        self.view.endEditing(true)
+    }
+    
+    func showDurationPicker() {
+        durationPresentationPicker.datePickerMode = .countDownTimer
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.doneDurationPicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.cancelDatePicker))
+        
+        toolbar.setItems([doneButton, spaceButton, cancelButton], animated: true)
+        
+        tfDuration.inputAccessoryView = toolbar
+        tfDuration.inputView = durationPresentationPicker
+    }
+    
+    @objc func doneDurationPicker() {
+        var duration: TimeInterval = 0
+        
+        duration = durationPresentationPicker.countDownDuration
+        tfDuration.text = "\(duration)"
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelDurationPicker() {
         self.view.endEditing(true)
     }
 }
