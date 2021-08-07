@@ -1063,6 +1063,22 @@
             </objects>
             <point key="canvasLocation" x="1668.1159420289857" y="128.57142857142856"/>
         </scene>
+        <!--Start Rehearsal View Controller-->
+        <scene sceneID="jjg-nh-x0d">
+            <objects>
+                <viewController storyboardIdentifier="StartRehearsalController" id="Av0-to-hxV" customClass="StartRehearsalViewController" customModule="Rehearso" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BxB-ia-IsX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Hf7-Tf-0Ym"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="f9E-2T-oPu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egD-Nd-MDK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2474" y="129"/>
+        </scene>
         <!--History-->
         <scene sceneID="Vol-hE-pSQ">
             <objects>
