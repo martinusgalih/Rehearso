@@ -772,7 +772,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bth-CC-mNF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4699" y="1295"/>
+            <point key="canvasLocation" x="7113" y="869"/>
         </scene>
         <!--History-->
         <scene sceneID="D9M-YX-jcH">
@@ -1063,21 +1063,69 @@
             </objects>
             <point key="canvasLocation" x="1668.1159420289857" y="128.57142857142856"/>
         </scene>
-        <!--Start Rehearsal View Controller-->
+        <!--Play Rehearsal View Controller-->
         <scene sceneID="jjg-nh-x0d">
             <objects>
-                <viewController storyboardIdentifier="StartRehearsalController" id="Av0-to-hxV" customClass="StartRehearsalViewController" customModule="Rehearso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayRehearsalController" id="Av0-to-hxV" customClass="PlayRehearsalViewController" customModule="Rehearso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BxB-ia-IsX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kUp-XZ-5mv">
+                                <rect key="frame" x="46" y="138" width="322" height="621"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kga-vh-uiM">
+                                        <rect key="frame" x="6" y="482" width="310" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuP-aX-Tk5">
+                                        <rect key="frame" x="147" y="519" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="playRehearsalButtonAction:" destination="Av0-to-hxV" eventType="touchUpInside" id="wlJ-ZD-fLB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.966125071" green="0.80116146799999999" blue="0.34889671210000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y3T-mN-eFQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="Play Rehearsal" id="Rwv-m7-KbR"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Hf7-Tf-0Ym"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="f9E-2T-oPu"/>
+                    <connections>
+                        <outlet property="playSlider" destination="kga-vh-uiM" id="UuJ-P7-03u"/>
+                        <outlet property="rehearsalSlider" destination="kga-vh-uiM" id="FNE-kk-Pzc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egD-Nd-MDK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2474" y="129"/>
+            <point key="canvasLocation" x="3361" y="129"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="g7i-2u-x85">
+            <objects>
+                <viewController id="1ch-57-uMJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DCo-Oc-MY4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Y0C-Np-LRz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ztS-IE-tBS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3361" y="856"/>
         </scene>
         <!--History-->
         <scene sceneID="Vol-hE-pSQ">
@@ -1528,7 +1576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAU-6F-VMT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5796" y="1282"/>
+            <point key="canvasLocation" x="8210" y="856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="FFy-1c-wDe">
@@ -1802,7 +1850,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMK-gy-0se" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3796" y="1282"/>
+            <point key="canvasLocation" x="6210" y="856"/>
         </scene>
         <!--Isi Konten View Controller-->
         <scene sceneID="VSB-Oz-QnC">

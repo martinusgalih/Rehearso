@@ -69,7 +69,7 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(identifier: "StartRehearsalController") as? StartRehearsalViewController {
+        if let vc = storyboard?.instantiateViewController(identifier: "PlayRehearsalController") as? PlayRehearsalViewController {
 //            vc.cueCard = self.dataDummyRecent[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
         }

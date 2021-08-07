@@ -20,8 +20,6 @@ class DashboardController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         viewDashboard.dropShadow()
         
@@ -87,14 +85,6 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         cellRecents.tanggalCueCard.text = datePresentation
         cellRecents.waktuCueCard.text = "200 detik"
         
-        
-//        let dataDummyX = dataDummyRecent[indexPath.row]
-//        cellRecents.cueCardNama.text = dataDummyX.judul
-//        cellRecents.bulanPresent.text = dataDummyX.blnPresentasi
-//        cellRecents.tanggalPresent.text = dataDummyX.tglPresentasi
-//        cellRecents.tanggalCueCard.text = dataDummyX.tglBuatCueCard
-//        cellRecents.waktuCueCard.text = dataDummyX.wktBuatCueCard
-        
         cellRecents.layer.borderColor = UIColor.white.cgColor
         cellRecents.layer.borderWidth = 1
         cellRecents.layer.cornerRadius = 12
@@ -119,7 +109,7 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
     }
 }
 
-extension UIView{
+extension UIView {
     func dropShadow(scale: Bool = true){
         layer.masksToBounds = false
         layer.shadowColor = UIColor.darkGray.cgColor
