@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CueCard" representedClassName="CueCard" syncable="YES" codeGenerationType="class">
+        <attribute name="audioPath" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="length" optional="YES" attributeType="String"/>
@@ -21,7 +22,7 @@
         <relationship name="isi" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Isi" inverseName="section" inverseEntity="Isi"/>
     </entity>
     <elements>
-        <element name="CueCard" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="CueCard" positionX="-63" positionY="-18" width="128" height="134"/>
         <element name="Isi" positionX="-54" positionY="-9" width="128" height="89"/>
         <element name="Section" positionX="-36" positionY="9" width="128" height="89"/>
     </elements>

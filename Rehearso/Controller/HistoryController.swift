@@ -21,6 +21,8 @@ class HistoryController: UIViewController {
     var cueCardUpdate: CueCard?
     
     
+    var cueCard: CueCard?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let cueCard = cueCardUpdate {
@@ -40,11 +42,16 @@ class HistoryController: UIViewController {
         cueCard = CoreDataHelper.shared.fetchCueCard()
         self.tableViewRehearsal.reloadData()
     }
-    private func setTableViewCell(){
+    private func setTableViewCell() {
         let nib = UINib(nibName: "ReahearsalCell", bundle: nil)
         tableViewRehearsal.register(nib, forCellReuseIdentifier: "reahearsalCell")
     }
-    func configureTableView(){
+    func configureTableView() {
+        
+        if let cue = cueCard {
+            labelNamaCueCard.text = cueCard?.name
+        }
+
         tableViewRehearsal.delegate = self
         tableViewRehearsal.dataSource = self
     }
@@ -57,7 +64,6 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reahearsalCell", for: indexPath) as! ReahearsalCell
-        
         
         cell.labelRehearsalKe.text = "Rehearsal 1"
         cell.tanggalRehearsal.text = "21/02/21"
@@ -81,5 +87,10 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
         cell.layer.mask = maskLayer
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(identifier: "PlayRehearsalController") as? PlayRehearsalViewController {
+//            vc.cueCard = self.dataDummyRecent[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
