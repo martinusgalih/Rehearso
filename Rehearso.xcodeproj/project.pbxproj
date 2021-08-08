@@ -14,6 +14,7 @@
 		1794B47626BE5B54001564CC /* IsiKontenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1794B47526BE5B54001564CC /* IsiKontenViewController.swift */; };
 		179B75B526BD6C7F0066E2DB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179B75B426BD6C7F0066E2DB /* Helper.swift */; };
 		17CB966926BE868600341011 /* PlayRehearsalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB966826BE868600341011 /* PlayRehearsalViewController.swift */; };
+		17CB966B26BE947000341011 /* StartRehearsalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB966A26BE947000341011 /* StartRehearsalViewController.swift */; };
 		8B36D9B626BB979500579573 /* SectionEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9B526BB979500579573 /* SectionEditorController.swift */; };
 		8B36D9B826BBB41600579573 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9B726BBB41600579573 /* HistoryController.swift */; };
 		8B36D9BC26BBB57D00579573 /* ReahearsalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9BB26BBB57D00579573 /* ReahearsalCell.swift */; };
@@ -38,6 +39,7 @@
 		1794B47526BE5B54001564CC /* IsiKontenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsiKontenViewController.swift; sourceTree = "<group>"; };
 		179B75B426BD6C7F0066E2DB /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		17CB966826BE868600341011 /* PlayRehearsalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayRehearsalViewController.swift; sourceTree = "<group>"; };
+		17CB966A26BE947000341011 /* StartRehearsalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRehearsalViewController.swift; sourceTree = "<group>"; };
 		8B36D9B526BB979500579573 /* SectionEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionEditorController.swift; sourceTree = "<group>"; };
 		8B36D9B726BBB41600579573 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		8B36D9BB26BBB57D00579573 /* ReahearsalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReahearsalCell.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				1794B47126BE4902001564CC /* IsiViewController.swift */,
 				1794B47526BE5B54001564CC /* IsiKontenViewController.swift */,
 				17CB966826BE868600341011 /* PlayRehearsalViewController.swift */,
+				17CB966A26BE947000341011 /* StartRehearsalViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				1794B47026BE459D001564CC /* SectionTableViewCell.swift in Sources */,
 				8BD31D9926BAEF78002AA4A0 /* NewCueCardController.swift in Sources */,
 				8BCF499426BAE2A400FD95D3 /* DataCell.swift in Sources */,
+				17CB966B26BE947000341011 /* StartRehearsalViewController.swift in Sources */,
 				8B36D9B826BBB41600579573 /* HistoryController.swift in Sources */,
 				1794B46E26BE4545001564CC /* SectionViewController.swift in Sources */,
 				8B9A930026BA513C006F14BF /* Rehearso.xcdatamodeld in Sources */,
