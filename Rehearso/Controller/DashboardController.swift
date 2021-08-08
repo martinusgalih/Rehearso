@@ -13,10 +13,13 @@ class DashboardController: UIViewController {
     @IBOutlet weak var viewStartScripting: UIView!
     @IBOutlet weak var viewDashboard: UIView!
     
+    var sectionData : [Section] = []
+    var section: Section?
+    var cueCard : [CueCard] = []
+    var cueCardUpdate: CueCard?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         viewDashboard.dropShadow()
         
@@ -25,29 +28,79 @@ class DashboardController: UIViewController {
         
         tableViewRecents.delegate = self
         tableViewRecents.dataSource = self
+        
+        loadCueCardInformation()
+    }
+    
+    private func loadCueCardInformation(){
+        cueCard = CoreDataHelper.shared.fetchCueCard()
+        tableViewRecents.reloadData()
+    }
+    
+    private func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+      return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
 }
 
 extension DashboardController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataDummyRecent.count
+        return cueCard.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellRecents = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataCell
         
-        let dataDummyX = dataDummyRecent[indexPath.row]
-        cellRecents.cueCardNama.text = dataDummyX.judul
-        cellRecents.bulanPresent.text = dataDummyX.blnPresentasi
-        cellRecents.tanggalPresent.text = dataDummyX.tglPresentasi
-        cellRecents.tanggalCueCard.text = dataDummyX.tglBuatCueCard
-        cellRecents.waktuCueCard.text = dataDummyX.wktBuatCueCard
+        let cueCard = cueCard[indexPath.row]
+        
+        // convert cueCard.date string to date object
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+07:00")
+        guard let date = dateFormatter.date(from: cueCard.date!) else {
+            fatalError()
+        }
+        
+        
+        // month formatter
+        dateFormatter.dateFormat = "LLLL"
+        let monthPresentation = dateFormatter.string(from: date)
+        
+        // date formatter
+        dateFormatter.dateFormat = "dd"
+        let dayPresentation = dateFormatter.string(from: date)
+        
+        // date
+        dateFormatter.dateFormat = "d MMMM yyyy"
+        let datePresentation = dateFormatter.string(from: date)
+        
+
+        // convert duration second to hour, minute, second
+        let preVal = (cueCard.length! as NSString).doubleValue
+        let duration = Int(preVal)
+        
+        let minutes = (duration % 3600) / 60
+        let seconds = (duration % 3600) % 60
+        
+        
+        // binding data to table
+        cellRecents.cueCardNama.text = cueCard.name
+        cellRecents.bulanPresent.text = monthPresentation
+        cellRecents.tanggalPresent.text = dayPresentation
+        cellRecents.tanggalCueCard.text = datePresentation
+        cellRecents.waktuCueCard.text = ("Duration \(minutes):\(seconds)")
         
         cellRecents.layer.borderColor = UIColor.white.cgColor
         cellRecents.layer.borderWidth = 1
         cellRecents.layer.cornerRadius = 12
         cellRecents.clipsToBounds = true
         return cellRecents
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(identifier: "HistoryController") as? HistoryController {
+            vc.cueCard = cueCard[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -58,10 +111,9 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         maskLayer.backgroundColor = UIColor.white.cgColor
         cell.layer.mask = maskLayer
     }
-    
 }
 
-extension UIView{
+extension UIView {
     func dropShadow(scale: Bool = true){
         layer.masksToBounds = false
         layer.shadowColor = UIColor.darkGray.cgColor
