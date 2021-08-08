@@ -19,6 +19,7 @@ class HistoryController: UIViewController {
     @IBOutlet weak var tableViewRehearsal: UITableView!
     var cueCard : [CueCard] = []
     var cueCardUpdate: CueCard?
+    var rehearsal : [Rehearsal] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,22 +27,24 @@ class HistoryController: UIViewController {
             labelNamaCueCard.text = cueCard.name
             labelTanggalCueCard.text = cueCard.date
             waktuBuatCueCard.text = cueCard.date
-//            load()
         }
+        configureTableView()
         viewEdit.dropShadow()
         viewHistory.dropShadow()
         viewPreview.dropShadow()
         viewRehearse.dropShadow()
-
+        load()
     }
-//    private func load(){
-//        cueCard = CoreDataHelper.shared.fetchCueCard()
-//        self.tableViewRehearsal.reloadData()
-//    }
+    
+    private func load(){
+        rehearsal = CoreDataHelper.shared.fetchRehearsal()
+        print("ehe: \(rehearsal)")
+        self.tableViewRehearsal.reloadData()
+    }
 
     private func setTableViewCell() {
         let nib = UINib(nibName: "ReahearsalCell", bundle: nil)
-        tableViewRehearsal.register(nib, forCellReuseIdentifier: "reahearsalCell")
+        tableViewRehearsal.register(nib, forCellReuseIdentifier: "rehearsalCell")
     }
 
     func configureTableView() {
@@ -56,27 +59,21 @@ class HistoryController: UIViewController {
             self.navigationController?.present(vc, animated: true)
         }
     }
-    
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.destination is StartRehearsalViewController {
-//            let vc = segue.destination as? StartRehearsalViewController
-//
-//        }
-//    }
 }
 
 extension HistoryController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataDummyRecent.count
+        return rehearsal.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reahearsalCell", for: indexPath) as! ReahearsalCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "rehearsalCell", for: indexPath) as! ReahearsalCell
+        
+        let rehearsal = rehearsal[indexPath.row]
 
-        cell.labelRehearsalKe.text = "Rehearsal 1"
-        cell.tanggalRehearsal.text = "21/02/21"
-        cell.waktuRehearsal.text = "01:23:45"
+        cell.labelRehearsalKe.text = rehearsal.name
+        cell.tanggalRehearsal.text = "\(rehearsal.timestamp)"
+        cell.waktuRehearsal.text = "\(rehearsal.duration)"
 
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 1

@@ -21,6 +21,7 @@ class StartRehearsalViewController: UIViewController {
     var cueCard: CueCard?
     var rehearsalName: String = ""
     var duration:Float? = 0
+    let filename = NSUUID().uuidString + ".m4a"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,20 +30,18 @@ class StartRehearsalViewController: UIViewController {
 //        var intTotalUnits:Int? = Int(fldTotalUnits)
         
         if let cue = cueCard {
-            let floatLength:Float? = Float(cue.length!)
-            let intLength:Int? = Int(cue.length!)
+            let cueDurationFloat = (cue.length! as NSString).floatValue
+            let cueDurationInt = (cue.length! as NSString).integerValue
             
-            recordingSlider.maximumValue = Float(floatLength!)
+            recordingSlider.maximumValue = Float(cueDurationFloat)
             duration = recordingSlider.maximumValue
 
             maximumTimeLabel.text = "\(recordingSlider.maximumValue)"
 
-//            let minutes = (intLength! % 3600) / 60
-//            let seconds = (intLength! % 3600) % 60
-//            maximumTimeLabel.text = String("\(minutes):\(seconds)")
+            let minutes = (cueDurationInt % 3600) / 60
+            let seconds = (cueDurationInt % 3600) % 60
+            maximumTimeLabel.text = String("\(minutes):\(seconds)")
         }
-        
-
         
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
     }
@@ -87,7 +86,6 @@ class StartRehearsalViewController: UIViewController {
             // reset reharsal
             self.stopRecording()
             if self.audioRecorder == nil {
-                print("nil")
                 self.startRecording()
             }
         }))
@@ -100,20 +98,28 @@ class StartRehearsalViewController: UIViewController {
     }
     
     @IBAction func doneButtonBarAction(_ sender: Any) {
+        // stop recording
+        let lastTimeRecorder = audioRecorder.currentTime
+        stopRecording()
+        
         // show alert button with textfield
         let alert = UIAlertController(title: "Rehearsal done", message: "Give your rehearsal a name", preferredStyle: .alert)
         
         alert.addTextField{ (textField) in
-            print(textField)
-            self.rehearsalName = textField.text ?? "Recording_\(UUID().uuidString)"
-            print(self.rehearsalName)
+            textField.placeholder = "Enter your rehearsal name here"
         }
         
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
             // save to coredata
-//            self.renameAudio(newTitle: self.rehearsalName)
-            CoreDataHelper.shared.setRehearsal(name: self.rehearsalName, duration: 2303, timestamp: Date())
+            guard let cue = self.cueCard else {
+                print("Cue Card Error")
+                return
+            }
+            
+            let recordingName = alert.textFields![0].text
+            CoreDataHelper.shared.setRehearsal(name: recordingName!, duration: Float(lastTimeRecorder), timestamp: Date(), audioName: self.filename, cueCard: cue)
         }))
+        
         self.present(alert, animated: true)
     }
     
@@ -156,22 +162,9 @@ class StartRehearsalViewController: UIViewController {
     
     func getFileURL() -> URL {
         // name file should be come from user alert
-        let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        let path = getDocumentsDirectory().appendingPathComponent(filename)
         return path as URL
     }
-    
-    func renameAudio(newTitle: String) {
-        do {
-            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-            let documentDirectory = URL(fileURLWithPath: path)
-            let originPath = documentDirectory.appendingPathComponent("recording.m4a")
-            let destinationPath = documentDirectory.appendingPathComponent("\(newTitle).m4a")
-            try FileManager.default.moveItem(at: originPath, to: destinationPath)
-        } catch {
-            print(error)
-        }
-    }
-
 }
 
 extension StartRehearsalViewController: AVAudioRecorderDelegate {

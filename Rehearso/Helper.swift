@@ -37,12 +37,14 @@ class CoreDataHelper {
         print("Hasil Core\(String(describing: cueCard.name))")
     }
 
-    func setRehearsal(name: String, duration: Int16, timestamp: Date) {
+    func setRehearsal(name: String, duration: Float, timestamp: Date, audioName: String, cueCard: CueCard) {
         let rehearsal = Rehearsal(context: coreDataHelper.viewContext)
-
+        
         rehearsal.name = name
         rehearsal.duration = duration
         rehearsal.timestamp = timestamp
+        rehearsal.audioName = audioName
+        rehearsal.cueCard = cueCard
         save {}
     }
 
@@ -75,6 +77,20 @@ class CoreDataHelper {
         }
 
         return cueCard
+    }
+    
+    func fetchRehearsal() -> [Rehearsal] {
+        let request: NSFetchRequest<Rehearsal> = Rehearsal.fetchRequest()
+
+        var rehearsal: [Rehearsal] = []
+
+        do {
+            rehearsal = try coreDataHelper.viewContext.fetch(request)
+        } catch {
+            print("Error fetching rehearsal data")
+        }
+
+        return rehearsal
     }
 
     func deleteCueCard(cueCard : CueCard) {
