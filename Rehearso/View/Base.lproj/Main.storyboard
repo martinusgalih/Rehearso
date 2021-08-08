@@ -806,7 +806,7 @@
                                         <rect key="frame" x="25" y="116" width="364" height="382"/>
                                         <color key="backgroundColor" red="0.050980392159999999" green="0.096737138929999994" blue="0.1843240857" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reahearsalCell" rowHeight="85" id="cn1-5z-HJk" customClass="ReahearsalCell" customModule="Rehearso" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="rehearsalCell" rowHeight="85" id="cn1-5z-HJk" customClass="ReahearsalCell" customModule="Rehearso" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="24.5" width="364" height="85"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cn1-5z-HJk" id="7bx-39-Q83">
