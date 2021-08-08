@@ -14,14 +14,19 @@ class PlayRehearsalViewController: UIViewController {
     var audioPlayer: AVAudioPlayer!
     var audioSession: AVAudioSession!
     @IBOutlet weak var playSlider: UISlider!
+    @IBOutlet weak var maximumLength: UILabel!
+    @IBOutlet weak var currentValue: UILabel!
+    @IBOutlet weak var playButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // prepare player
         preparePlayer()
+        maximumLength.text = String(format: "%0.2f", audioPlayer.duration)
+        playSlider.maximumValue = Float(audioPlayer.duration)
         
-        playSlider.maximumValue = 23
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
         
         // start audio session
         audioSession = AVAudioSession.sharedInstance()
@@ -33,9 +38,15 @@ class PlayRehearsalViewController: UIViewController {
         }
     }
     
+    @objc func updateSlider() {
+        playSlider.value = Float(audioPlayer.currentTime)
+        currentValue.text = String(format: "%0.2f", Float(audioPlayer.currentTime))
+    }
+    
     func preparePlayer() {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: getFileURL())
+            print(audioPlayer.duration)
             
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
@@ -48,6 +59,9 @@ class PlayRehearsalViewController: UIViewController {
     @IBAction func playRehearsalButtonAction(_ sender: Any) {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: getFileURL())
+            playButton.isEnabled = false
+            audioPlayer.play()
+            
         } catch is NSError {
             print("Error playing")
         }
