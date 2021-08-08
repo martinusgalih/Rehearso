@@ -17,20 +17,37 @@ class HistoryController: UIViewController {
     @IBOutlet weak var viewPreview: UIView!
     @IBOutlet weak var viewRehearse: UIView!
     @IBOutlet weak var tableViewRehearsal: UITableView!
+    var cueCard : [CueCard] = []
+    var cueCardUpdate: CueCard?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let cueCard = cueCardUpdate {
+            labelNamaCueCard.text = cueCard.name
+            labelTanggalCueCard.text = cueCard.date
+            waktuBuatCueCard.text = cueCard.date
+            load()
+            
+        }
         viewEdit.dropShadow()
         viewHistory.dropShadow()
         viewPreview.dropShadow()
         viewRehearse.dropShadow()
-        
+
+    }
+    private func load(){
+        cueCard = CoreDataHelper.shared.fetchCueCard()
+        self.tableViewRehearsal.reloadData()
+    }
+    private func setTableViewCell(){
+        let nib = UINib(nibName: "ReahearsalCell", bundle: nil)
+        tableViewRehearsal.register(nib, forCellReuseIdentifier: "reahearsalCell")
+    }
+    func configureTableView(){
         tableViewRehearsal.delegate = self
         tableViewRehearsal.dataSource = self
-        // Do any additional setup after loading the view.
     }
-
 }
 
 extension HistoryController: UITableViewDataSource, UITableViewDelegate{

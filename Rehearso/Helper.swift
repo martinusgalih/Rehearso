@@ -30,16 +30,20 @@ class CoreDataHelper {
         cueCard.date = date
         cueCard.length = length
         cueCard.syncToCalendar = synced
-        save()
-        print("\(cueCard)")
+        save{            CoreDataHelper.shared.setSection(part: "Introduction", cueCard: cueCard)
+            CoreDataHelper.shared.setSection(part: "Body", cueCard: cueCard)
+            CoreDataHelper.shared.setSection(part: "Conclusion", cueCard: cueCard)
+        }
+        print("Hasil Core\(String(describing: cueCard.name))")
     }
     
+ 
     func setSection(part: String, cueCard: CueCard) {
         let section = Section(context: coreDataHelper.viewContext)
         section.id = UUID()
         section.part = part
         section.cueCard = cueCard
-        save()
+        save{}
     }
     
     func setIsi(part: String, isi: String, section: Section) {
@@ -48,7 +52,7 @@ class CoreDataHelper {
         isii.isi = isi
         isii.part = part
         isii.section = section
-        save()
+        save{}
     }
     
     func fetchCueCard() -> [CueCard] {
@@ -67,19 +71,19 @@ class CoreDataHelper {
     
     func deleteCueCard(cueCard : CueCard) {
         coreDataHelper.viewContext.delete(cueCard)
-        save()
+        save{}
     }
     
     func deleteIsi(isi: Isi) {
         coreDataHelper.viewContext.delete(isi)
-        save()
+        save{}
     }
     
     func fetchSection(cueCard: CueCard) -> [Section] {
         let request: NSFetchRequest<Section> = Section.fetchRequest()
         
-        request.fetchOffset = 0
-        request.fetchLimit = 3
+//        request.fetchOffset = 0
+//        request.fetchLimit = 3
         
         request.predicate = NSPredicate(format: "(cueCard = %@)", cueCard)
         request.sortDescriptors = [NSSortDescriptor(key: "part", ascending: false)]
@@ -92,6 +96,7 @@ class CoreDataHelper {
         }
         return section
     }
+
     
     func fetchIsi(section: Section) -> [Isi] {
         let request: NSFetchRequest<Isi> = Isi.fetchRequest()
@@ -110,14 +115,13 @@ class CoreDataHelper {
         return isi
     }
     
-    func save () {
+    func save (onSuccess : @escaping ()->Void) {
         let context = coreDataHelper.viewContext
         if context.hasChanges {
             do {
                 try context.save()
+                onSuccess()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }

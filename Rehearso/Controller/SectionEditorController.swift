@@ -20,25 +20,19 @@ class SectionEditorController: UIViewController {
     var section: Section?
     var cueCard : [CueCard] = []
     var cueCardUpdate: CueCard?
+    var titleVC: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sectionTableView.delegate = self
         sectionTableView.dataSource = self
-        if let cueCard = cueCardUpdate {
-            titleLabel.text = cueCard.name
-            load()
-            
-        }
+        titleLabel.text = titleVC
         guard let cueCard2 = cueCardUpdate else {
             print("error cueCard")
             return
         }
+        print("Hasil Jumlah\(sectionData.count)")
         
-        CoreDataHelper.shared.setSection(part: "Introduction", cueCard: cueCard2)
-        CoreDataHelper.shared.setSection(part: "Body", cueCard: cueCard2)
-        CoreDataHelper.shared.setSection(part: "Conclusion", cueCard: cueCard2)
-        print("Hasil\(cueCard.count)")
         load()
         
         
@@ -61,22 +55,25 @@ class SectionEditorController: UIViewController {
 
 extension SectionEditorController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return sectionData.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "section") as! SectionTableViewCell
         let section = sectionData[indexPath.row]
+        print("Hasil part\(section.part)")
         cell.sectionLabel.text = section.part
         return cell
     }
     
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let vc = storyboard?.instantiateViewController(identifier: "IsiViewController") as? IsiViewController {
-//            vc.sections = self.sectionData[indexPath.row]
-//            self.navigationController?.pushViewController(vc, animated: false)
-//            print("udah")
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(identifier: "IsiViewController") as? IsiViewController {
+            vc.sections = self.sectionData[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: false)
+            print("udah")
+        }
+    }
 }
