@@ -18,6 +18,7 @@
 		8B36D9B626BB979500579573 /* SectionEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9B526BB979500579573 /* SectionEditorController.swift */; };
 		8B36D9B826BBB41600579573 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9B726BBB41600579573 /* HistoryController.swift */; };
 		8B36D9BC26BBB57D00579573 /* ReahearsalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9BB26BBB57D00579573 /* ReahearsalCell.swift */; };
+		8B4982E826C0625300DBC522 /* IsiKontenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4982E726C0625300DBC522 /* IsiKontenController.swift */; };
 		8B9A92F626BA513C006F14BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A92F526BA513C006F14BF /* AppDelegate.swift */; };
 		8B9A92F826BA513C006F14BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A92F726BA513C006F14BF /* SceneDelegate.swift */; };
 		8B9A92FD26BA513C006F14BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B9A92FB26BA513C006F14BF /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		8B36D9B526BB979500579573 /* SectionEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionEditorController.swift; sourceTree = "<group>"; };
 		8B36D9B726BBB41600579573 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		8B36D9BB26BBB57D00579573 /* ReahearsalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReahearsalCell.swift; sourceTree = "<group>"; };
+		8B4982E726C0625300DBC522 /* IsiKontenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsiKontenController.swift; sourceTree = "<group>"; };
 		8B9A92F226BA513C006F14BF /* Rehearso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rehearso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9A92F526BA513C006F14BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B9A92F726BA513C006F14BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				1794B47526BE5B54001564CC /* IsiKontenViewController.swift */,
 				17CB966826BE868600341011 /* PlayRehearsalViewController.swift */,
 				17CB966A26BE947000341011 /* StartRehearsalViewController.swift */,
+				8B4982E726C0625300DBC522 /* IsiKontenController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				90A5EF8D26C0011D00B27EBF /* EditDataCollectionViewCell.swift in Sources */,
 				179B75B526BD6C7F0066E2DB /* Helper.swift in Sources */,
 				8B36D9B626BB979500579573 /* SectionEditorController.swift in Sources */,
+				8B4982E826C0625300DBC522 /* IsiKontenController.swift in Sources */,
 				8B9A92F626BA513C006F14BF /* AppDelegate.swift in Sources */,
 				1794B47026BE459D001564CC /* SectionTableViewCell.swift in Sources */,
 				8BD31D9926BAEF78002AA4A0 /* NewCueCardController.swift in Sources */,
