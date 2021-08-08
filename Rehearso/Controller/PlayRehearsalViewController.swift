@@ -21,6 +21,8 @@ class PlayRehearsalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(cueCard)
+        
         // prepare player
         preparePlayer()
         maximumLength.text = String(format: "%0.2f", audioPlayer.duration)

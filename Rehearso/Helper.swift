@@ -11,7 +11,7 @@ import CoreData
 
 class CoreDataHelper {
     static let shared = CoreDataHelper()
-    
+
     lazy var coreDataHelper: NSPersistentContainer = {
 
         let container = NSPersistentContainer(name: "Rehearso")
@@ -22,7 +22,7 @@ class CoreDataHelper {
         })
         return container
     }()
-    
+
     func setCueCard(name: String, date: String, length: String, synced: Bool) {
         let cueCard = CueCard(context: coreDataHelper.viewContext)
         cueCard.id = UUID()
@@ -36,8 +36,16 @@ class CoreDataHelper {
         }
         print("Hasil Core\(String(describing: cueCard.name))")
     }
-    
- 
+
+    func setRehearsal(name: String, duration: Int16, timestamp: Date) {
+        let rehearsal = Rehearsal(context: coreDataHelper.viewContext)
+
+        rehearsal.name = name
+        rehearsal.duration = duration
+        rehearsal.timestamp = timestamp
+        save {}
+    }
+
     func setSection(part: String, cueCard: CueCard) {
         let section = Section(context: coreDataHelper.viewContext)
         section.id = UUID()
@@ -45,7 +53,7 @@ class CoreDataHelper {
         section.cueCard = cueCard
         save{}
     }
-    
+
     func setIsi(part: String, isi: String, section: Section) {
         let isii = Isi(context: coreDataHelper.viewContext)
         isii.id = UUID()
@@ -54,41 +62,41 @@ class CoreDataHelper {
         isii.section = section
         save{}
     }
-    
+
     func fetchCueCard() -> [CueCard] {
         let request: NSFetchRequest<CueCard> = CueCard.fetchRequest()
-        
+
         var cueCard: [CueCard] = []
-        
+
         do {
             cueCard = try coreDataHelper.viewContext.fetch(request)
         } catch {
             print("Error fetching cuecard data")
         }
-        
+
         return cueCard
     }
-    
+
     func deleteCueCard(cueCard : CueCard) {
         coreDataHelper.viewContext.delete(cueCard)
         save{}
     }
-    
+
     func deleteIsi(isi: Isi) {
         coreDataHelper.viewContext.delete(isi)
         save{}
     }
-    
+
     func fetchSection(cueCard: CueCard) -> [Section] {
         let request: NSFetchRequest<Section> = Section.fetchRequest()
-        
+
 //        request.fetchOffset = 0
 //        request.fetchLimit = 3
-        
+
         request.predicate = NSPredicate(format: "(cueCard = %@)", cueCard)
         request.sortDescriptors = [NSSortDescriptor(key: "part", ascending: false)]
         var section: [Section] = []
-        
+
         do{
             section = try coreDataHelper.viewContext.fetch(request)
         }catch {
@@ -97,16 +105,16 @@ class CoreDataHelper {
         return section
     }
 
-    
+
     func fetchIsi(section: Section) -> [Isi] {
         let request: NSFetchRequest<Isi> = Isi.fetchRequest()
-        
+
         request.predicate = NSPredicate(format: "(section = %@)", section)
-        
+
         request.sortDescriptors = [NSSortDescriptor(key: "part", ascending: true)]
-        
+
         var isi: [Isi] = []
-        
+
         do{
             isi = try coreDataHelper.viewContext.fetch(request)
         }catch {
@@ -114,7 +122,7 @@ class CoreDataHelper {
         }
         return isi
     }
-    
+
     func save (onSuccess : @escaping ()->Void) {
         let context = coreDataHelper.viewContext
         if context.hasChanges {

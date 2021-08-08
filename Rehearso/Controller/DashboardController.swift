@@ -83,7 +83,6 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         let preVal = (cueCard.length! as NSString).doubleValue
         let duration = Int(preVal)
         
-        print(duration)
         let minutes = (duration % 3600) / 60
         let seconds = (duration % 3600) % 60
         
@@ -116,7 +115,6 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         if let vc = storyboard?.instantiateViewController(identifier: "HistoryController") as? HistoryController {
             vc.cueCardUpdate = self.cueCard[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: false)
-            print("udah")
         }
     }
 }
