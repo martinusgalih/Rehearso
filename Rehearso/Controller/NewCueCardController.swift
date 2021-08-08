@@ -20,6 +20,10 @@ class NewCueCardController: UIViewController {
     
     private var editCue: Bool = false
     private var cueCardUpdate: CueCard?
+    private var cueCard : [CueCard] = []
+    
+    var sectionData : [Section] = []
+    var section : CueCard?
     
     let datePresentationPicker = UIDatePicker()
     let durationPresentationPicker = UIDatePicker()
@@ -68,9 +72,11 @@ class NewCueCardController: UIViewController {
             cueCardUpdate?.name = cueName
             cueCardUpdate?.date = date
             cueCardUpdate?.length = length
-            CoreDataHelper.shared.save()
-            editCue = false
-            self.createBtn.setTitle("Save", for: .normal)
+            CoreDataHelper.shared.save{
+                self.editCue = false
+                self.createBtn.setTitle("Save", for: .normal)
+            }
+            
         } else {
             
             // jika ingin sikronisasi dengan calendar
@@ -80,6 +86,19 @@ class NewCueCardController: UIViewController {
             }
             print(cueName, date, length, calendarSynced)
             CoreDataHelper.shared.setCueCard(name: cueName, date: date, length: length, synced: calendarSynced)
+            load()
+            var sectionData : [Section] = []
+            print("Hasil Sec\(sectionData)")
+            if let vc = storyboard?.instantiateViewController(identifier: "SectionEditorController") as? SectionEditorController {
+                
+                var counter = cueCard.count
+                vc.titleVC = cueName
+                vc.cueCardUpdate = cueCard[counter - 1]
+                
+                self.navigationController?.pushViewController(vc, animated: false)
+                
+            }
+            print("Hasilll\(cueCard.count)")
         }
         
         tfPresentationName.text = ""
@@ -87,6 +106,11 @@ class NewCueCardController: UIViewController {
         tfDuration.text = ""
     }
     
+    private func load(){
+        cueCard = CoreDataHelper.shared.fetchCueCard()
+        
+    }
+
     func syncWithCalendarAction() -> Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MMMM-yyyy"
