@@ -75,7 +75,11 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         
 
         // convert duration second to hour, minute, second
+        let preVal = (cueCard.length! as NSString).doubleValue
+        let duration = Int(preVal)
         
+        let minutes = (duration % 3600) / 60
+        let seconds = (duration % 3600) % 60
         
         
         // binding data to table
@@ -83,7 +87,7 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         cellRecents.bulanPresent.text = monthPresentation
         cellRecents.tanggalPresent.text = dayPresentation
         cellRecents.tanggalCueCard.text = datePresentation
-        cellRecents.waktuCueCard.text = "200 detik"
+        cellRecents.waktuCueCard.text = ("Duration \(minutes):\(seconds)")
         
         cellRecents.layer.borderColor = UIColor.white.cgColor
         cellRecents.layer.borderWidth = 1
