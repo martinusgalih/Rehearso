@@ -20,9 +20,6 @@ class HistoryController: UIViewController {
     var cueCard : [CueCard] = []
     var cueCardUpdate: CueCard?
     
-    
-    var cueCard: CueCard?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let cueCard = cueCardUpdate {
@@ -42,16 +39,13 @@ class HistoryController: UIViewController {
         cueCard = CoreDataHelper.shared.fetchCueCard()
         self.tableViewRehearsal.reloadData()
     }
+    
     private func setTableViewCell() {
         let nib = UINib(nibName: "ReahearsalCell", bundle: nil)
         tableViewRehearsal.register(nib, forCellReuseIdentifier: "reahearsalCell")
     }
+    
     func configureTableView() {
-        
-        if let cue = cueCard {
-            labelNamaCueCard.text = cueCard?.name
-        }
-
         tableViewRehearsal.delegate = self
         tableViewRehearsal.dataSource = self
     }
