@@ -17,41 +17,46 @@ class StartRehearsalViewController: UIViewController {
     
     var audioSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
-    var duration: Int = 20 // in seconds
     
-    var cueCard: [CueCard] = []
+    var cueCard: CueCard?
+    var rehearsalName: String = ""
+    var duration:Float? = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         stopButton.isEnabled = false
         
-        loadCueCardInformation()
-        recordingSlider.maximumValue = Float(duration)
+//        var intTotalUnits:Int? = Int(fldTotalUnits)
         
-        let minutes = (duration % 3600) / 60
-        let seconds = (duration % 3600) % 60
-        maximumTimeLabel.text = String("\(minutes):\(seconds)")
+        if let cue = cueCard {
+            let floatLength:Float? = Float(cue.length!)
+            let intLength:Int? = Int(cue.length!)
+            
+            recordingSlider.maximumValue = Float(floatLength!)
+            duration = recordingSlider.maximumValue
+
+            maximumTimeLabel.text = "\(recordingSlider.maximumValue)"
+
+//            let minutes = (intLength! % 3600) / 60
+//            let seconds = (intLength! % 3600) % 60
+//            maximumTimeLabel.text = String("\(minutes):\(seconds)")
+        }
+        
+
         
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
-    }
-    
-    private func loadCueCardInformation(){
-        cueCard = CoreDataHelper.shared.fetchCueCard()
-        print(cueCard)
     }
     
     @objc func updateSlider() {
         if audioRecorder != nil {
             recordingSlider.value = Float(audioRecorder.currentTime)
-            var currentTime = Float(audioRecorder.currentTime)
+            let currentTime = Float(audioRecorder.currentTime)
             minimumTimeLabel.text = String("\(currentTime)")
         }
     }
     
     @IBAction func startRecordingButtonAction(_ sender: Any) {
-        print(audioRecorder == nil)
         if audioRecorder == nil {
-            print("Mulai record")
             recordButton.isEnabled = false
             stopButton.isEnabled = true
             startRecording()
@@ -74,8 +79,10 @@ class StartRehearsalViewController: UIViewController {
     @IBAction func resetButtonBarAction(_ sender: Any) {
         // pause recording
         audioRecorder.pause()
+        
         // tampilkan alert konfirmasi reset rehearsal
         let alert = UIAlertController(title: "Reset rehearsal", message: "Apakah Anda yakin ingin reset rehearsal? Rekaman saat ini tidak akan disimpan", preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { _ in
             // reset reharsal
             self.stopRecording()
@@ -88,8 +95,29 @@ class StartRehearsalViewController: UIViewController {
             // continue recording
             self.audioRecorder.record()
         }))
+        
         self.present(alert, animated: true)
     }
+    
+    @IBAction func doneButtonBarAction(_ sender: Any) {
+        // show alert button with textfield
+        let alert = UIAlertController(title: "Rehearsal done", message: "Give your rehearsal a name", preferredStyle: .alert)
+        
+        alert.addTextField{ (textField) in
+            print(textField)
+            self.rehearsalName = textField.text ?? "Recording_\(UUID().uuidString)"
+            print(self.rehearsalName)
+        }
+        
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
+            // save to coredata
+//            self.renameAudio(newTitle: self.rehearsalName)
+            CoreDataHelper.shared.setRehearsal(name: self.rehearsalName, duration: 2303, timestamp: Date())
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    
     
     func startRecording() {
         let audioFilename = getFileURL()
@@ -103,7 +131,7 @@ class StartRehearsalViewController: UIViewController {
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
-            audioRecorder.record(forDuration: TimeInterval(duration))
+            audioRecorder.record(forDuration: TimeInterval(duration!))
         } catch {
             print("Finishing recording")
         }
@@ -113,7 +141,6 @@ class StartRehearsalViewController: UIViewController {
         if audioRecorder != nil {
             audioRecorder!.stop()
             audioRecorder = nil
-            print(audioRecorder == nil)
             let audioSession = AVAudioSession.sharedInstance()
             
             do {
@@ -131,6 +158,18 @@ class StartRehearsalViewController: UIViewController {
         // name file should be come from user alert
         let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
         return path as URL
+    }
+    
+    func renameAudio(newTitle: String) {
+        do {
+            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            let documentDirectory = URL(fileURLWithPath: path)
+            let originPath = documentDirectory.appendingPathComponent("recording.m4a")
+            let destinationPath = documentDirectory.appendingPathComponent("\(newTitle).m4a")
+            try FileManager.default.moveItem(at: originPath, to: destinationPath)
+        } catch {
+            print(error)
+        }
     }
 
 }
