@@ -22,6 +22,9 @@ class PreviewController: UIViewController {
         previewTableView.dataSource = self
     }
 
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension PreviewController: UITableViewDelegate, UITableViewDataSource, ExpandableHeaderViewDelegate{
