@@ -24,6 +24,7 @@ class NewCueCardController: UIViewController {
     
     var sectionData : [Section] = []
     var section : CueCard?
+    var selectedDate: Date?
     
     let datePresentationPicker = UIDatePicker()
     let durationPresentationPicker = UIDatePicker()
@@ -81,14 +82,14 @@ class NewCueCardController: UIViewController {
             
             // jika ingin sikronisasi dengan calendar
             if syncToCalender.isOn {
-                syncWithCalendarAction()
+                self.syncWithCalendarAction()
                 calendarSynced = true
             }
-            print(cueName, date, length, calendarSynced)
+            
             CoreDataHelper.shared.setCueCard(name: cueName, date: date, length: length, synced: calendarSynced)
             load()
             var sectionData : [Section] = []
-            print("Hasil Sec\(sectionData)")
+            
             if let vc = storyboard?.instantiateViewController(identifier: "SectionEditorController") as? SectionEditorController {
                 
                 var counter = cueCard.count
@@ -98,7 +99,6 @@ class NewCueCardController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: false)
                 
             }
-            print("Hasilll\(cueCard.count)")
         }
         
         tfPresentationName.text = ""
@@ -116,8 +116,11 @@ class NewCueCardController: UIViewController {
         dateFormatter.dateFormat = "dd-MMMM-yyyy"
         
         let event:EKEvent = EKEvent(eventStore: eventStore)
-        let startDate = dateFormatter.date(from: tfDateOfPresentation.text!)
+        
+        let startDate = selectedDate
         let endDate = startDate!.addingTimeInterval(2 * 60 * 60)
+//        let startDate = Date()
+//        let endDate = Date()
         
         event.title = tfPresentationName?.text
         event.startDate = startDate
@@ -161,6 +164,11 @@ class NewCueCardController: UIViewController {
     func showDatePicker() {
         datePresentationPicker.datePickerMode = .date
         
+        if #available(iOS 14, *) {
+            datePresentationPicker.preferredDatePickerStyle = .wheels
+            datePresentationPicker.sizeToFit()
+        }
+        
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
@@ -180,12 +188,14 @@ class NewCueCardController: UIViewController {
     @objc func doneDatePicker() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
+        selectedDate = datePresentationPicker.date
         tfDateOfPresentation.text = formatter.string(from: datePresentationPicker.date)
         self.view.endEditing(true)
     }
     
     func showDurationPicker() {
         durationPresentationPicker.datePickerMode = .countDownTimer
+        durationPresentationPicker.minuteInterval = 1
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
