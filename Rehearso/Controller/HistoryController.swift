@@ -20,6 +20,7 @@ class HistoryController: UIViewController {
     var cueCard : [CueCard] = []
     var cueCardUpdate: CueCard?
     var rehearsal : [Rehearsal] = []
+    let fileManager = FileManager.default
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +29,20 @@ class HistoryController: UIViewController {
             labelTanggalCueCard.text = cueCard.date
             waktuBuatCueCard.text = cueCard.date
         }
+        
         configureTableView()
         viewEdit.dropShadow()
         viewHistory.dropShadow()
         viewPreview.dropShadow()
         viewRehearse.dropShadow()
-        load()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.load()
     }
     
     private func load(){
-        rehearsal = CoreDataHelper.shared.fetchRehearsal()
+        rehearsal = CoreDataHelper.shared.fetchRehearsal(cueCard: cueCardUpdate!)
         self.tableViewRehearsal.reloadData()
     }
 
@@ -58,6 +63,16 @@ class HistoryController: UIViewController {
             self.navigationController?.present(vc, animated: true)
         }
     }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func getFileURL(audioName: String) -> URL {
+        let path = getDocumentsDirectory().appendingPathComponent(audioName)
+        return path as URL
+    }
 }
 
 extension HistoryController: UITableViewDataSource, UITableViewDelegate{
@@ -74,7 +89,6 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy HH:mm:ss"
         let datee = formatter.string(from: rehearsal.timestamp!)
-        print(type(of: rehearsal.duration))
         
 
         cell.labelRehearsalKe.text = rehearsal.name
@@ -103,7 +117,47 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
         let selectedRehearsal = rehearsal[indexPath.row]
         if let vc = storyboard?.instantiateViewController(identifier: "PlayRehearsalController") as? PlayRehearsalViewController {
             vc.rehearsal = selectedRehearsal
+            vc.cueCard = cueCardUpdate
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
+            (action, sourceView, completionHandler) in
+
+            let selectedRehearsal = self.rehearsal[indexPath.row]
+            // Remove the menu option from the screen
+            self.deleteRehearsal(rehearsal: selectedRehearsal)
+            completionHandler(true)
+        }
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        // Delete should not delete automatically
+        swipeConfiguration.performsFirstActionWithFullSwipe = false
+        
+        return swipeConfiguration
+    }
+    
+    func deleteRehearsal(rehearsal: Rehearsal) {
+        let alert = UIAlertController(title: "Hapus rehearsal", message: "Yakin mau hapus rehearsal in?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Hapus", style: .destructive, handler: { _ in
+//            CoreDataHelper.shared.deleteRehearsal(rehearsal: rehearsal)
+            let audio = rehearsal.audioName
+            
+            // remove file
+            do {
+                print(type(of: self.getFileURL(audioName: audio!)))
+                try self.fileManager.removeItem(at: self.getFileURL(audioName: audio!))
+                self.load()
+            } catch is NSError {
+                print("error remove file")
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Batal", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
 }

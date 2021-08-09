@@ -70,6 +70,7 @@ class StartRehearsalViewController: UIViewController {
             startRecording()
             doneButtonBar.isEnabled = true
             resetButtonBar.isEnabled = true
+            recordingSlider.isExclusiveTouch = false
         } else {
             if audioRecorder.isRecording {
                 recordButton.setImage(UIImage(systemName: "play.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)
@@ -91,9 +92,7 @@ class StartRehearsalViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { _ in
             // reset reharsal
             self.stopRecording()
-            if self.audioRecorder == nil {
-                self.startRecording()
-            }
+            self.recordButton.setImage(UIImage(systemName: "play.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
             // continue recording
@@ -125,7 +124,7 @@ class StartRehearsalViewController: UIViewController {
             let recordingName = alert.textFields![0].text
             CoreDataHelper.shared.setRehearsal(name: recordingName!, duration: Float(lastTimeRecorder), timestamp: Date(), audioName: self.filename, cueCard: cue)
             if let vc = self.storyboard?.instantiateViewController(identifier: "HistoryController") as? HistoryController {
-                
+                vc.cueCardUpdate = self.cueCard
                 self.present(vc, animated: true)
                 
             }

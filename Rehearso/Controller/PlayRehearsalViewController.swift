@@ -24,7 +24,6 @@ class PlayRehearsalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         if let rehearse = rehearsal {
             audioName = rehearse.audioName!
             self.title = rehearse.name
@@ -74,7 +73,6 @@ class PlayRehearsalViewController: UIViewController {
             print("Error playing")
         }
     }
-    
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

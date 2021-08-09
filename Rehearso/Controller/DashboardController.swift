@@ -41,8 +41,14 @@ class DashboardController: UIViewController {
         tableViewRecents.dataSource = self
     }
     
-    private func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
-      return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func getFileURL(audioName: String) -> URL {
+        let path = getDocumentsDirectory().appendingPathComponent(audioName)
+        return path as URL
     }
 }
 
@@ -113,8 +119,39 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         tableViewRecents.deselectRow(at: indexPath, animated: true)
         if let vc = storyboard?.instantiateViewController(identifier: "HistoryController") as? HistoryController {
             vc.cueCardUpdate = self.cueCard[indexPath.row]
-            self.navigationController?.pushViewController(vc, animated: false)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
+            (action, sourceView, completionHandler) in
+
+            let selectedCueCard = self.cueCard[indexPath.row]
+            // Remove the menu option from the screen
+            self.deleteCueCard(cue: selectedCueCard)
+            completionHandler(true)
+        }
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        // Delete should not delete automatically
+        swipeConfiguration.performsFirstActionWithFullSwipe = false
+        
+        return swipeConfiguration
+    }
+    
+    func deleteCueCard(cue: CueCard) {
+        let alert = UIAlertController(title: "Hapus cue card", message: "Yakin mau hapus data cue card in?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Hapus", style: .destructive, handler: { _ in
+            CoreDataHelper.shared.deleteCueCard(cueCard: cue)
+            self.load()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Batal", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
 }
 

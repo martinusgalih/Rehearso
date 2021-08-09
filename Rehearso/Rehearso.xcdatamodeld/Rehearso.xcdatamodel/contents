@@ -7,7 +7,7 @@
         <attribute name="length" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="syncToCalendar" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="rehearsal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rehearsal" inverseName="cueCard" inverseEntity="Rehearsal"/>
+        <relationship name="rehearsal" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Rehearsal" inverseName="cueCard" inverseEntity="Rehearsal"/>
         <relationship name="section" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section" inverseName="cueCard" inverseEntity="Section"/>
     </entity>
     <entity name="Isi" representedClassName="Isi" syncable="YES" codeGenerationType="class">
@@ -21,7 +21,7 @@
         <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CueCard" inverseName="rehearsal" inverseEntity="CueCard"/>
+        <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CueCard" inverseName="rehearsal" inverseEntity="CueCard"/>
     </entity>
     <entity name="Section" representedClassName="Section" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
