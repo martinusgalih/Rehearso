@@ -25,8 +25,14 @@ class HistoryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let cueCard = cueCardUpdate {
+            // convert cueCard.date string to date object
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            
+            let date = dateFormatter.date(from: cueCard.date!)
+            
+            labelTanggalCueCard.text = "\(date!)"
             labelNamaCueCard.text = cueCard.name
-            labelTanggalCueCard.text = cueCard.date
             waktuBuatCueCard.text = cueCard.date
         }
         
