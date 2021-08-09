@@ -26,7 +26,6 @@ class StartRehearsalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        stopButton.isEnabled = false
         
 //        var intTotalUnits:Int? = Int(fldTotalUnits)
         if audioRecorder == nil {
@@ -40,12 +39,12 @@ class StartRehearsalViewController: UIViewController {
             
             recordingSlider.maximumValue = Float(cueDurationFloat)
             duration = recordingSlider.maximumValue
-
-            maximumTimeLabel.text = "\(recordingSlider.maximumValue)"
+            self.title = cue.name
 
             let minutes = (cueDurationInt % 3600) / 60
             let seconds = (cueDurationInt % 3600) % 60
-//            maximumTimeLabel.text = String("\(minutes):\(seconds)")
+            
+            maximumTimeLabel.text = String("\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))")
         }
         
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
@@ -53,9 +52,15 @@ class StartRehearsalViewController: UIViewController {
     
     @objc func updateSlider() {
         if audioRecorder != nil {
-//            recordingSlider.value = Float(audioRecorder.currentTime)
-            let currentTime = Float(audioRecorder.currentTime)
-            minimumTimeLabel.text = String("\(currentTime)")
+            
+            let currentTime = Int(audioRecorder.currentTime)
+            
+            let minutes = (currentTime % 3600) / 60
+            let seconds = (currentTime % 3600) % 60
+            
+            recordingSlider.value = Float(currentTime)
+            
+            minimumTimeLabel.text = String("\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))")
         }
     }
     
@@ -63,6 +68,8 @@ class StartRehearsalViewController: UIViewController {
         if audioRecorder == nil {
             recordButton.setImage(UIImage(systemName: "pause.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 140, weight: .bold, scale: .large)), for: .normal)
             startRecording()
+            doneButtonBar.isEnabled = true
+            resetButtonBar.isEnabled = true
         } else {
             if audioRecorder.isRecording {
                 recordButton.setImage(UIImage(systemName: "play.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)

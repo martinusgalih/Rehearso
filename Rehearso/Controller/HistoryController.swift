@@ -70,8 +70,6 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
         
         let rehearsal = rehearsal[indexPath.row]
         
-        print("HAHAHAHAHAHAHA:")
-        
         // date formatter
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy HH:mm:ss"

@@ -91,7 +91,7 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         cellRecents.bulanPresent.text = monthPresentation
         cellRecents.tanggalPresent.text = dayPresentation
         cellRecents.tanggalCueCard.text = datePresentation
-        cellRecents.waktuCueCard.text = ("Duration \(minutes):\(seconds)")
+        cellRecents.waktuCueCard.text = ("Duration \(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))")
         
         cellRecents.layer.borderColor = UIColor.white.cgColor
         cellRecents.layer.borderWidth = 1
