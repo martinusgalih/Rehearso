@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CueCard" representedClassName="CueCard" syncable="YES" codeGenerationType="class">
+        <attribute name="audioPath" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="length" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="syncToCalendar" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="rehearsal" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Rehearsal" inverseName="cueCard" inverseEntity="Rehearsal"/>
+        <relationship name="section" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section" inverseName="cueCard" inverseEntity="Section"/>
+    </entity>
+    <entity name="Isi" representedClassName="Isi" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isi" optional="YES" attributeType="String"/>
+        <attribute name="part" optional="YES" attributeType="String"/>
+        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="isi" inverseEntity="Section"/>
+    </entity>
+    <entity name="Rehearsal" representedClassName="Rehearsal" syncable="YES" codeGenerationType="class">
+        <attribute name="audioName" optional="YES" attributeType="String"/>
+        <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CueCard" inverseName="rehearsal" inverseEntity="CueCard"/>
+    </entity>
+    <entity name="Section" representedClassName="Section" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="part" optional="YES" attributeType="String"/>
+        <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CueCard" inverseName="section" inverseEntity="CueCard"/>
+        <relationship name="isi" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Isi" inverseName="section" inverseEntity="Isi"/>
+    </entity>
+    <elements>
+        <element name="CueCard" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="Isi" positionX="-54" positionY="-9" width="128" height="89"/>
+        <element name="Rehearsal" positionX="-45" positionY="45" width="128" height="104"/>
+        <element name="Section" positionX="-36" positionY="9" width="128" height="89"/>
+    </elements>
 </model>
