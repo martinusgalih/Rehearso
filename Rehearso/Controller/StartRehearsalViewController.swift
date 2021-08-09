@@ -9,11 +9,12 @@ import UIKit
 import AVFoundation
 
 class StartRehearsalViewController: UIViewController {
-    @IBOutlet weak var maximumTimeLabel: UILabel!
-    @IBOutlet weak var minimumTimeLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var recordingSlider: UISlider!
-    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var minimumTimeLabel: UILabel!
+    @IBOutlet weak var maximumTimeLabel: UILabel!
+    @IBOutlet weak var doneButtonBar: UIBarButtonItem!
+    @IBOutlet weak var resetButtonBar: UIBarButtonItem!
     
     var audioSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
@@ -25,9 +26,13 @@ class StartRehearsalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        stopButton.isEnabled = false
+//        stopButton.isEnabled = false
         
 //        var intTotalUnits:Int? = Int(fldTotalUnits)
+        if audioRecorder == nil {
+            doneButtonBar.isEnabled = false
+            resetButtonBar.isEnabled = false
+        }
         
         if let cue = cueCard {
             let cueDurationFloat = (cue.length! as NSString).floatValue
@@ -40,7 +45,7 @@ class StartRehearsalViewController: UIViewController {
 
             let minutes = (cueDurationInt % 3600) / 60
             let seconds = (cueDurationInt % 3600) % 60
-            maximumTimeLabel.text = String("\(minutes):\(seconds)")
+//            maximumTimeLabel.text = String("\(minutes):\(seconds)")
         }
         
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
@@ -48,7 +53,7 @@ class StartRehearsalViewController: UIViewController {
     
     @objc func updateSlider() {
         if audioRecorder != nil {
-            recordingSlider.value = Float(audioRecorder.currentTime)
+//            recordingSlider.value = Float(audioRecorder.currentTime)
             let currentTime = Float(audioRecorder.currentTime)
             minimumTimeLabel.text = String("\(currentTime)")
         }
@@ -56,24 +61,18 @@ class StartRehearsalViewController: UIViewController {
     
     @IBAction func startRecordingButtonAction(_ sender: Any) {
         if audioRecorder == nil {
-            recordButton.isEnabled = false
-            stopButton.isEnabled = true
+            recordButton.setImage(UIImage(systemName: "pause.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 140, weight: .bold, scale: .large)), for: .normal)
             startRecording()
         } else {
-            stopButton.isEnabled = false
-            recordButton.isEnabled = true
-            stopRecording()
+            if audioRecorder.isRecording {
+                recordButton.setImage(UIImage(systemName: "play.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)
+                    pauseRecording()
+            } else {
+                recordButton.setImage(UIImage(systemName: "pause.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)
+                resumeRecording()
+            }
         }
     }
-    
-    @IBAction func stopRecordingButtonAction(_ sender: Any) {
-        if audioRecorder != nil {
-            recordButton.isEnabled = true
-            stopButton.isEnabled = false
-            stopRecording()
-        }
-    }
-    
     
     @IBAction func resetButtonBarAction(_ sender: Any) {
         // pause recording
@@ -115,15 +114,18 @@ class StartRehearsalViewController: UIViewController {
                 print("Cue Card Error")
                 return
             }
-            
+            self.audioRecorder = nil
             let recordingName = alert.textFields![0].text
             CoreDataHelper.shared.setRehearsal(name: recordingName!, duration: Float(lastTimeRecorder), timestamp: Date(), audioName: self.filename, cueCard: cue)
+            if let vc = self.storyboard?.instantiateViewController(identifier: "HistoryController") as? HistoryController {
+                
+                self.present(vc, animated: true)
+                
+            }
         }))
         
         self.present(alert, animated: true)
     }
-    
-    
     
     func startRecording() {
         let audioFilename = getFileURL()
@@ -143,10 +145,26 @@ class StartRehearsalViewController: UIViewController {
         }
     }
     
+    func resumeRecording() {
+        if audioRecorder != nil {
+            audioRecorder.record()
+        }
+    }
+    
+    func pauseRecording() {
+        if audioRecorder != nil {
+            audioRecorder!.pause()
+//            let audioSession = AVAudioSession.sharedInstance()
+//
+//            do {
+//                try audioSession.setActive(false)
+//            } catch _ {}
+        }
+    }
+    
     func stopRecording() {
         if audioRecorder != nil {
             audioRecorder!.stop()
-            audioRecorder = nil
             let audioSession = AVAudioSession.sharedInstance()
             
             do {

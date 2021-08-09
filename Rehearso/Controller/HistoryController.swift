@@ -38,7 +38,6 @@ class HistoryController: UIViewController {
     
     private func load(){
         rehearsal = CoreDataHelper.shared.fetchRehearsal()
-        print("ehe: \(rehearsal)")
         self.tableViewRehearsal.reloadData()
     }
 
@@ -70,10 +69,19 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "rehearsalCell", for: indexPath) as! ReahearsalCell
         
         let rehearsal = rehearsal[indexPath.row]
+        
+        print("HAHAHAHAHAHAHA:")
+        
+        // date formatter
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy HH:mm:ss"
+        let datee = formatter.string(from: rehearsal.timestamp!)
+        print(type(of: rehearsal.duration))
+        
 
         cell.labelRehearsalKe.text = rehearsal.name
-        cell.tanggalRehearsal.text = "\(rehearsal.timestamp)"
-        cell.waktuRehearsal.text = "\(rehearsal.duration)"
+        cell.tanggalRehearsal.text = "\(datee)"
+        cell.waktuRehearsal.text = "Durasi: \(String(format: "%.2f", rehearsal.duration)) detik"
 
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 1
@@ -94,9 +102,9 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRehearsal = rehearsal[indexPath.row]
         if let vc = storyboard?.instantiateViewController(identifier: "PlayRehearsalController") as? PlayRehearsalViewController {
-            print(cueCard)
-//            vc.cueCard = self.dataDummyRecent[indexPath.row]
+            vc.rehearsal = selectedRehearsal
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

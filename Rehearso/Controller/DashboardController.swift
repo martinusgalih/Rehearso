@@ -65,9 +65,8 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
             fatalError()
         }
         
-        
         // month formatter
-        dateFormatter.dateFormat = "LLLL"
+        dateFormatter.dateFormat = "LLL"
         let monthPresentation = dateFormatter.string(from: date)
         
         // date formatter
