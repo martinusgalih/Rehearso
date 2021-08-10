@@ -30,27 +30,28 @@ class InputViewController: UIViewController {
         
         isiKonten?.title = titleLabel.text
         isiKonten?.content = inputText.text
-        CoreDataHelper.shared.save{}
-        load()
-        print("Berhasil")
-        let vc = storyboard?.instantiateViewController(identifier: "IsiKontenController") as? IsiKontenController
-        vc!.isiin = isiin
-//        vc!.viewDidLoad()
+        CoreDataHelper.shared.save{
+            print("Berhasil Save")
+//            self.load()
+            print("Berhasil")
+//            let vc = self.storyboard?.instantiateViewController(identifier: "IsiKontenController") as? IsiKontenController
+//            vc!.isiin = self.isiin
+//            vc!.viewDidLoad()
+            self.navigationController?.popViewController(animated: true)
+    //        navigationController?.pushViewController(vc!, animated: false)
+    //        dismiss(animated: false, completion: nil)
+        }
         
-           load()
-        navigationController?.popViewController(animated: true)
-
-//        navigationController?.pushViewController(vc!, animated: false)
-//        dismiss(animated: false, completion: nil)
             
     }
-    private func load(){
-        guard let isi = isiin else {
-            print("error load")
-            return
-        }
-        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
-        print("Berhasil Load")
-    }
+//    private func load(){
+//        guard let isi = isiin else {
+//            print("error load")
+//            return
+//        }
+//        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
+//        print("Print konten\(isiKonten?.content)")
+//        print("Print konten\(konten[0].content)")
+//    }
 
 }

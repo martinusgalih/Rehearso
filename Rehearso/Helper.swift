@@ -156,7 +156,7 @@ class CoreDataHelper {
         return isi
     }
 
-    func fetchIsiKonten(isi: Isi) -> [IsiKonten] {
+    func fetchIsiKonten(isi: Isi, onSuccess : @escaping ()->Void) -> [IsiKonten] {
         let request: NSFetchRequest<IsiKonten> = IsiKonten.fetchRequest()
 
         request.predicate = NSPredicate(format: "(isi = %@)", isi)
@@ -167,6 +167,11 @@ class CoreDataHelper {
 
         do{
             isiKonten = try coreDataHelper.viewContext.fetch(request)
+            for item in isiKonten {
+                print("Keyword \(item.content)")
+            
+            }
+            onSuccess()
         }catch {
             print("Error fetching isi data")
         }

@@ -29,7 +29,7 @@ class IsiKontenController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("Coba ini \(isiin)")
         if(firstLoad)
         {
             firstLoad = false
@@ -57,29 +57,27 @@ class IsiKontenController: UIViewController {
             print("error load")
             return
         }
-        isiKontenCollectionView.reloadData()
-        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
         print("Hasil\(isiData)")
         isiKontenCollectionView.delegate = self
         isiKontenCollectionView.dataSource = self
-        isiKontenCollectionView.reloadData()
-        load()
+        
     }
     override func viewDidAppear(_ animated: Bool) {
-        guard let isi = isiin else {
-            print("error load")
-            return
-        }
-        isiKontenCollectionView.reloadData()
-        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
-        isiKontenCollectionView.reloadData()
-        load()
+//        guard let isi = isiin else {
+//            print("error load")
+//            return
+//        }
+//        load()
+//        isiKontenCollectionView.reloadData()
+//        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
+//        isiKontenCollectionView.reloadData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        isiKontenCollectionView.reloadData()
         load()
+        print("Will Appear")
     }
     private func setTableViewCell(){
         let nib = UINib(nibName: tableCellName, bundle: nil)
@@ -90,8 +88,11 @@ class IsiKontenController: UIViewController {
             print("error load")
             return
         }
-        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
-        self.isiKontenCollectionView.reloadData()
+        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi) {
+            self.isiKontenCollectionView.reloadData()
+        }
+        print("Coba \(konten[0].content)")
+        
     }
     @IBAction func saveButton(_ sender: Any) {
         
@@ -139,8 +140,8 @@ extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditDataCollectionViewCell", for: indexPath) as! EditDataCollectionViewCell
         let kontens = konten[indexPath.row]
         cell.kontenTitleLabel.text = kontens.title
-        cell.exampleKonten.text = kontens.content
-        cell.kontenTextView.text = kontens.example
+        cell.exampleKonten.text = kontens.example
+        cell.kontenTextView.text = kontens.content
         cell.backgroundColor = UIColor.init(red: CGFloat.random(in: 0.5...1), green: CGFloat.random(in: 0.5...1), blue: CGFloat.random(in: 0.5...1), alpha: 1)
         cell.layer.cornerRadius = 10
         return cell

@@ -93,7 +93,6 @@ extension IsiViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(identifier: "IsiKontenController") as? IsiKontenController {
             vc.isiin = self.isiData[indexPath.row]
-//            vc.isiin = isiin
             vc.sections = section
            
             self.navigationController?.pushViewController(vc, animated: false)
