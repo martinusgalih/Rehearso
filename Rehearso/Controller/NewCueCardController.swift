@@ -17,6 +17,7 @@ class NewCueCardController: UIViewController {
     @IBOutlet weak var tfDateOfPresentation: UITextField!
     @IBOutlet weak var syncToCalender: UISwitch!
     @IBOutlet weak var createBtn: UIButton!
+    @IBOutlet var navigationButton: UIButton!
     
     private var editCue: Bool = false
     private var cueCardUpdate: CueCard?
@@ -32,6 +33,7 @@ class NewCueCardController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         showDatePicker()
         showDurationPicker()
         viewPresentationData.dropShadow()
@@ -50,6 +52,9 @@ class NewCueCardController: UIViewController {
         syncToCalender.addTarget(self, action: #selector(askForCalendarPermission), for: .valueChanged)
     }
     
+    @IBAction func navButton(_ sender: Any) {
+        navigationButton.is
+    }
     @IBAction func btnCreatePresentation(_ sender: Any) {
         guard let cueName = tfPresentationName.text else {
             print("Error presentation name")

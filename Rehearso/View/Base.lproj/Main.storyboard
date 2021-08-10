@@ -274,8 +274,11 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzN-wO-prB">
                                 <rect key="frame" x="246" y="120" width="148" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Navigation temporary"/>
+                                <state key="normal" title="Navigation temporary">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
+                                    <action selector="navButton:" destination="0IL-Oj-ju3" eventType="touchUpInside" id="4co-gf-l2a"/>
                                     <segue destination="a4i-pc-1aV" kind="show" id="2hv-fS-LRy"/>
                                 </connections>
                             </button>
@@ -293,6 +296,7 @@
                     <navigationItem key="navigationItem" title="Presentation Data" largeTitleDisplayMode="never" id="P0R-0a-4ae"/>
                     <connections>
                         <outlet property="createBtn" destination="5hL-8j-T6N" id="XBk-4S-6tI"/>
+                        <outlet property="navigationButton" destination="KzN-wO-prB" id="aRv-En-Zxq"/>
                         <outlet property="syncToCalender" destination="NFr-qh-gtI" id="jHm-pw-KsO"/>
                         <outlet property="tfDateOfPresentation" destination="eeh-ev-6bv" id="4tf-Xj-8dP"/>
                         <outlet property="tfDuration" destination="khY-T4-Ter" id="cBu-qX-k9a"/>
@@ -483,7 +487,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-ae-CHM">
                                 <rect key="frame" x="355" y="107" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="bRL-3V-u9t" kind="show" id="cwt-I6-jkL"/>
                                 </connections>
@@ -491,7 +497,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N51-Mm-I4c">
                                 <rect key="frame" x="301" y="108" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="ifG-pc-G7z" kind="show" id="hgN-GP-qLG"/>
                                 </connections>
@@ -1431,7 +1439,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiA-Oj-tg2">
                                 <rect key="frame" x="348" y="99" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="sFi-9J-NfS" kind="show" id="Vlr-5S-aKR"/>
                                 </connections>
