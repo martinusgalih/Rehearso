@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CueCard" representedClassName="CueCard" syncable="YES" codeGenerationType="class">
         <attribute name="audioPath" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
@@ -7,8 +7,8 @@
         <attribute name="length" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="syncToCalendar" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="rehearsal" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Rehearsal"/>
-        <relationship name="section" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Section"/>
+        <relationship name="rehearsal" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Rehearsal" inverseName="cueCard" inverseEntity="Rehearsal"/>
+        <relationship name="section" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section" inverseName="cueCard" inverseEntity="Section"/>
     </entity>
     <entity name="Isi" representedClassName="Isi" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String"/>
@@ -32,6 +32,13 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CueCard"/>
+    </entity>
+    <entity name="Rehearsal" representedClassName="Rehearsal" syncable="YES" codeGenerationType="class">
+        <attribute name="audioName" optional="YES" attributeType="String"/>
+        <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CueCard" inverseName="rehearsal" inverseEntity="CueCard"/>
     </entity>
     <entity name="Section" representedClassName="Section" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>

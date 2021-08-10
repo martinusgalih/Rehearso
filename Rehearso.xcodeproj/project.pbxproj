@@ -18,6 +18,7 @@
 		8B36D9B626BB979500579573 /* SectionEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9B526BB979500579573 /* SectionEditorController.swift */; };
 		8B36D9B826BBB41600579573 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9B726BBB41600579573 /* HistoryController.swift */; };
 		8B36D9BC26BBB57D00579573 /* ReahearsalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9BB26BBB57D00579573 /* ReahearsalCell.swift */; };
+		8B4982E826C0625300DBC522 /* IsiKontenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4982E726C0625300DBC522 /* IsiKontenController.swift */; };
 		8B9A92F626BA513C006F14BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A92F526BA513C006F14BF /* AppDelegate.swift */; };
 		8B9A92F826BA513C006F14BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A92F726BA513C006F14BF /* SceneDelegate.swift */; };
 		8B9A92FD26BA513C006F14BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B9A92FB26BA513C006F14BF /* Main.storyboard */; };
@@ -31,6 +32,10 @@
 		8BD31D9926BAEF78002AA4A0 /* NewCueCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD31D9826BAEF78002AA4A0 /* NewCueCardController.swift */; };
 		9085AA1926C216770099E2DB /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085AA1826C216770099E2DB /* InputViewController.swift */; };
 		9085AA1B26C216F20099E2DB /* IsiKontenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085AA1A26C216F20099E2DB /* IsiKontenController.swift */; };
+		8BDC8F0D26C18AFD00A630F9 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC8F0C26C18AFD00A630F9 /* PreviewController.swift */; };
+		8BDC8F0F26C191DE00A630F9 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC8F0E26C191DE00A630F9 /* PreviewCell.swift */; };
+		8BDC8F1126C194A300A630F9 /* PreviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC8F1026C194A300A630F9 /* PreviewSection.swift */; };
+		8BDC8F1526C1959A00A630F9 /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC8F1426C1959A00A630F9 /* ExpandableHeaderView.swift */; };
 		90A5EF8D26C0011D00B27EBF /* EditDataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5EF8C26C0011D00B27EBF /* EditDataCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +51,7 @@
 		8B36D9B526BB979500579573 /* SectionEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionEditorController.swift; sourceTree = "<group>"; };
 		8B36D9B726BBB41600579573 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		8B36D9BB26BBB57D00579573 /* ReahearsalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReahearsalCell.swift; sourceTree = "<group>"; };
+		8B4982E726C0625300DBC522 /* IsiKontenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsiKontenController.swift; sourceTree = "<group>"; };
 		8B9A92F226BA513C006F14BF /* Rehearso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rehearso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9A92F526BA513C006F14BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B9A92F726BA513C006F14BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,10 @@
 		8BD31D9826BAEF78002AA4A0 /* NewCueCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCueCardController.swift; sourceTree = "<group>"; };
 		9085AA1826C216770099E2DB /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		9085AA1A26C216F20099E2DB /* IsiKontenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsiKontenController.swift; sourceTree = "<group>"; };
+		8BDC8F0C26C18AFD00A630F9 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
+		8BDC8F0E26C191DE00A630F9 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		8BDC8F1026C194A300A630F9 /* PreviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSection.swift; sourceTree = "<group>"; };
+		8BDC8F1426C1959A00A630F9 /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
 		90A5EF8C26C0011D00B27EBF /* EditDataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,7 +131,9 @@
 				1794B47526BE5B54001564CC /* IsiKontenViewController.swift */,
 				17CB966826BE868600341011 /* PlayRehearsalViewController.swift */,
 				17CB966A26BE947000341011 /* StartRehearsalViewController.swift */,
-				9085AA1A26C216F20099E2DB /* IsiKontenController.swift */,
+				8B4982E726C0625300DBC522 /* IsiKontenController.swift */,
+				8BDC8F0C26C18AFD00A630F9 /* PreviewController.swift */,
+				8BDC8F1426C1959A00A630F9 /* ExpandableHeaderView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -144,6 +156,8 @@
 				1794B46F26BE459D001564CC /* SectionTableViewCell.swift */,
 				1794B47326BE59E4001564CC /* IsiTableViewCell.swift */,
 				90A5EF8C26C0011D00B27EBF /* EditDataCollectionViewCell.swift */,
+				8BDC8F0E26C191DE00A630F9 /* PreviewCell.swift */,
+				8BDC8F1026C194A300A630F9 /* PreviewSection.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -219,20 +233,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BDC8F0D26C18AFD00A630F9 /* PreviewController.swift in Sources */,
 				1794B47426BE59E4001564CC /* IsiTableViewCell.swift in Sources */,
 				90A5EF8D26C0011D00B27EBF /* EditDataCollectionViewCell.swift in Sources */,
 				179B75B526BD6C7F0066E2DB /* Helper.swift in Sources */,
 				8B36D9B626BB979500579573 /* SectionEditorController.swift in Sources */,
+				8B4982E826C0625300DBC522 /* IsiKontenController.swift in Sources */,
 				8B9A92F626BA513C006F14BF /* AppDelegate.swift in Sources */,
 				1794B47026BE459D001564CC /* SectionTableViewCell.swift in Sources */,
 				8BD31D9926BAEF78002AA4A0 /* NewCueCardController.swift in Sources */,
 				9085AA1B26C216F20099E2DB /* IsiKontenController.swift in Sources */,
 				8BCF499426BAE2A400FD95D3 /* DataCell.swift in Sources */,
 				17CB966B26BE947000341011 /* StartRehearsalViewController.swift in Sources */,
+				8BDC8F1126C194A300A630F9 /* PreviewSection.swift in Sources */,
 				8B36D9B826BBB41600579573 /* HistoryController.swift in Sources */,
+				8BDC8F1526C1959A00A630F9 /* ExpandableHeaderView.swift in Sources */,
 				1794B46E26BE4545001564CC /* SectionViewController.swift in Sources */,
 				9085AA1926C216770099E2DB /* InputViewController.swift in Sources */,
 				8B9A930026BA513C006F14BF /* Rehearso.xcdatamodeld in Sources */,
+				8BDC8F0F26C191DE00A630F9 /* PreviewCell.swift in Sources */,
 				8BCF498F26BAD7F900FD95D3 /* dataDummy.swift in Sources */,
 				1794B47626BE5B54001564CC /* IsiKontenViewController.swift in Sources */,
 				1794B47226BE4902001564CC /* IsiViewController.swift in Sources */,
