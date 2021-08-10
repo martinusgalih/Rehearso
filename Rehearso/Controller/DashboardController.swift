@@ -91,7 +91,6 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         let minutes = (duration % 3600) / 60
         let seconds = (duration % 3600) % 60
         
-        
         // binding data to table
         cellRecents.cueCardNama.text = cueCard.name
         cellRecents.bulanPresent.text = monthPresentation

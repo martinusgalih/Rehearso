@@ -44,9 +44,6 @@ class NewCueCardController: UIViewController {
         syncToCalender.addTarget(self, action: #selector(askForCalendarPermission), for: .valueChanged)
     }
     
-    @IBAction func navButton(_ sender: Any) {
-        navigationButton.is
-    }
     @IBAction func btnCreatePresentation(_ sender: Any) {
         guard let cueName = tfPresentationName.text else {
             print("Error presentation name")
