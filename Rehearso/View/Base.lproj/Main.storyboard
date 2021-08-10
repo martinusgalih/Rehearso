@@ -1220,69 +1220,6 @@
             </objects>
             <point key="canvasLocation" x="757.97101449275374" y="128.57142857142856"/>
         </scene>
-        <!--History-->
-        <scene sceneID="RiU-7D-L8G">
-            <objects>
-                <viewController id="6C4-iw-dun" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LbS-nv-aIy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpz-i8-af9">
-                                <rect key="frame" x="0.0" y="158" width="414" height="738"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z6n-SG-dQC">
-                                        <rect key="frame" x="23" y="30" width="368" height="591"/>
-                                        <color key="backgroundColor" red="0.050980392159999999" green="0.098039215690000001" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.050980392159999999" green="0.098039215690000001" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstItem="Z6n-SG-dQC" firstAttribute="leading" secondItem="lpz-i8-af9" secondAttribute="leading" constant="23" id="bXh-e3-OKc"/>
-                                    <constraint firstItem="Z6n-SG-dQC" firstAttribute="top" secondItem="lpz-i8-af9" secondAttribute="top" constant="30" id="cba-ZR-7rV"/>
-                                    <constraint firstAttribute="trailing" secondItem="Z6n-SG-dQC" secondAttribute="trailing" constant="23" id="mwE-Nw-ugk"/>
-                                    <constraint firstAttribute="bottom" secondItem="Z6n-SG-dQC" secondAttribute="bottom" constant="117" id="zmb-Xj-FBZ"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Lq6-9V-WCu"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="lpz-i8-af9" firstAttribute="leading" secondItem="LbS-nv-aIy" secondAttribute="leading" id="U7s-uc-epC"/>
-                            <constraint firstAttribute="trailing" secondItem="lpz-i8-af9" secondAttribute="trailing" id="bjO-wK-4Fk"/>
-                            <constraint firstAttribute="bottom" secondItem="lpz-i8-af9" secondAttribute="bottom" id="jbW-Oh-VVA"/>
-                            <constraint firstItem="lpz-i8-af9" firstAttribute="top" secondItem="Lq6-9V-WCu" secondAttribute="top" constant="70" id="q0M-2Z-GYc"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="History" id="wbH-kA-LyY"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="srE-Cv-9Gm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1668.1159420289857" y="855.80357142857144"/>
-        </scene>
-        <!--History-->
-        <scene sceneID="ezo-mG-bc9">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sAc-o0-imB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" image="clock.arrow.circlepath" catalog="system" id="Unk-6h-zt5"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nGP-ZP-gnc">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="6C4-iw-dun" kind="relationship" relationship="rootViewController" id="JgR-cl-eKI"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zAj-3X-2X0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="757.97101449275374" y="855.80357142857144"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="ndU-3p-P8q">
             <objects>
