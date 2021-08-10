@@ -20,10 +20,12 @@ class HistoryController: UIViewController {
     var cueCard : [CueCard] = []
     var cueCardUpdate: CueCard?
     var rehearsal : [Rehearsal] = []
+    var section: [Section] = []
     let fileManager = FileManager.default
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let cueCard = cueCardUpdate {
             // convert cueCard.date string to date object
             let dateFormatter = DateFormatter()
@@ -51,6 +53,12 @@ class HistoryController: UIViewController {
         rehearsal = CoreDataHelper.shared.fetchRehearsal(cueCard: cueCardUpdate!)
         self.tableViewRehearsal.reloadData()
     }
+    
+    private func loadSection() {
+        section = CoreDataHelper.shared.fetchSection(cueCard: cueCardUpdate!)
+    }
+    
+    
 
     private func setTableViewCell() {
         let nib = UINib(nibName: "ReahearsalCell", bundle: nil)
@@ -141,13 +149,11 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
             (action, sourceView, completionHandler) in
 
             let selectedRehearsal = self.rehearsal[indexPath.row]
-            // Remove the menu option from the screen
             self.deleteRehearsal(rehearsal: selectedRehearsal)
             completionHandler(true)
         }
 
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
-        // Delete should not delete automatically
         swipeConfiguration.performsFirstActionWithFullSwipe = false
 
         return swipeConfiguration
@@ -157,7 +163,7 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
         let alert = UIAlertController(title: "Hapus rehearsal", message: "Yakin mau hapus rehearsal in?", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Hapus", style: .destructive, handler: { _ in
-//            CoreDataHelper.shared.deleteRehearsal(rehearsal: rehearsal)
+            CoreDataHelper.shared.deleteRehearsal(rehearsal: rehearsal)
             let audio = rehearsal.audioName
 
             // remove file

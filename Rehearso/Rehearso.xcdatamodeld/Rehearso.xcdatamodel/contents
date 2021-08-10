@@ -16,15 +16,15 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="part" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="isiKonten" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="IsiKonten"/>
-        <relationship name="section" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Section"/>
+        <relationship name="isiKonten" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="IsiKonten" inverseName="isi" inverseEntity="IsiKonten"/>
+        <relationship name="section" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Section" inverseName="isi" inverseEntity="Section"/>
     </entity>
     <entity name="IsiKonten" representedClassName="IsiKonten" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="example" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="isi" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Isi"/>
+        <relationship name="isi" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Isi" inverseName="isiKonten" inverseEntity="Isi"/>
     </entity>
     <entity name="Rehearsal" representedClassName="Rehearsal" syncable="YES" codeGenerationType="class">
         <attribute name="audioName" optional="YES" attributeType="String"/>
@@ -36,8 +36,8 @@
     <entity name="Section" representedClassName="Section" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="part" optional="YES" attributeType="String"/>
-        <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CueCard"/>
-        <relationship name="isi" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Isi"/>
+        <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CueCard" inverseName="section" inverseEntity="CueCard"/>
+        <relationship name="isi" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Isi" inverseName="section" inverseEntity="Isi"/>
     </entity>
     <elements>
         <element name="CueCard" positionX="-54" positionY="-9" width="128" height="149"/>

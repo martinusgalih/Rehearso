@@ -130,8 +130,9 @@ class CoreDataHelper {
 
         request.predicate = NSPredicate(format: "(cueCard = %@)", cueCard)
         request.sortDescriptors = [NSSortDescriptor(key: "part", ascending: true)]
+        request.returnsObjectsAsFaults = false
         var section: [Section] = []
-
+        
         do{
             section = try coreDataHelper.viewContext.fetch(request)
         }catch {
