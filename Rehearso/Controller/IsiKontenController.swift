@@ -13,20 +13,18 @@ class IsiKontenController: UIViewController {
     @IBOutlet weak var exampleKonten: UILabel!
     @IBOutlet weak var textInputKonten: UITextView!
     @IBOutlet weak var isiKontenCollectionView: UICollectionView!
-    
     var titleOfPage: [String] = ["Grab Attention","Reason To Listen","State Topic","Credibility Statement","Preview Statement"]
-    
+
     var examples: [String] = ["Morgan robertson once wrote a book called The Wreck Of Titan.","Morgan robertson once wrote a book called The Wreck Of Titan.","Morgan robertson once wrote a book called The Wreck Of Titan.","Morgan robertson once wrote a book called The Wreck Of Titan.","Morgan robertson once wrote a book called The Wreck Of Titan."]
-    
+
     var isiText: [String] = ["Do or say something shocking, intriguing, or dramatic to get attention of the audience from the very first minutes.","Give the audience a reason why your presentation is relevant / worth listening to","Announce what your speech is about, and your position.","What have you done prior to the presentation that is relevant to the credibility of your presentation","Introduce main points of your speech."]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         isiKontenCollectionView.delegate = self
         isiKontenCollectionView.dataSource = self
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         isiKontenCollectionView.reloadData()
@@ -45,11 +43,11 @@ extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    //
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return titleOfPage.count
         return examples.count
@@ -67,4 +65,3 @@ extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
 }
-

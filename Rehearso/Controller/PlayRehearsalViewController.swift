@@ -10,9 +10,12 @@ import AVFoundation
 
 class PlayRehearsalViewController: UIViewController {
     
-    var cueCard: [CueCard] = []
+    var cueCard: CueCard?
+    var rehearsal: Rehearsal?
+    var audioName: String = ""
     var audioPlayer: AVAudioPlayer!
     var audioSession: AVAudioSession!
+    
     @IBOutlet weak var playSlider: UISlider!
     @IBOutlet weak var maximumLength: UILabel!
     @IBOutlet weak var currentValue: UILabel!
@@ -21,7 +24,19 @@ class PlayRehearsalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(cueCard)
+        if let rehearse = rehearsal {
+            audioName = rehearse.audioName!
+            self.title = rehearse.name
+        }
+        
+        // start audio session
+        audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.playAndRecord, mode: .default)
+            try audioSession.setActive(true)
+        } catch {
+            print("Error audio session")
+        }
         
         // prepare player
         preparePlayer()
@@ -29,15 +44,6 @@ class PlayRehearsalViewController: UIViewController {
         playSlider.maximumValue = Float(audioPlayer.duration)
         
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
-        
-        // start audio session
-        audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setCategory(.playback, mode: .default)
-            try audioSession.setActive(true)
-        } catch {
-            print("Error audio session")
-        }
     }
     
     @objc func updateSlider() {
@@ -47,8 +53,7 @@ class PlayRehearsalViewController: UIViewController {
     
     func preparePlayer() {
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: getFileURL())
-            print(audioPlayer.duration)
+            audioPlayer = try AVAudioPlayer(contentsOf: getFileURL(audioName: audioName))
             
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
@@ -59,9 +64,9 @@ class PlayRehearsalViewController: UIViewController {
     }
     
     @IBAction func playRehearsalButtonAction(_ sender: Any) {
+        playButton.setImage(UIImage(systemName: "pause.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: getFileURL())
-            playButton.isEnabled = false
+            audioPlayer = try AVAudioPlayer(contentsOf: getFileURL(audioName: audioName))
             audioPlayer.play()
             
         } catch is NSError {
@@ -69,19 +74,19 @@ class PlayRehearsalViewController: UIViewController {
         }
     }
     
-    
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
     
-    func getFileURL() -> URL {
-        let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+    func getFileURL(audioName: String) -> URL {
+        let path = getDocumentsDirectory().appendingPathComponent(audioName)
         return path as URL
     }
 }
 
 extension PlayRehearsalViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        playButton.setImage(UIImage(systemName: "play.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)
     }
 }
