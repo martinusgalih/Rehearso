@@ -12,8 +12,6 @@ class DashboardController: UIViewController {
     @IBOutlet weak var tableViewRecents: UITableView!
     @IBOutlet weak var viewStartScripting: UIView!
     @IBOutlet weak var viewDashboard: UIView!
-    private var cueCard : [CueCard] = []
-    private var cueCardUpdate: CueCard?
     
     var sectionData : [Section] = []
     var section: Section?
@@ -27,24 +25,20 @@ class DashboardController: UIViewController {
         setTableViewCell()
         configureTableView()
     }
+    
     private func load(){
         cueCard = CoreDataHelper.shared.fetchCueCard()
         self.tableViewRecents.reloadData()
     }
+    
     private func setTableViewCell(){
         let nib = UINib(nibName: "DataCell", bundle: nil)
         tableViewRecents.register(nib, forCellReuseIdentifier: "dataCell")
     }
+    
     func configureTableView(){
         tableViewRecents.delegate = self
         tableViewRecents.dataSource = self
-        
-        loadCueCardInformation()
-    }
-    
-    private func loadCueCardInformation(){
-        cueCard = CoreDataHelper.shared.fetchCueCard()
-        tableViewRecents.reloadData()
     }
     
     private func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
@@ -58,55 +52,6 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-            let cellRecents = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataCell
-            
-            let cueCard = cueCard[indexPath.row]
-            
-            // convert cueCard.date string to date object
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy"
-            dateFormatter.timeZone = TimeZone(abbreviation: "GMT+07:00")
-            guard let date = dateFormatter.date(from: cueCard.date!) else {
-                fatalError()
-            }
-            
-            
-            // month formatter
-            dateFormatter.dateFormat = "LLLL"
-            let monthPresentation = dateFormatter.string(from: date)
-            
-            // date formatter
-            dateFormatter.dateFormat = "dd"
-            let dayPresentation = dateFormatter.string(from: date)
-            
-            // date
-            dateFormatter.dateFormat = "d MMMM yyyy"
-            let datePresentation = dateFormatter.string(from: date)
-            
-
-            // convert duration second to hour, minute, second
-            let preVal = (cueCard.length! as NSString).doubleValue
-            let duration = Int(preVal)
-            
-            print(duration)
-            let minutes = (duration % 3600) / 60
-            let seconds = (duration % 3600) % 60
-            
-            
-            // binding data to table
-            cellRecents.cueCardNama.text = cueCard.name
-            cellRecents.bulanPresent.text = monthPresentation
-            cellRecents.tanggalPresent.text = dayPresentation
-            cellRecents.tanggalCueCard.text = datePresentation
-            cellRecents.waktuCueCard.text = ("Duration \(minutes):\(seconds)")
-            
-            cellRecents.layer.borderColor = UIColor.white.cgColor
-            cellRecents.layer.borderWidth = 1
-            cellRecents.layer.cornerRadius = 12
-            cellRecents.clipsToBounds = true
-            return cellRecents
-        }
 
         let cellRecents = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataCell
         
@@ -156,13 +101,6 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         return cellRecents
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(identifier: "HistoryController") as? HistoryController {
-            vc.cueCard = cueCard[indexPath.row]
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
         let maskLayer = CALayer()
@@ -177,7 +115,6 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         if let vc = storyboard?.instantiateViewController(identifier: "HistoryController") as? HistoryController {
             vc.cueCardUpdate = self.cueCard[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: false)
-            print("udah")
         }
     }
 }
