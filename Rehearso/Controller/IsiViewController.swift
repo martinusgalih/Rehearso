@@ -27,13 +27,10 @@ class IsiViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        load()
         setTableViewCell()
         configureTableView()
-//        if let section = sections {
-//            cueCardName.text = section.part
-//            load()
-//        }
+
     }
     
     private func setTableViewCell(){
@@ -51,8 +48,6 @@ class IsiViewController: UIViewController {
         let isi = ""
         let strcounter = String(isiData.count + 1)
         let part = "Point \(strcounter)"
-        
-//        CoreDataHelper.shared.setIsi(part: part, isi: isi, section: section1)
         CoreDataHelper.shared.setIsi(part: part, title: isi, content: isi, example: isi, section: section1)
         load()
         print("IsiKonten\(isiKonten.count)")
@@ -64,9 +59,7 @@ class IsiViewController: UIViewController {
             print("error load")
             return
         }
-        
         isiData = CoreDataHelper.shared.fetchIsi(section: section1)
-        
         isiTableView.reloadData()
     }
 }
@@ -81,21 +74,28 @@ extension IsiViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isiData.count
     }
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let maskLayer = CALayer()
+        maskLayer.cornerRadius = 10
+        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 2, dy: 4)
+        maskLayer.backgroundColor = UIColor.white.cgColor
+        cell.layer.mask = maskLayer
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell2") as! IsiTableViewCell
         let isiList = isiData[indexPath.row]
         cell.judulPointLabel.text = isiList.part
-        
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 12
+        cell.clipsToBounds = true
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(identifier: "IsiKontenController") as? IsiKontenController {
             vc.isiin = self.isiData[indexPath.row]
-//            vc.isiin = isiin
             vc.sections = section
-           
             self.navigationController?.pushViewController(vc, animated: false)
             print("Hasil\(vc.isiin)")
         }

@@ -79,6 +79,7 @@
 		8BE6A8AA26C2CF9500289021 /* previewAlternatifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previewAlternatifCell.swift; sourceTree = "<group>"; };
 		8BE6A8AC26C2D5DB00289021 /* rehearsalCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rehearsalCollectionCell.swift; sourceTree = "<group>"; };
 		9085AA1826C216770099E2DB /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		9085AA1A26C216F20099E2DB /* IsiKontenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsiKontenController.swift; sourceTree = "<group>"; };
 		90A5EF8C26C0011D00B27EBF /* EditDataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +107,7 @@
 				8B9A92F426BA513C006F14BF /* Rehearso */,
 				8B9A92F326BA513C006F14BF /* Products */,
 				17941C9826C2951E000FE433 /* Recovered References */,
+				908ABDA626C2FD63007187A1 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +183,14 @@
 				8BE6A8AC26C2D5DB00289021 /* rehearsalCollectionCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		908ABDA626C2FD63007187A1 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				9085AA1A26C216F20099E2DB /* IsiKontenController.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

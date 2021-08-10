@@ -69,7 +69,6 @@ class CoreDataHelper {
             CoreDataHelper.shared.setIsiKonten(title: "Reason To Listen", content: "Give the audience a reason why your presentation is relevant / worth listening to", example: "Morgan robertson once wrote a book called The Wreck Of Titan.", isi: isii)
             CoreDataHelper.shared.setIsiKonten(title: "State Topic", content: "Announce what your speech is about, and your position.", example: "Morgan robertson once wrote a book called The Wreck Of Titan.", isi: isii)
         }
-        
     }
     
     func setIsiKonten(title: String, content: String, example: String, isi: Isi) {
@@ -180,17 +179,22 @@ class CoreDataHelper {
         return isi
     }
 
-    func fetchIsiKonten(isi: Isi) -> [IsiKonten] {
+    func fetchIsiKonten(isi: Isi, onSuccess : @escaping ()->Void) -> [IsiKonten] {
         let request: NSFetchRequest<IsiKonten> = IsiKonten.fetchRequest()
 
         request.predicate = NSPredicate(format: "(isi = %@)", isi)
 
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+//        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
 
         var isiKonten: [IsiKonten] = []
 
         do{
             isiKonten = try coreDataHelper.viewContext.fetch(request)
+            for item in isiKonten {
+                print("Keyword \(item.content)")
+            
+            }
+            onSuccess()
         }catch {
             print("Error fetching isi data")
         }

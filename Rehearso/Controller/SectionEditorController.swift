@@ -65,14 +65,38 @@ extension SectionEditorController: UITableViewDelegate, UITableViewDataSource {
         let section = sectionData[indexPath.row]
         print("Hasil part\(section.part)")
         cell.sectionLabel.text = section.part
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 12
+        cell.clipsToBounds = true
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let maskLayer = CALayer()
+        maskLayer.cornerRadius = 10
+        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 2, dy: 4)
+        maskLayer.backgroundColor = UIColor.white.cgColor
+        cell.layer.mask = maskLayer
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(identifier: "IsiViewController") as? IsiViewController {
-            vc.section = self.sectionData[indexPath.row]
-            self.navigationController?.pushViewController(vc, animated: false)
+        if indexPath.row == 1 {
+            let vc = storyboard?.instantiateViewController(identifier: "IsiViewController") as? IsiViewController
+            vc!.section = self.sectionData[indexPath.row]
+            print("Index Nich\(self.sectionData[indexPath.row])")
+            self.navigationController?.pushViewController(vc!, animated: false)
+            print("udah")
+        } else if indexPath.row == 0 {
+            let vc = storyboard?.instantiateViewController(identifier: "IsiKontenViewController") as? IsiKontenViewController
+            vc?.index = 0
+            vc!.sections = self.sectionData[indexPath.row]
+            self.navigationController?.pushViewController(vc!, animated: false)
+            print("udah")
+        } else if indexPath.row == 2 {
+            let vc = storyboard?.instantiateViewController(identifier: "IsiKontenViewController") as? IsiKontenViewController
+            vc?.index = 1
+            vc!.sections = self.sectionData[indexPath.row]
+            self.navigationController?.pushViewController(vc!, animated: false)
             print("udah")
         }
     }
