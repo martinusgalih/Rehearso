@@ -92,7 +92,6 @@ class CoreDataHelper {
         } catch {
             print("Error fetching cuecard data")
         }
-
         return cueCard
     }
     
@@ -140,7 +139,28 @@ class CoreDataHelper {
         }
         return section
     }
+    
+    func fetchIsiKonten(isi: Isi, onSuccess : @escaping ()->Void) -> [IsiKonten] {
+         let request: NSFetchRequest<IsiKonten> = IsiKonten.fetchRequest()
 
+         request.predicate = NSPredicate(format: "(isi = %@)", isi)
+
+         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+
+         var isiKonten: [IsiKonten] = []
+
+         do{
+             isiKonten = try coreDataHelper.viewContext.fetch(request)
+             for item in isiKonten {
+                 print("Keyword \(item.content)")
+             
+             }
+             onSuccess()
+         }catch {
+             print("Error fetching isi data")
+         }
+         return isiKonten
+     }
 
     func fetchIsi(section: Section) -> [Isi] {
         let request: NSFetchRequest<Isi> = Isi.fetchRequest()

@@ -28,9 +28,9 @@ class HistoryController: UIViewController {
             // convert cueCard.date string to date object
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
-            
+
             let date = dateFormatter.date(from: cueCard.date!)
-            
+
             labelTanggalCueCard.text = "\(date!)"
             labelNamaCueCard.text = cueCard.name
             waktuBuatCueCard.text = cueCard.date
@@ -42,11 +42,11 @@ class HistoryController: UIViewController {
         viewPreview.dropShadow()
         viewRehearse.dropShadow()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         self.load()
     }
-    
+
     private func load(){
         rehearsal = CoreDataHelper.shared.fetchRehearsal(cueCard: cueCardUpdate!)
         self.tableViewRehearsal.reloadData()
@@ -61,7 +61,7 @@ class HistoryController: UIViewController {
         tableViewRehearsal.delegate = self
         tableViewRehearsal.dataSource = self
     }
-    
+
     @IBAction func startRehearseButton(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(identifier: "StartRehearsalController") as? StartRehearsalViewController {
             vc.cueCard = cueCardUpdate
@@ -69,11 +69,20 @@ class HistoryController: UIViewController {
             self.navigationController?.present(vc, animated: true)
         }
     }
+
+    @IBAction func previewButtonAction(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(identifier: "PreviewController") as? PreviewController {
+            vc.cueCard = cueCardUpdate
+            vc.modalPresentationStyle = .fullScreen
+            self.navigationController?.present(vc, animated: true)
+        }
+    }
+
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
-    
+
     func getFileURL(audioName: String) -> URL {
         let path = getDocumentsDirectory().appendingPathComponent(audioName)
         return path as URL
@@ -87,14 +96,14 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rehearsalCell", for: indexPath) as! ReahearsalCell
-        
+
         let rehearsal = rehearsal[indexPath.row]
-        
+
         // date formatter
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy HH:mm:ss"
         let datee = formatter.string(from: rehearsal.timestamp!)
-        
+
 
         cell.labelRehearsalKe.text = rehearsal.name
         cell.tanggalRehearsal.text = "\(datee)"
@@ -126,7 +135,7 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
             (action, sourceView, completionHandler) in
@@ -136,21 +145,21 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
             self.deleteRehearsal(rehearsal: selectedRehearsal)
             completionHandler(true)
         }
-        
+
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
         // Delete should not delete automatically
         swipeConfiguration.performsFirstActionWithFullSwipe = false
-        
+
         return swipeConfiguration
     }
-    
+
     func deleteRehearsal(rehearsal: Rehearsal) {
         let alert = UIAlertController(title: "Hapus rehearsal", message: "Yakin mau hapus rehearsal in?", preferredStyle: .alert)
-        
+
         alert.addAction(UIAlertAction(title: "Hapus", style: .destructive, handler: { _ in
 //            CoreDataHelper.shared.deleteRehearsal(rehearsal: rehearsal)
             let audio = rehearsal.audioName
-            
+
             // remove file
             do {
                 print(type(of: self.getFileURL(audioName: audio!)))
@@ -160,9 +169,9 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
                 print("error remove file")
             }
         }))
-        
+
         alert.addAction(UIAlertAction(title: "Batal", style: .cancel, handler: nil))
-        
+
         self.present(alert, animated: true)
     }
 }

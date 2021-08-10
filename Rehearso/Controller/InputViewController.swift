@@ -19,11 +19,7 @@ class InputViewController: UIViewController {
         if let isiKonten = isiKonten {
             titleLabel.text = isiKonten.title
             inputText.text = isiKonten.content
-            
-           
-            
         }
-
     }
     
     @IBAction func saveButton(_ sender: Any) {

@@ -36,14 +36,6 @@ class NewCueCardController: UIViewController {
         showDurationPicker()
         viewPresentationData.dropShadow()
         
-        let prefix = UILabel()
-        prefix.text = " detik "
-        // set font, color etc.
-        prefix.sizeToFit()
-
-        tfDuration.rightView = prefix
-        tfDuration.rightViewMode = .always // or .whileEditing
-        
         if syncToCalender.isOn {
             syncToCalender.setOn(true, animated: true)
         }
@@ -84,10 +76,12 @@ class NewCueCardController: UIViewController {
             if syncToCalender.isOn {
                 self.syncWithCalendarAction()
                 calendarSynced = true
+                
             }
             
             CoreDataHelper.shared.setCueCard(name: cueName, date: date, length: length, synced: calendarSynced)
             load()
+            
             var sectionData : [Section] = []
             
             if let vc = storyboard?.instantiateViewController(identifier: "SectionEditorController") as? SectionEditorController {
@@ -96,14 +90,25 @@ class NewCueCardController: UIViewController {
                 vc.titleVC = cueName
                 vc.cueCardUpdate = cueCard[counter - 1]
                 
-                self.navigationController?.pushViewController(vc, animated: false)
-                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            if syncToCalender.isOn {
+                self.notifyUser(title: "Calendar Synced!", message: "Your event now will remind you 1 day before event. Keep rehearsing.")
             }
         }
         
         tfPresentationName.text = ""
         tfDateOfPresentation.text = ""
         tfDuration.text = ""
+    }
+    
+    func notifyUser(title: String, message: String) -> Void {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+      present(alert, animated: true, completion: nil)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+       self.dismiss(animated: true)
+      }
     }
     
     private func load(){
@@ -119,18 +124,18 @@ class NewCueCardController: UIViewController {
         
         let startDate = selectedDate
         let endDate = startDate!.addingTimeInterval(2 * 60 * 60)
-//        let startDate = Date()
-//        let endDate = Date()
+        
+        let alarm1daybefore = EKAlarm(relativeOffset: 86400)
         
         event.title = tfPresentationName?.text
         event.startDate = startDate
         event.endDate = endDate
         event.notes = "Informative Presentation"
         event.calendar = eventStore.defaultCalendarForNewEvents
+        event.addAlarm(alarm1daybefore)
         
         do {
             try eventStore.save(event, span: .thisEvent)
-            print("Berhasil disinmapn")
             return true
         } catch let error as NSError {
             print("Failed to save event with error: \(error)")
@@ -187,7 +192,7 @@ class NewCueCardController: UIViewController {
     
     @objc func doneDatePicker() {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "dd MMM yyyy"
         selectedDate = datePresentationPicker.date
         tfDateOfPresentation.text = formatter.string(from: datePresentationPicker.date)
         self.view.endEditing(true)
@@ -214,7 +219,12 @@ class NewCueCardController: UIViewController {
         var duration: TimeInterval = 0
         
         duration = durationPresentationPicker.countDownDuration
-        tfDuration.text = "\(duration)"
+        
+        let hours = (Int(duration) / 3600)
+        let minutes = (Int(duration) % 3600) / 60
+        let seconds = (Int(duration) % 3600) % 60
+        
+        tfDuration.text = ("\(String(format: "%02d", hours)) jam \(String(format: "%02d", minutes)) menit \(String(format: "%02d", seconds)) detik")
         self.view.endEditing(true)
     }
     

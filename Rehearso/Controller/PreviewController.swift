@@ -13,10 +13,10 @@ class PreviewController: UIViewController {
     @IBOutlet weak var previewTableView: UITableView!
     @IBOutlet weak var viewForTableView: UIView!
     
+    var cueCard: CueCard?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         previewTableView.delegate = self
         previewTableView.dataSource = self

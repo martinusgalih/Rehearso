@@ -7,14 +7,13 @@
 
 import UIKit
 import CoreData
-
 class IsiKontenController: UIViewController {
 
     @IBOutlet weak var judulKonten: UILabel!
     @IBOutlet weak var exampleKonten: UILabel!
     @IBOutlet weak var textInputKonten: UITextView!
     @IBOutlet weak var isiKontenCollectionView: UICollectionView!
-
+    
     @IBOutlet var selfPageController: UIPageControl!
     
     var firstLoad = true
@@ -30,7 +29,7 @@ class IsiKontenController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("Coba ini \(isiin)")
         if(firstLoad)
         {
             firstLoad = false
@@ -58,29 +57,27 @@ class IsiKontenController: UIViewController {
             print("error load")
             return
         }
-        isiKontenCollectionView.reloadData()
-        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
         print("Hasil\(isiData)")
         isiKontenCollectionView.delegate = self
         isiKontenCollectionView.dataSource = self
-        isiKontenCollectionView.reloadData()
-        load()
+        
     }
     override func viewDidAppear(_ animated: Bool) {
-        guard let isi = isiin else {
-            print("error load")
-            return
-        }
-        isiKontenCollectionView.reloadData()
-        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
-        isiKontenCollectionView.reloadData()
-        load()
+//        guard let isi = isiin else {
+//            print("error load")
+//            return
+//        }
+//        load()
+//        isiKontenCollectionView.reloadData()
+//        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
+//        isiKontenCollectionView.reloadData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        isiKontenCollectionView.reloadData()
         load()
+        print("Will Appear")
     }
     private func setTableViewCell(){
         let nib = UINib(nibName: tableCellName, bundle: nil)
@@ -91,10 +88,12 @@ class IsiKontenController: UIViewController {
             print("error load")
             return
         }
-        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
-        self.isiKontenCollectionView.reloadData()
+        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi) {
+            self.isiKontenCollectionView.reloadData()
+        }
+        print("Coba \(konten[0].content)")
+        
     }
-  
     @IBAction func saveButton(_ sender: Any) {
         
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditDataCollectionViewCell", for: indexPath) as! EditDataCollectionViewCell
@@ -104,21 +103,6 @@ class IsiKontenController: UIViewController {
 //        CoreDataHelper.shared.save{}
 //        load()
 //        collectionView.reloadData()
-//     var titleOfPage: [String] = ["Grab Attention","Reason To Listen","State Topic","Credibility Statement","Preview Statement"]
-
-//     var examples: [String] = ["Morgan robertson once wrote a book called The Wreck Of Titan.","Morgan robertson once wrote a book called The Wreck Of Titan.","Morgan robertson once wrote a book called The Wreck Of Titan.","Morgan robertson once wrote a book called The Wreck Of Titan.","Morgan robertson once wrote a book called The Wreck Of Titan."]
-
-//     var isiText: [String] = ["Do or say something shocking, intriguing, or dramatic to get attention of the audience from the very first minutes.","Give the audience a reason why your presentation is relevant / worth listening to","Announce what your speech is about, and your position.","What have you done prior to the presentation that is relevant to the credibility of your presentation","Introduce main points of your speech."]
-
-//     override func viewDidLoad() {
-//         super.viewDidLoad()
-
-//         isiKontenCollectionView.delegate = self
-//         isiKontenCollectionView.dataSource = self
-//     }
-//     override func viewWillAppear(_ animated: Bool) {
-//         super.viewWillAppear(animated)
-//         isiKontenCollectionView.reloadData()
     }
 }
 
@@ -137,20 +121,10 @@ extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSou
 //        let itemHeight = (collectionView.frame.size.height)
 //        return CGSize(width: itemWidth, height: itemHeight)
 //    }
-  
-    
-    //size cell
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = (collectionView.frame.size.width)
-        let itemHeight = (collectionView.frame.size.height)
-        return CGSize(width: itemWidth, height: itemHeight)
-    }
-  
     // spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-  
     //
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
@@ -166,8 +140,8 @@ extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditDataCollectionViewCell", for: indexPath) as! EditDataCollectionViewCell
         let kontens = konten[indexPath.row]
         cell.kontenTitleLabel.text = kontens.title
-        cell.exampleKonten.text = kontens.content
-        cell.kontenTextView.text = kontens.example
+        cell.exampleKonten.text = kontens.example
+        cell.kontenTextView.text = kontens.content
         cell.backgroundColor = UIColor.init(red: CGFloat.random(in: 0.5...1), green: CGFloat.random(in: 0.5...1), blue: CGFloat.random(in: 0.5...1), alpha: 1)
         cell.layer.cornerRadius = 10
         return cell
@@ -196,25 +170,3 @@ extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSou
 //            labelEmpty.isHidden = false
 //            labelEmpty.text = "There are no document yet.  How about making your own document?"
 //        }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-  
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titleOfPage.count
-        return examples.count
-        return isiText.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "isiKontenCell", for: indexPath) as! EditDataCollectionViewCell
-        
-        cell.kontenTitleLabel.text = titleOfPage[indexPath.row]
-        cell.exampleKonten.text = examples[indexPath.row]
-        cell.kontenTextView.text = isiText[indexPath.row]
-        
-        return cell
-    }
-    
-}
