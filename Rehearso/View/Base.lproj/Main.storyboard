@@ -2321,7 +2321,7 @@
         <!--Isi Konten View Controller-->
         <scene sceneID="4VQ-5w-Isz">
             <objects>
-                <viewController storyboardIdentifier="IsiKontenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ifG-pc-G7z" customClass="IsiKontenViewController" customModule="Rehearso" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IsiKontenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ifG-pc-G7z" customClass="IsiKontenViewController" customModule="Rehearso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNn-vv-7TW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -15,7 +15,6 @@ class EditDataCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var exampleKonten: UILabel!
     
     
-    @IBOutlet var exampleKonten: UILabel!
     @IBOutlet var exampleTextView: UITextView!
     
     override func awakeFromNib() {
