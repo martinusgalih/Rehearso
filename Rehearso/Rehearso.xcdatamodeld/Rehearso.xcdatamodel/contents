@@ -11,10 +11,20 @@
         <relationship name="section" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section" inverseName="cueCard" inverseEntity="Section"/>
     </entity>
     <entity name="Isi" representedClassName="Isi" syncable="YES" codeGenerationType="class">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="example" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="isi" optional="YES" attributeType="String"/>
         <attribute name="part" optional="YES" attributeType="String"/>
-        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="isi" inverseEntity="Section"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="isiKonten" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="IsiKonten" inverseName="isi" inverseEntity="IsiKonten"/>
+        <relationship name="section" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Section" inverseName="isi" inverseEntity="Section"/>
+    </entity>
+    <entity name="IsiKonten" representedClassName="IsiKonten" syncable="YES" codeGenerationType="class">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="example" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="isi" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Isi" inverseName="isiKonten" inverseEntity="Isi"/>
     </entity>
     <entity name="Rehearsal" representedClassName="Rehearsal" syncable="YES" codeGenerationType="class">
         <attribute name="audioName" optional="YES" attributeType="String"/>
@@ -26,13 +36,14 @@
     <entity name="Section" representedClassName="Section" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="part" optional="YES" attributeType="String"/>
-        <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CueCard" inverseName="section" inverseEntity="CueCard"/>
-        <relationship name="isi" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Isi" inverseName="section" inverseEntity="Isi"/>
+        <relationship name="cueCard" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CueCard" inverseName="section" inverseEntity="CueCard"/>
+        <relationship name="isi" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Isi" inverseName="section" inverseEntity="Isi"/>
     </entity>
     <elements>
-        <element name="CueCard" positionX="-63" positionY="-18" width="128" height="149"/>
-        <element name="Isi" positionX="-54" positionY="-9" width="128" height="89"/>
-        <element name="Rehearsal" positionX="-45" positionY="45" width="128" height="104"/>
-        <element name="Section" positionX="-36" positionY="9" width="128" height="89"/>
+        <element name="CueCard" positionX="-54" positionY="-9" width="128" height="149"/>
+        <element name="Isi" positionX="0" positionY="45" width="128" height="134"/>
+        <element name="IsiKonten" positionX="160" positionY="192" width="128" height="104"/>
+        <element name="Rehearsal" positionX="-36" positionY="9" width="128" height="104"/>
+        <element name="Section" positionX="-18" positionY="27" width="128" height="89"/>
     </elements>
 </model>

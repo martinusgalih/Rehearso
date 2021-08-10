@@ -13,15 +13,31 @@ class PreviewController: UIViewController {
     @IBOutlet weak var previewTableView: UITableView!
     @IBOutlet weak var viewForTableView: UIView!
     
+    var cueCard: CueCard?
+    var sectionCue: [Section] = []
+    var isiCue: [Isi] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         previewTableView.delegate = self
         previewTableView.dataSource = self
+        
+        self.load()
     }
 
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func load() {
+        sectionCue = CoreDataHelper.shared.fetchSection(cueCard: cueCard!)
+        previewTableView.reloadData()
+    }
+    
+//    func loadIsi() {
+//        isiCue = CoreDataHelper.shared.fetchIsi(section: sectionCue)
+//    }
 }
 
 extension PreviewController: UITableViewDelegate, UITableViewDataSource, ExpandableHeaderViewDelegate{
@@ -31,6 +47,11 @@ extension PreviewController: UITableViewDelegate, UITableViewDataSource, Expanda
         previewTableView.reloadRows(at: [IndexPath(row: 1, section: section)], with: .automatic)
         previewTableView.endUpdates()
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sec = self.sectionCue[section]
+        return sec.part
+    }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,12 +59,14 @@ extension PreviewController: UITableViewDelegate, UITableViewDataSource, Expanda
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionsPreview.count
+        return sectionCue.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "previewCell") as! PreviewCell
-//        cell.subTitleCell.text = sectionsPreview[indexPath.section].subtitle[indexPath.row]
+        
+        let section = sectionCue[indexPath.section]
+//        cell.subTitleCell.text = section.isi
         
         cell.layer.borderColor = UIColor.white.cgColor
 //        cell.layer.borderWidth = 5

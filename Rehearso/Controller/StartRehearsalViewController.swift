@@ -29,8 +29,8 @@ class StartRehearsalViewController: UIViewController {
         
 //        var intTotalUnits:Int? = Int(fldTotalUnits)
         if audioRecorder == nil {
-            doneButtonBar.isEnabled = false
             resetButtonBar.isEnabled = false
+            doneButtonBar.title = "Back"
         }
         
         if let cue = cueCard {
@@ -82,6 +82,8 @@ class StartRehearsalViewController: UIViewController {
         }
     }
     
+    // kasih opsi simpan recording ketika rehearse
+    
     @IBAction func resetButtonBarAction(_ sender: Any) {
         // pause recording
         audioRecorder.pause()
@@ -102,7 +104,7 @@ class StartRehearsalViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    @IBAction func doneButtonBarAction(_ sender: Any) {
+    func saveRehearsal() {
         // stop recording
         let lastTimeRecorder = audioRecorder.currentTime
         stopRecording()
@@ -120,17 +122,47 @@ class StartRehearsalViewController: UIViewController {
                 print("Cue Card Error")
                 return
             }
+            
             self.audioRecorder = nil
             let recordingName = alert.textFields![0].text
+            
             CoreDataHelper.shared.setRehearsal(name: recordingName!, duration: Float(lastTimeRecorder), timestamp: Date(), audioName: self.filename, cueCard: cue)
             if let vc = self.storyboard?.instantiateViewController(identifier: "HistoryController") as? HistoryController {
                 vc.cueCardUpdate = self.cueCard
                 self.present(vc, animated: true)
-                
             }
+            
+            self.notifyUser(title: "Saved", message: "Your rehearsal is now saved. Keep repeat your rehearsal")
         }))
         
         self.present(alert, animated: true)
+    }
+    
+    func notifyUser(title: String, message: String) -> Void {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+      present(alert, animated: true, completion: nil)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+       self.dismiss(animated: true)
+      }
+    }
+    
+    @IBAction func doneButtonBarAction(_ sender: Any) {
+        stopRecording()
+        if audioRecorder == nil {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Save rehearsal", message: "Are you want to save this rehearsal?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
+                self.saveRehearsal()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Don't save", style: .destructive, handler: { _ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func startRecording() {
@@ -145,6 +177,7 @@ class StartRehearsalViewController: UIViewController {
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
+            doneButtonBar.title = "Done"
             audioRecorder.record(forDuration: TimeInterval(duration!))
         } catch {
             print("Finishing recording")

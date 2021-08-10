@@ -39,6 +39,7 @@
 		8BE6A8A926C2CF2300289021 /* PreviewAlternatifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6A8A826C2CF2300289021 /* PreviewAlternatifViewController.swift */; };
 		8BE6A8AB26C2CF9500289021 /* previewAlternatifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6A8AA26C2CF9500289021 /* previewAlternatifCell.swift */; };
 		8BE6A8AD26C2D5DB00289021 /* rehearsalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6A8AC26C2D5DB00289021 /* rehearsalCollectionCell.swift */; };
+		9085AA1926C216770099E2DB /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085AA1826C216770099E2DB /* InputViewController.swift */; };
 		90A5EF8D26C0011D00B27EBF /* EditDataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5EF8C26C0011D00B27EBF /* EditDataCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		8BE6A8A826C2CF2300289021 /* PreviewAlternatifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewAlternatifViewController.swift; sourceTree = "<group>"; };
 		8BE6A8AA26C2CF9500289021 /* previewAlternatifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previewAlternatifCell.swift; sourceTree = "<group>"; };
 		8BE6A8AC26C2D5DB00289021 /* rehearsalCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rehearsalCollectionCell.swift; sourceTree = "<group>"; };
+		9085AA1826C216770099E2DB /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		90A5EF8C26C0011D00B27EBF /* EditDataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,11 +93,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17941C9826C2951E000FE433 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		8B9A92E926BA513C006F14BF = {
 			isa = PBXGroup;
 			children = (
 				8B9A92F426BA513C006F14BF /* Rehearso */,
 				8B9A92F326BA513C006F14BF /* Products */,
+				17941C9826C2951E000FE433 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,6 +143,7 @@
 				8B36D9B726BBB41600579573 /* HistoryController.swift */,
 				1794B46D26BE4545001564CC /* SectionViewController.swift */,
 				1794B47126BE4902001564CC /* IsiViewController.swift */,
+				9085AA1826C216770099E2DB /* InputViewController.swift */,
 				1794B47526BE5B54001564CC /* IsiKontenViewController.swift */,
 				17CB966826BE868600341011 /* PlayRehearsalViewController.swift */,
 				17CB966A26BE947000341011 /* StartRehearsalViewController.swift */,
@@ -262,6 +273,7 @@
 				8B36D9B826BBB41600579573 /* HistoryController.swift in Sources */,
 				8BDC8F1526C1959A00A630F9 /* ExpandableHeaderView.swift in Sources */,
 				1794B46E26BE4545001564CC /* SectionViewController.swift in Sources */,
+				9085AA1926C216770099E2DB /* InputViewController.swift in Sources */,
 				8B9A930026BA513C006F14BF /* Rehearso.xcdatamodeld in Sources */,
 				8BDC8F0F26C191DE00A630F9 /* PreviewCell.swift in Sources */,
 				8BCF498F26BAD7F900FD95D3 /* dataDummy.swift in Sources */,

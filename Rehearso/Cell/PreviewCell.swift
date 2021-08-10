@@ -10,6 +10,7 @@ import UIKit
 class PreviewCell: UITableViewCell {
 
     @IBOutlet weak var hasilPreview: UIView!
+    @IBOutlet weak var isiLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
