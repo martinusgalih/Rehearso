@@ -1,16 +1,17 @@
 //
-//  PreviewCell.swift
+//  previewAlternatifCell.swift
 //  Rehearso
 //
-//  Created by Diana Febrina Lumbantoruan on 09/08/21.
+//  Created by Diana Febrina Lumbantoruan on 10/08/21.
 //
 
 import UIKit
 
-class PreviewCell: UITableViewCell {
+class previewAlternatifCell: UITableViewCell {
 
-    @IBOutlet weak var hasilPreview: UIView!
-    @IBOutlet weak var isiLabel: UILabel!
+    @IBOutlet weak var judulPreviewCell: UILabel!
+    @IBOutlet weak var kontenPreviewCell: UITextView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

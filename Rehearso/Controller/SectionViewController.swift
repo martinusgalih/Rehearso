@@ -15,6 +15,7 @@ class SectionViewController: UIViewController {
     var cueCardUpdate: CueCard?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -59,14 +60,5 @@ extension SectionViewController: UITableViewDelegate, UITableViewDataSource {
         cell.sectionLabel.text = section.part
         return cell
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let vc = storyboard?.instantiateViewController(identifier: "IsiViewController") as? IsiViewController {
-//            vc.sections = self.sectionData[indexPath.row]
-//            self.navigationController?.pushViewController(vc, animated: false)
-//            print("udah")
-//        }
-//    }
-    
-    
 }
 
