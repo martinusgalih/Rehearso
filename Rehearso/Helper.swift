@@ -95,17 +95,19 @@ class CoreDataHelper {
         return cueCard
     }
     
-    func fetchRehearsal() -> [Rehearsal] {
+
+    func fetchRehearsal(cueCard: CueCard) -> [Rehearsal] {
         let request: NSFetchRequest<Rehearsal> = Rehearsal.fetchRequest()
 
+        request.predicate = NSPredicate(format: "(cueCard = %@)", cueCard)
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
         var rehearsal: [Rehearsal] = []
 
-        do {
+        do{
             rehearsal = try coreDataHelper.viewContext.fetch(request)
-        } catch {
+        }catch {
             print("Error fetching rehearsal data")
         }
-
         return rehearsal
     }
 
@@ -118,12 +120,13 @@ class CoreDataHelper {
         coreDataHelper.viewContext.delete(isi)
         save{}
     }
-
+    func deleteRehearsal(rehearsal: Rehearsal) {
+        coreDataHelper.viewContext.delete(rehearsal)
+        save{}
+    }
+  
     func fetchSection(cueCard: CueCard) -> [Section] {
         let request: NSFetchRequest<Section> = Section.fetchRequest()
-
-//        request.fetchOffset = 0
-//        request.fetchLimit = 3
 
         request.predicate = NSPredicate(format: "(cueCard = %@)", cueCard)
         request.sortDescriptors = [NSSortDescriptor(key: "part", ascending: true)]

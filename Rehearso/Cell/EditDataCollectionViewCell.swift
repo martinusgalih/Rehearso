@@ -12,6 +12,9 @@ class EditDataCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var kontenTitleLabel: UILabel!
     @IBOutlet weak var kontenTextView: UITextView!
+    @IBOutlet weak var exampleKonten: UILabel!
+    
+    
     @IBOutlet var exampleKonten: UILabel!
     @IBOutlet var exampleTextView: UITextView!
     
