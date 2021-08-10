@@ -35,7 +35,7 @@ class HistoryController: UIViewController {
             labelNamaCueCard.text = cueCard.name
             waktuBuatCueCard.text = cueCard.date
         }
-        
+
         configureTableView()
         viewEdit.dropShadow()
         viewHistory.dropShadow()
@@ -69,7 +69,6 @@ class HistoryController: UIViewController {
             self.navigationController?.present(vc, animated: true)
         }
     }
-    
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]

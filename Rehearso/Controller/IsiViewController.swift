@@ -11,10 +11,13 @@ class IsiViewController: UIViewController {
     
     var cueCard : [CueCard] = []
     var cueCardUpdate: CueCard?
-    var section : [Section] = []
-    var sections: Section?
+    var sectionData : [Section] = []
+    var section: Section?
     var isiData : [Isi] = []
     var isiin: Isi?
+    
+    var isiKonten : [IsiKonten] = []
+    var isiinKonten: IsiKonten?
     
     @IBOutlet weak var isiTableView: UITableView!
     @IBOutlet weak var cueCardName: UILabel!
@@ -27,10 +30,10 @@ class IsiViewController: UIViewController {
         
         setTableViewCell()
         configureTableView()
-        if let section = sections {
-            cueCardName.text = section.part
-            load()
-        }
+//        if let section = sections {
+//            cueCardName.text = section.part
+//            load()
+//        }
     }
     
     private func setTableViewCell(){
@@ -40,7 +43,7 @@ class IsiViewController: UIViewController {
     
     @IBAction func isiAddButton(_ sender: Any) {
         load()
-        guard let section1 = sections else {
+        guard let section1 = section else {
             print("error author")
             return
         }
@@ -49,19 +52,21 @@ class IsiViewController: UIViewController {
         let strcounter = String(isiData.count + 1)
         let part = "Point \(strcounter)"
         
-        CoreDataHelper.shared.setIsi(part: part, isi: isi, section: section1)
-        
-        print("Data::\(section.count)")
+//        CoreDataHelper.shared.setIsi(part: part, isi: isi, section: section1)
+        CoreDataHelper.shared.setIsi(part: part, title: isi, content: isi, example: isi, section: section1)
         load()
+        print("IsiKonten\(isiKonten.count)")
+        
     }
     
     private func load(){
-        guard let section1 = sections else {
+        guard let section1 = section else {
             print("error load")
             return
         }
         
         isiData = CoreDataHelper.shared.fetchIsi(section: section1)
+        
         isiTableView.reloadData()
     }
 }
@@ -86,12 +91,13 @@ extension IsiViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(identifier: "IsiKontenViewController") as? IsiKontenViewController {
-            vc.sections = sections
-            vc.isiin = isiData[indexPath.row]
+        if let vc = storyboard?.instantiateViewController(identifier: "IsiKontenController") as? IsiKontenController {
+            vc.isiin = self.isiData[indexPath.row]
+//            vc.isiin = isiin
+            vc.sections = section
            
             self.navigationController?.pushViewController(vc, animated: false)
-            print("udah")
+            print("Hasil\(vc.isiin)")
         }
     }
 }

@@ -56,7 +56,7 @@ extension IsiKontenViewController : UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditDataCollectionViewCell", for: indexPath) as! EditDataCollectionViewCell
         let isiList = isiData[indexPath.row]
         isiin?.part = cell.kontenTitleLabel.text
-        isiin?.isi = cell.kontenTextView.text
+//        isiin?.isi = cell.kontenTextView.text
         CoreDataHelper.shared.save{}
         load()
         collectionView.reloadData()

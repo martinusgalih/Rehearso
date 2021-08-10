@@ -15,10 +15,11 @@ class EditDataCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var exampleKonten: UILabel!
     
     
+    @IBOutlet var exampleKonten: UILabel!
     func setDataIntoCell(data: Isi){
         print("set data : \(data)")
         kontenTitleLabel.text = data.part
-        kontenTextView.text = data.isi
+        kontenTextView.text = data.content
        
     
     }

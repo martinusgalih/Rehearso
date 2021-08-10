@@ -71,7 +71,7 @@ extension SectionEditorController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(identifier: "IsiViewController") as? IsiViewController {
-            vc.sections = self.sectionData[indexPath.row]
+            vc.section = self.sectionData[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: false)
             print("udah")
         }

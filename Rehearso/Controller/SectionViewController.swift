@@ -15,6 +15,7 @@ class SectionViewController: UIViewController {
     var cueCardUpdate: CueCard?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
