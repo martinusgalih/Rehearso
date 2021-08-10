@@ -16,15 +16,15 @@ class InputViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inputText.layer.cornerRadius = 10
         if let isiKonten = isiKonten {
             titleLabel.text = isiKonten.title
             inputText.text = isiKonten.content
-            
-           
-            
         }
-
+     
     }
+   
+       
     
     @IBAction func saveButton(_ sender: Any) {
         
@@ -32,26 +32,8 @@ class InputViewController: UIViewController {
         isiKonten?.content = inputText.text
         CoreDataHelper.shared.save{
             print("Berhasil Save")
-//            self.load()
             print("Berhasil")
-//            let vc = self.storyboard?.instantiateViewController(identifier: "IsiKontenController") as? IsiKontenController
-//            vc!.isiin = self.isiin
-//            vc!.viewDidLoad()
             self.navigationController?.popViewController(animated: true)
-    //        navigationController?.pushViewController(vc!, animated: false)
-    //        dismiss(animated: false, completion: nil)
         }
-        
-            
     }
-//    private func load(){
-//        guard let isi = isiin else {
-//            print("error load")
-//            return
-//        }
-//        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
-//        print("Print konten\(isiKonten?.content)")
-//        print("Print konten\(konten[0].content)")
-//    }
-
 }

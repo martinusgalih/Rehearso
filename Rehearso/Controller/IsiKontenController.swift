@@ -29,28 +29,7 @@ class IsiKontenController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Coba ini \(isiin)")
-        if(firstLoad)
-        {
-            firstLoad = false
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "IsiKonten")
-            do {
-                let results:NSArray = try context.fetch(request) as NSArray
-                for result in results
-                {
-                    let note = result as! IsiKonten
-                    konten.append(note)
-                    isiKontenCollectionView.reloadData()
-                    print("Berhasil Reload Harusnya")
-                }
-            }
-            catch
-            {
-                print("Fetch Failed")
-            }
-        }
+        isiKontenCollectionView.backgroundColor = UIColor.clear
         
         
         guard let isi = isiin else {
@@ -63,14 +42,7 @@ class IsiKontenController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-//        guard let isi = isiin else {
-//            print("error load")
-//            return
-//        }
-//        load()
-//        isiKontenCollectionView.reloadData()
-//        konten = CoreDataHelper.shared.fetchIsiKonten(isi: isi)
-//        isiKontenCollectionView.reloadData()
+
         
     }
     
@@ -96,32 +68,12 @@ class IsiKontenController: UIViewController {
     }
     @IBAction func saveButton(_ sender: Any) {
         
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditDataCollectionViewCell", for: indexPath) as! EditDataCollectionViewCell
-//        let isiList = isiData[indexPath.row]
-//        isiin?.part = cell.titleLabel.text
-//        isiin?.isi = cell.text.text
-//        CoreDataHelper.shared.save{}
-//        load()
-//        collectionView.reloadData()
+
     }
 }
 
 extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSource{
-    //pagecontrol
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        let x = scrollView.contentOffset.x
-//        let w = scrollView.bounds.size.width
-//        let currentPage = Int(ceil(x/w))
-//        self.selfPageController.currentPage = currentPage
-//
-//    }
-    //size cell
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//   let itemWidth = collectionView.frame.size.width
-//        let itemHeight = (collectionView.frame.size.height)
-//        return CGSize(width: itemWidth, height: itemHeight)
-//    }
-    // spacing
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
@@ -129,7 +81,13 @@ extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+////        let itemWidth = collectionView.frame.size.width
+////        let itemHeight = (collectionView.frame.size.height)
+//        let itemWidth = 340
+//        let itemHeight = 667
+//        return CGSize(width: itemWidth, height: itemHeight)
+//    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return konten.count
         
@@ -140,9 +98,8 @@ extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditDataCollectionViewCell", for: indexPath) as! EditDataCollectionViewCell
         let kontens = konten[indexPath.row]
         cell.kontenTitleLabel.text = kontens.title
-        cell.exampleKonten.text = kontens.example
+        cell.exampleTextView.text = kontens.example
         cell.kontenTextView.text = kontens.content
-        cell.backgroundColor = UIColor.init(red: CGFloat.random(in: 0.5...1), green: CGFloat.random(in: 0.5...1), blue: CGFloat.random(in: 0.5...1), alpha: 1)
         cell.layer.cornerRadius = 10
         return cell
     }
@@ -157,16 +114,3 @@ extension IsiKontenController: UICollectionViewDelegate, UICollectionViewDataSou
     }
 }
 
-//extension IsiKontenViewController: ViewControllerProtocol{
-//    func reloadData() {
-//        listDataText  = fetchDataText()
-//        tableViewDataText.reloadData()
-//        if !listDataText.isEmpty{
-//            tableViewDataText.isHidden = false
-//            labelEmpty.isHidden = true
-//        }
-//        else{
-//            tableViewDataText.isHidden = true
-//            labelEmpty.isHidden = false
-//            labelEmpty.text = "There are no document yet.  How about making your own document?"
-//        }
