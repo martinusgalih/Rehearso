@@ -32,16 +32,16 @@ class SectionEditorController: UIViewController {
             return
         }
         print("Hasil Jumlah\(sectionData.count)")
-        
         load()
-        
-        
         viewSectionData.dropShadow()
-//        viewIntro.dropShadow()
-//        viewBody.dropShadow()
-//        viewConclusion.dropShadow()
     }
     
+    @IBAction func previewButton(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "PreviewAlternatifViewController") as? PreviewAlternatifViewController
+        vc?.cueCard = cueCardUpdate
+        self.navigationController?.pushViewController(vc!, animated: false)
+        
+    }
     private func load(){
         guard let cueCard = cueCardUpdate else {
             print("error load")
@@ -80,6 +80,7 @@ extension SectionEditorController: UITableViewDelegate, UITableViewDataSource {
         cell.layer.mask = maskLayer
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 1 {
             let vc = storyboard?.instantiateViewController(identifier: "IsiViewController") as? IsiViewController
             vc!.section = self.sectionData[indexPath.row]
