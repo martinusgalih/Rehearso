@@ -1261,7 +1261,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <view key="backgroundView" contentMode="scaleToFill" id="KCJ-GQ-7nb">
-                                    <rect key="frame" x="3" y="0.0" width="374" height="613"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="613"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.96862745100000003" green="0.79607843140000001" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <userDefinedRuntimeAttributes>
@@ -1339,7 +1339,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="exampleTextView" destination="VEN-uv-6Fl" id="t5d-JB-lwq"/>
-                                            <outlet property="kontenTextView" destination="NsU-Xs-Mpp" id="tdv-GS-zB3"/>
+                                            <outlet property="kontenTextView" destination="NsU-Xs-Mpp" id="ZfI-TK-zhk"/>
                                             <outlet property="kontenTitleLabel" destination="NEc-Ud-IEJ" id="On1-vH-2i2"/>
                                         </connections>
                                     </collectionViewCell>
@@ -1366,10 +1366,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="7hC-NI-cMj"/>
                     <connections>
-                        <outlet property="exampleKonten" destination="spD-mH-bFx" id="cBc-QV-AG5"/>
                         <outlet property="isiKontenCollectionView" destination="4D1-VF-t32" id="3Ce-h3-d8r"/>
-                        <outlet property="judulKonten" destination="NEc-Ud-IEJ" id="yyX-vu-AbG"/>
-                        <outlet property="textInputKonten" destination="NsU-Xs-Mpp" id="ZOW-Me-NEw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dk-Wg-pxH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
