@@ -1366,7 +1366,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="7hC-NI-cMj"/>
                     <connections>
+                        <outlet property="exampleKonten" destination="spD-mH-bFx" id="cBc-QV-AG5"/>
                         <outlet property="isiKontenCollectionView" destination="4D1-VF-t32" id="3Ce-h3-d8r"/>
+                        <outlet property="judulKonten" destination="NEc-Ud-IEJ" id="yyX-vu-AbG"/>
+                        <outlet property="textInputKonten" destination="NsU-Xs-Mpp" id="ZOW-Me-NEw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dk-Wg-pxH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1487,11 +1490,11 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <view key="backgroundView" contentMode="scaleToFill" id="Jm1-RQ-ruQ">
-                                    <rect key="frame" x="5" y="0.0" width="374" height="613"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="613"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </view>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditDataCollectionViewCell" id="ipI-X4-PYR" customClass="EditDataCollectionViewCell" customModule="Rehearso" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditDataCollectionViewCell" id="ipI-X4-PYR">
                                         <rect key="frame" x="0.0" y="8" width="379" height="597"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="e9k-IF-jyN">
@@ -1589,9 +1592,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kVP-wQ-8xC"/>
-                    <connections>
-                        <outlet property="isiKontenCollectionView" destination="ZHB-it-O8U" id="z48-KM-tAm"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBl-yY-SWI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1759,22 +1759,7 @@
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWc-Pz-2I0">
                                 <rect key="frame" x="0.0" y="343" width="414" height="553"/>
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="u2p-ef-GIq">
-                                        <rect key="frame" x="20" y="478" width="374" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Q2o-8c-TnP"/>
-                                        </constraints>
-                                        <color key="pageIndicatorTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="currentPageIndicatorTintColor" red="0.96862745100000003" green="0.79607843140000001" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </pageControl>
-                                </subviews>
                                 <color key="backgroundColor" red="0.050980392159999999" green="0.096737138929999994" blue="0.1843240857" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="u2p-ef-GIq" secondAttribute="bottom" constant="45" id="k0M-9G-Pfa"/>
-                                    <constraint firstAttribute="trailing" secondItem="u2p-ef-GIq" secondAttribute="trailing" constant="20" id="p4J-Aa-X0D"/>
-                                    <constraint firstItem="u2p-ef-GIq" firstAttribute="leading" secondItem="aWc-Pz-2I0" secondAttribute="leading" constant="20" id="qYh-Sm-vKN"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
@@ -1971,7 +1956,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="doneButtonBar" destination="MuV-6r-dVY" id="YrW-1d-PDp"/>
                         <outlet property="maximumTimeLabel" destination="Vha-zU-we5" id="hEj-ND-F8I"/>
+                        <outlet property="minimumTimeLabel" destination="KcQ-yg-MsI" id="HZA-L8-A4S"/>
+                        <outlet property="recordButton" destination="HyW-WH-U7A" id="ydH-m4-uJ8"/>
+                        <outlet property="recordingSlider" destination="1uS-h4-20T" id="5qA-Hz-bBT"/>
+                        <outlet property="rehearsalCollection" destination="5pq-DJ-JUa" id="lPL-SC-SUG"/>
+                        <outlet property="resetButtonBar" destination="fg4-Kd-1Qg" id="yZ5-xK-o9w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WNr-C2-lbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

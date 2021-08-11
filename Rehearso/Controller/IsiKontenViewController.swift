@@ -7,14 +7,14 @@
 
 import UIKit
 import CoreData
+
 class IsiKontenViewController: UIViewController {
 
     @IBOutlet weak var judulKonten: UILabel!
-    @IBOutlet weak var exampleKonten: UILabel!
     @IBOutlet weak var textInputKonten: UITextView!
     @IBOutlet weak var isiKontenCollectionView: UICollectionView!
+    @IBOutlet weak var exampleKonten: UITextView!
     
-    @IBOutlet var selfPageController: UIPageControl!
     
     var firstLoad = true
     

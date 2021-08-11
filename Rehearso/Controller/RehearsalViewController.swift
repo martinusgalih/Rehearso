@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class RehearsalViewController: UIViewController {
 
@@ -42,15 +43,11 @@ class RehearsalViewController: UIViewController {
     
     var isiText: [String] = ["WKWKWKWKWKWKWKWKWKWKWKWK","HAHAAHAHAHAHAHAHHA","LALALLALALLAALLALAAL","PAPAPAPAPAPPAPA","WAWAWWAWAWAWAWAW"]
     
-    @IBOutlet weak var myPage: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        myPage.currentPage = 0
-        myPage.numberOfPages = titleOfPage.count
         
         rehearsalCollection.delegate = self
         rehearsalCollection.dataSource = self
@@ -304,14 +301,7 @@ extension RehearsalViewController: AVAudioRecorderDelegate {
 }
 
 
-extension RehearsalViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-            let x = scrollView.contentOffset.x
-            let w = scrollView.bounds.size.width
-            let currentPage = Int(ceil(x/w))
-            self.myPage.currentPage = currentPage
-        }
+extension RehearsalViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     //size cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

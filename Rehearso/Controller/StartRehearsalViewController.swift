@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class StartRehearsalViewController: UIViewController {
     @IBOutlet weak var recordButton: UIButton!

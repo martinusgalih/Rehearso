@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+
 class IsiKontenController: UIViewController {
 
     @IBOutlet weak var judulKonten: UILabel!

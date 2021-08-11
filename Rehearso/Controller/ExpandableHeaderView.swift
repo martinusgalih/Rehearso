@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol ExpandableHeaderViewDelegate {
     func toggleSection(header: ExpandableHeaderView, section: Int)
