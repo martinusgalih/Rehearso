@@ -30,7 +30,7 @@ class RehearsalViewController: UIViewController {
     var kontensD: [IsiKonten] = []
     var konten: IsiKonten?
     var gabungan: [IsiKonten]  = []
-  
+
     var audioRecorder: AVAudioRecorder!
     var audioSession: AVAudioSession!
     var duration:Float? = 0
@@ -68,6 +68,7 @@ class RehearsalViewController: UIViewController {
             
             maximumTimeLabel.text = String("\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))")
         }
+      
         guard let cueCard = cueCard else {
             print("error load")
             return
@@ -81,7 +82,6 @@ class RehearsalViewController: UIViewController {
         gabungan = kontensA
         gabungan.insert(contentsOf: kontensD, at: gabungan.count)
         gabungan.insert(contentsOf: kontensB, at: gabungan.count)
-    
         
         // start audio session
         audioSession = AVAudioSession.sharedInstance()
