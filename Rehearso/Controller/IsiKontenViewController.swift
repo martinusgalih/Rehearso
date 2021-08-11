@@ -31,6 +31,7 @@ class IsiKontenViewController: UIViewController {
         super.viewDidLoad()
         isiKontenCollectionView.backgroundColor = UIColor.clear
         if isiData.count == 0 && index == 0 {
+            
             guard let section1 = sections else {
                 print("error load section")
                 return
@@ -40,22 +41,26 @@ class IsiKontenViewController: UIViewController {
             isiData = CoreDataHelper.shared.fetchIsi(section: section1)
 
             isiin = isiData[0]
+            if konten.count == 0 && isiData.count == 1 {
             CoreDataHelper.shared.setIsiKonten(title: "Grab Attention", content: "Do or say something shocking, intriguing, or dramatic to get attention of the audience from the very first minutes.", example: "Hello, everyone. Today is our wonderful day...", isi: isiData[0])
             CoreDataHelper.shared.setIsiKonten(title: "Reason To Listen", content: "Give the audience a reason why your presentation is relevant / worth listening to", example: "You need to know why today is wonderful day...", isi: isiData[0])
             CoreDataHelper.shared.setIsiKonten(title: "State Topic", content: "Announce what your speech is about, and your position.", example: "Bitcoin was not environtmentally friendly", isi: isiData[0])
             CoreDataHelper.shared.setIsiKonten(title: "Credibility Statement", content: "What have you done prior to the presentation that is relevant to the credibility of your presentation", example: "I was observe bitcoin the last 2 years", isi: isiData[0])
             CoreDataHelper.shared.setIsiKonten(title: "Preview Statement", content: "    Introduce main points of your speech.", example: "Our main topic is the impact of bitcoin on the environment", isi: isiData[0])
-        } else if isiData.count == 0 && index == 1 {
+            }
+        } else if isiData.count == 0  && index == 1 {
+            
             guard let section1 = sections else {
                 print("error load section")
                 return
             }
-
             setIsi(part: "1", title: "1", content: "1", example: "1", section: section1)
             isiData = CoreDataHelper.shared.fetchIsi(section: section1)
             isiin = isiData[0]
+            if konten.count == 0 && isiData.count == 1 {
             CoreDataHelper.shared.setIsiKonten(title: "Summary", content: "Restate Thesis and main points", example: "So the bitcoin like 2 side of coin", isi: isiData[0])
             CoreDataHelper.shared.setIsiKonten(title: "Closure", content: "Give the audience statement to close your presentation", example: "Ok Thats all", isi: isiData[0])
+            }
         }
         
         print("Hasil\(isiData)")
@@ -135,6 +140,7 @@ extension IsiKontenViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         if let vc = storyboard?.instantiateViewController(identifier: "InputViewController") as? InputViewController {
             vc.isiin = isiin
             vc.isiKonten = self.konten[indexPath.row]

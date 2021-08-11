@@ -18,7 +18,19 @@ class RehearsalViewController: UIViewController {
     @IBOutlet weak var minimumTimeLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     
+    var sections : [Section] = []
+    var section: Section?
+    var cueCards : [CueCard] = []
     var cueCard: CueCard?
+    var isii : [Isi] = []
+    var isi: Isi?
+    var kontensA: [IsiKonten] = []
+    var kontensB: [IsiKonten] = []
+    var kontensC: [IsiKonten] = []
+    var kontensD: [IsiKonten] = []
+    var konten: IsiKonten?
+    var gabungan: [IsiKonten]  = []
+
     var audioRecorder: AVAudioRecorder!
     var audioSession: AVAudioSession!
     var duration:Float? = 0
@@ -56,6 +68,20 @@ class RehearsalViewController: UIViewController {
             
             maximumTimeLabel.text = String("\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))")
         }
+      
+        guard let cueCard = cueCard else {
+            print("error load")
+            return
+        }
+        sections = CoreDataHelper.shared.fetchSection(cueCard: cueCard)
+        Intro()
+        Body()
+        Conclusion()
+    
+        
+        gabungan = kontensA
+        gabungan.insert(contentsOf: kontensD, at: gabungan.count)
+        gabungan.insert(contentsOf: kontensB, at: gabungan.count)
         
         // start audio session
         audioSession = AVAudioSession.sharedInstance()
@@ -73,6 +99,26 @@ class RehearsalViewController: UIViewController {
         
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
     }
+    func Intro () {
+        isii = CoreDataHelper.shared.fetchIsi(section: sections[0])
+        isi = isii[0]
+        kontensA = CoreDataHelper.shared.fetchIsiKonten(isi: isi ?? isii[0]) {}
+    }
+    func Body () {
+        isii = CoreDataHelper.shared.fetchIsi(section: sections[1])
+        for n in 0...isii.count - 1 {
+            kontensC = CoreDataHelper.shared.fetchIsiKonten(isi: isii[n]) {}
+            self.kontensD.insert(contentsOf: self.kontensC, at: kontensD.count)
+        }
+    }
+    func Conclusion () {
+        isii = CoreDataHelper.shared.fetchIsi(section: sections[2])
+        isi = isii[0]
+        kontensB = CoreDataHelper.shared.fetchIsiKonten(isi: isi ?? isii[0]) {}
+        
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         rehearsalCollection.reloadData()
@@ -288,17 +334,14 @@ extension RehearsalViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titleOfPage.count
-        return examples.count
-        return isiText.count
+        return gabungan.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rehearsalCell", for: indexPath) as! rehearsalCollectionCell
-        
-        cell.judulRehearsal.text = titleOfPage[indexPath.row]
-        cell.exampleRehearsal.text = examples[indexPath.row]
-        cell.isiKontenRehearsal.text = isiText[indexPath.row]
+        let kontens = gabungan[indexPath.row]
+        cell.judulRehearsal.text = kontens.title
+        cell.isiKontenRehearsal.text = kontens.content
         
         return cell
     }

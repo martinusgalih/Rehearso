@@ -68,6 +68,13 @@ class HistoryController: UIViewController {
         tableViewRehearsal.dataSource = self
     }
 
+    @IBAction func editButton(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(identifier: "SectionEditorController") as? SectionEditorController {
+            vc.cueCardUpdate = cueCardUpdate
+//            vc.modalPresentationStyle = .fullScreen
+            self.navigationController?.show(vc, sender: self)
+        }
+    }
     @IBAction func startRehearseButton(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(identifier: "RehearsalViewController") as? RehearsalViewController {
             vc.cueCard = cueCardUpdate
