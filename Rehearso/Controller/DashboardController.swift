@@ -24,6 +24,8 @@ class DashboardController: UIViewController {
         viewDashboard.dropShadow()
         setTableViewCell()
         configureTableView()
+        
+        navigationItem.hidesBackButton = true
     }
     
     private func load(){

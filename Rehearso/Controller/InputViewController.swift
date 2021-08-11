@@ -29,8 +29,6 @@ class InputViewController: UIViewController {
         isiKonten?.title = titleLabel.text
         isiKonten?.content = inputText.text
         CoreDataHelper.shared.save{
-            print("Berhasil Save")
-            print("Berhasil")
             self.navigationController?.popViewController(animated: true)
         }
     }
