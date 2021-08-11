@@ -335,6 +335,9 @@
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fF2-s2-RxD">
                                                 <rect key="frame" x="0.0" y="0.0" width="168" height="181"/>
+                                                <connections>
+                                                    <action selector="startRehearseButtonAction:" destination="a4i-pc-1aV" eventType="touchUpInside" id="bQB-90-WaB"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REHEARSE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLP-t1-f7D">
                                                 <rect key="frame" x="0.0" y="149" width="168" height="16"/>
@@ -520,7 +523,13 @@
                             <constraint firstItem="355-aE-lhr" firstAttribute="leading" secondItem="Ecr-uF-bXs" secondAttribute="leading" id="uce-VF-xki"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Section Data" id="nQQ-Iz-Jkf"/>
+                    <navigationItem key="navigationItem" title="Section Data" id="nQQ-Iz-Jkf">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="q1e-1x-b96">
+                            <connections>
+                                <action selector="saveButtonAction:" destination="a4i-pc-1aV" id="o1O-aI-S3t"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="sectionTableView" destination="4nn-S2-zIo" id="ScA-ZI-TC4"/>
                         <outlet property="titleLabel" destination="E7S-NP-3YD" id="TNa-Me-EMe"/>
@@ -1085,15 +1094,7 @@
                             <constraint firstAttribute="bottom" secondItem="Jhd-JK-x9R" secondAttribute="bottom" id="Kxn-Sg-IVd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Body Editor" id="qwH-Xw-uez">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="QiW-45-DTi">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fxN-vi-fWf">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Body Editor" id="qwH-Xw-uez"/>
                     <connections>
                         <outlet property="isiTableView" destination="EjJ-Gt-rgW" id="Zi5-zW-gzQ"/>
                     </connections>
@@ -1972,6 +1973,9 @@
                                     <navigationItem title="Preview" id="4hh-Uc-0F5">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" style="done" id="cpX-54-elJ">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="backButtonAction:" destination="b4d-tf-FJ0" id="ohl-St-Ma5"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -2058,7 +2062,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="caU-pi-HS1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5115.9420289855079" y="-542.41071428571422"/>
+            <point key="canvasLocation" x="5146" y="-556"/>
         </scene>
         <!--Rehearsal View Controller-->
         <scene sceneID="H5S-uE-GTT">
