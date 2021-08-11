@@ -10,9 +10,11 @@ import UIKit
 class EditDataCollectionViewCell: UICollectionViewCell {
 
 
-    @IBOutlet weak var kontenTitleLabel: UILabel!
-    @IBOutlet weak var exampleTextView: UITextView!
-    @IBOutlet weak var kontenTextView: UITextView!
+    
+    @IBOutlet var kontenTitleLabel: UILabel!
+    @IBOutlet var kontenTextView: UITextView!
+    @IBOutlet var exampleTextView: UITextView!
+    
     
 
     override func awakeFromNib() {

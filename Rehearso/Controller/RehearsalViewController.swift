@@ -327,7 +327,6 @@ extension RehearsalViewController: UICollectionViewDelegate, UICollectionViewDat
         let kontens = gabungan[indexPath.row]
         cell.judulRehearsal.text = kontens.title
         cell.isiKontenRehearsal.text = kontens.content
-        
         return cell
     }
 }

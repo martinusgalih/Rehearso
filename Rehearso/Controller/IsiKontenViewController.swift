@@ -127,7 +127,7 @@ extension IsiKontenViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditDataCollectionViewCell", for: indexPath) as! EditDataCollectionViewCell
         let kontens = konten[indexPath.row]
         cell.kontenTitleLabel.text = kontens.title
-//        cell.exampleTextView.text = kontens.example
+        cell.exampleTextView.text = kontens.example
         cell.kontenTextView.text = kontens.content
         cell.layer.cornerRadius = 10
         return cell

@@ -1479,7 +1479,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZHB-it-O8U">
-                                <rect key="frame" x="20" y="149" width="374" height="613"/>
+                                <rect key="frame" x="20" y="80" width="374" height="747"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OFF-9z-94m">
                                     <size key="itemSize" width="379" height="597"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1487,12 +1487,12 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <view key="backgroundView" contentMode="scaleToFill" id="Jm1-RQ-ruQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="613"/>
+                                    <rect key="frame" x="1" y="0.0" width="374" height="747"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditDataCollectionViewCell" id="ipI-X4-PYR" customClass="EditDataCollectionViewCell" customModule="Rehearso" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="379" height="597"/>
+                                        <rect key="frame" x="0.0" y="75" width="379" height="597"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="e9k-IF-jyN">
                                             <rect key="frame" x="0.0" y="0.0" width="379" height="597"/>
@@ -1504,7 +1504,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="280" id="xUn-3H-92r"/>
                                                     </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Nam liber te conscient to factor tum poen legum odioque civiuda. Nam liber te conscient to factor tum poen legum odioque civiuda. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
@@ -1562,8 +1561,9 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="kontenTextView" destination="Urf-hM-J9a" id="hnt-XX-aA0"/>
-                                            <outlet property="kontenTitleLabel" destination="C1w-YV-LAN" id="cl2-gm-wM1"/>
+                                            <outlet property="exampleTextView" destination="Urf-hM-J9a" id="DzW-hU-aLK"/>
+                                            <outlet property="kontenTextView" destination="WmM-D6-hPp" id="z4h-M8-l4S"/>
+                                            <outlet property="kontenTitleLabel" destination="C1w-YV-LAN" id="Ear-wh-rsu"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1579,8 +1579,8 @@
                         <constraints>
                             <constraint firstItem="FrX-1T-G8H" firstAttribute="top" secondItem="cIl-ix-zKz" secondAttribute="top" constant="255" id="4na-sT-yK5"/>
                             <constraint firstItem="cIl-ix-zKz" firstAttribute="trailing" secondItem="ZHB-it-O8U" secondAttribute="trailing" constant="20" id="9ey-nr-l4g"/>
-                            <constraint firstItem="cIl-ix-zKz" firstAttribute="bottom" secondItem="ZHB-it-O8U" secondAttribute="bottom" constant="100" id="FRx-uo-eLW"/>
-                            <constraint firstItem="ZHB-it-O8U" firstAttribute="top" secondItem="cIl-ix-zKz" secondAttribute="top" constant="105" id="Nh1-a8-7GT"/>
+                            <constraint firstItem="cIl-ix-zKz" firstAttribute="bottom" secondItem="ZHB-it-O8U" secondAttribute="bottom" constant="35" id="FRx-uo-eLW"/>
+                            <constraint firstItem="ZHB-it-O8U" firstAttribute="top" secondItem="cIl-ix-zKz" secondAttribute="top" constant="36" id="Nh1-a8-7GT"/>
                             <constraint firstItem="FrX-1T-G8H" firstAttribute="trailing" secondItem="cIl-ix-zKz" secondAttribute="trailing" id="d64-Av-W7s"/>
                             <constraint firstItem="FrX-1T-G8H" firstAttribute="leading" secondItem="cIl-ix-zKz" secondAttribute="leading" id="icW-cN-c24"/>
                             <constraint firstAttribute="bottom" secondItem="FrX-1T-G8H" secondAttribute="bottom" id="jcS-Hx-JOy"/>
@@ -1797,37 +1797,18 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="280" id="drM-QR-HyW"/>
                                                             </constraints>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                         </textView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCv-T9-e8f">
-                                                            <rect key="frame" x="25" y="384" width="308" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <color key="textColor" red="0.050980392159999999" green="0.096737138929999994" blue="0.1843240857" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeH-0I-H4M">
-                                                            <rect key="frame" x="25" y="412.5" width="308" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.79607843140000001" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="HrT-wR-yN3" firstAttribute="top" secondItem="ctO-a1-thI" secondAttribute="top" constant="30" id="9JC-ER-hrF"/>
                                                         <constraint firstItem="2Ft-Zq-FbT" firstAttribute="top" secondItem="HrT-wR-yN3" secondAttribute="bottom" constant="30" id="G9x-Dz-txK"/>
-                                                        <constraint firstItem="MeH-0I-H4M" firstAttribute="top" secondItem="xCv-T9-e8f" secondAttribute="bottom" constant="8" id="IqN-yz-aWC"/>
                                                         <constraint firstAttribute="trailing" secondItem="HrT-wR-yN3" secondAttribute="trailing" constant="20" id="NOR-kI-Y6W"/>
-                                                        <constraint firstAttribute="trailing" secondItem="MeH-0I-H4M" secondAttribute="trailing" constant="25" id="PQq-d0-ksx"/>
                                                         <constraint firstAttribute="trailing" secondItem="2Ft-Zq-FbT" secondAttribute="trailing" constant="20" id="ddC-mS-2Z0"/>
-                                                        <constraint firstAttribute="trailing" secondItem="xCv-T9-e8f" secondAttribute="trailing" constant="25" id="g6l-L7-wev"/>
-                                                        <constraint firstItem="xCv-T9-e8f" firstAttribute="top" secondItem="2Ft-Zq-FbT" secondAttribute="bottom" constant="20" id="lCj-Xt-MKh"/>
-                                                        <constraint firstItem="MeH-0I-H4M" firstAttribute="leading" secondItem="ctO-a1-thI" secondAttribute="leading" constant="25" id="o5m-lj-Oz2"/>
                                                         <constraint firstItem="2Ft-Zq-FbT" firstAttribute="leading" secondItem="ctO-a1-thI" secondAttribute="leading" constant="20" id="rZs-hV-sbR"/>
-                                                        <constraint firstItem="xCv-T9-e8f" firstAttribute="leading" secondItem="ctO-a1-thI" secondAttribute="leading" constant="25" id="vhh-PT-uHb"/>
                                                         <constraint firstItem="HrT-wR-yN3" firstAttribute="leading" secondItem="ctO-a1-thI" secondAttribute="leading" constant="20" id="wZv-NS-f8v"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -1844,7 +1825,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <outlet property="exampleRehearsal" destination="MeH-0I-H4M" id="TrP-Js-u6f"/>
                                                     <outlet property="isiKontenRehearsal" destination="2Ft-Zq-FbT" id="iYb-WI-gXm"/>
                                                     <outlet property="judulRehearsal" destination="HrT-wR-yN3" id="Dow-wO-wSU"/>
                                                 </connections>

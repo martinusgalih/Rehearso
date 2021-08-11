@@ -11,5 +11,5 @@ class rehearsalCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var judulRehearsal: UILabel!
     @IBOutlet weak var isiKontenRehearsal: UITextView!
-    @IBOutlet weak var exampleRehearsal: UILabel!
+
 }
