@@ -71,7 +71,7 @@ class HistoryController: UIViewController {
     }
 
     @IBAction func startRehearseButton(_ sender: Any) {
-        if let vc = storyboard?.instantiateViewController(identifier: "StartRehearsalController") as? StartRehearsalViewController {
+        if let vc = storyboard?.instantiateViewController(identifier: "RehearsalViewController") as? RehearsalViewController {
             vc.cueCard = cueCardUpdate
             vc.modalPresentationStyle = .fullScreen
             self.navigationController?.present(vc, animated: true)
