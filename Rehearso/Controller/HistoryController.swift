@@ -86,7 +86,7 @@ class HistoryController: UIViewController {
     }
 
     @IBAction func previewButtonAction(_ sender: Any) {
-        if let vc = storyboard?.instantiateViewController(identifier: "PreviewController") as? PreviewController {
+        if let vc = storyboard?.instantiateViewController(identifier: "PreviewAlternatifViewController") as? PreviewAlternatifViewController {
             vc.cueCard = cueCardUpdate
             vc.modalPresentationStyle = .fullScreen
             self.navigationController?.present(vc, animated: true)

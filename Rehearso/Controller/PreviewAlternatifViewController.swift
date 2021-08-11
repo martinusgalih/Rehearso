@@ -58,7 +58,6 @@ class PreviewAlternatifViewController: UIViewController {
         isii = CoreDataHelper.shared.fetchIsi(section: sections[2])
         isi = isii[0]
         kontensB = CoreDataHelper.shared.fetchIsiKonten(isi: isi ?? isii[0]) {}
-        
     }
     private func load(){
         guard let isi = isi else {
@@ -68,7 +67,11 @@ class PreviewAlternatifViewController: UIViewController {
         kontensA = CoreDataHelper.shared.fetchIsiKonten(isi: isi) {}
         
     }
-
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
 }
 
 extension PreviewAlternatifViewController: UITableViewDataSource, UITableViewDelegate{

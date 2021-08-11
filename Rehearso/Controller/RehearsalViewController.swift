@@ -115,9 +115,7 @@ class RehearsalViewController: UIViewController {
         isii = CoreDataHelper.shared.fetchIsi(section: sections[2])
         isi = isii[0]
         kontensB = CoreDataHelper.shared.fetchIsiKonten(isi: isi ?? isii[0]) {}
-        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -203,12 +201,9 @@ class RehearsalViewController: UIViewController {
             let recordingName = alert.textFields![0].text
             
             CoreDataHelper.shared.setRehearsal(name: recordingName!, duration: Float(lastTimeRecorder), timestamp: Date(), audioName: self.filename, cueCard: cue)
-            if let vc = self.storyboard?.instantiateViewController(identifier: "HistoryController") as? HistoryController {
-                vc.cueCardUpdate = self.cueCard
-                self.present(vc, animated: true)
-            }
-            
+
             self.notifyUser(title: "Saved", message: "Your rehearsal is now saved. Keep repeat your rehearsal")
+            self.doneButtonBar.title = "Back"
         }))
         
         self.present(alert, animated: true)
