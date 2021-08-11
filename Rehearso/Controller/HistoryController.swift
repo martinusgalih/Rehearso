@@ -57,8 +57,6 @@ class HistoryController: UIViewController {
     private func loadSection() {
         section = CoreDataHelper.shared.fetchSection(cueCard: cueCardUpdate!)
     }
-    
-    
 
     private func setTableViewCell() {
         let nib = UINib(nibName: "ReahearsalCell", bundle: nil)
@@ -175,8 +173,8 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
 
             // remove file
             do {
-                print(type(of: self.getFileURL(audioName: audio!)))
                 try self.fileManager.removeItem(at: self.getFileURL(audioName: audio!))
+                self.notifyUser(title: "Rehearsal Deleted", message: "Your rehearsal history successfully deleted")
                 self.load()
             } catch is NSError {
                 print("error remove file")
@@ -186,5 +184,13 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
         alert.addAction(UIAlertAction(title: "Batal", style: .cancel, handler: nil))
 
         self.present(alert, animated: true)
+    }
+    
+    func notifyUser(title: String, message: String) -> Void {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+      present(alert, animated: true, completion: nil)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+       self.dismiss(animated: true)
+      }
     }
 }
