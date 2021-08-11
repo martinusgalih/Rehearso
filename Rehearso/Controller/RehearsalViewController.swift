@@ -330,9 +330,5 @@ extension RehearsalViewController: UICollectionViewDelegate, UICollectionViewDat
         
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        myPage.currentPage = indexPath.row
-    }
 }
 

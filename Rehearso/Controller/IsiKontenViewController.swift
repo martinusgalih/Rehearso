@@ -7,14 +7,14 @@
 
 import UIKit
 import CoreData
-
 class IsiKontenViewController: UIViewController {
 
     @IBOutlet weak var judulKonten: UILabel!
+    @IBOutlet weak var exampleKonten: UILabel!
     @IBOutlet weak var textInputKonten: UITextView!
     @IBOutlet weak var isiKontenCollectionView: UICollectionView!
-    @IBOutlet weak var exampleKonten: UITextView!
     
+    @IBOutlet var selfPageController: UIPageControl!
     
     var firstLoad = true
     
@@ -116,13 +116,7 @@ extension IsiKontenViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-////        let itemWidth = collectionView.frame.size.width
-////        let itemHeight = (collectionView.frame.size.height)
-//        let itemWidth = 340
-//        let itemHeight = 667
-//        return CGSize(width: itemWidth, height: itemHeight)
-//    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return konten.count
         
@@ -133,7 +127,7 @@ extension IsiKontenViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditDataCollectionViewCell", for: indexPath) as! EditDataCollectionViewCell
         let kontens = konten[indexPath.row]
         cell.kontenTitleLabel.text = kontens.title
-        cell.exampleTextView.text = kontens.example
+//        cell.exampleTextView.text = kontens.example
         cell.kontenTextView.text = kontens.content
         cell.layer.cornerRadius = 10
         return cell
@@ -149,4 +143,3 @@ extension IsiKontenViewController: UICollectionViewDelegate, UICollectionViewDat
         }
     }
 }
-
