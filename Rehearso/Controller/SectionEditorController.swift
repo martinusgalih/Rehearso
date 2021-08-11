@@ -26,22 +26,25 @@ class SectionEditorController: UIViewController {
         super.viewDidLoad()
         sectionTableView.delegate = self
         sectionTableView.dataSource = self
+        
+        navigationItem.hidesBackButton = true
+        
         titleLabel.text = titleVC
         guard let cueCard2 = cueCardUpdate else {
             print("error cueCard")
             return
         }
         print("Hasil Jumlah\(sectionData.count)")
-        
         load()
-        
-        
         viewSectionData.dropShadow()
-//        viewIntro.dropShadow()
-//        viewBody.dropShadow()
-//        viewConclusion.dropShadow()
     }
     
+    @IBAction func previewButton(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "PreviewAlternatifViewController") as? PreviewAlternatifViewController
+        vc?.cueCard = cueCardUpdate
+        self.navigationController?.pushViewController(vc!, animated: false)
+        
+    }
     private func load(){
         guard let cueCard = cueCardUpdate else {
             print("error load")
@@ -50,6 +53,32 @@ class SectionEditorController: UIViewController {
         
         sectionData = CoreDataHelper.shared.fetchSection(cueCard: cueCard)
         sectionTableView.reloadData()
+    }
+    
+    
+    @IBAction func saveButtonAction(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(identifier: "DashboardController") as? DashboardController {
+
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        self.notifyUser(title: "Cue Card saved", message: "Your cue card data successfully saved")
+    }
+    
+    @IBAction func startRehearseButtonAction(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(identifier: "RehearsalViewController") as? RehearsalViewController {
+                    vc.cueCard = cueCardUpdate
+                    vc.modalPresentationStyle = .fullScreen
+                    self.navigationController?.present(vc, animated: true)
+                }
+    }
+    
+    
+    func notifyUser(title: String, message: String) -> Void {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+      present(alert, animated: true, completion: nil)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+       self.dismiss(animated: true)
+      }
     }
 }
 
@@ -80,6 +109,7 @@ extension SectionEditorController: UITableViewDelegate, UITableViewDataSource {
         cell.layer.mask = maskLayer
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 1 {
             let vc = storyboard?.instantiateViewController(identifier: "IsiViewController") as? IsiViewController
             vc!.section = self.sectionData[indexPath.row]

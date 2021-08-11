@@ -65,9 +65,9 @@ class CoreDataHelper {
         isii.part = part
         isii.section = section
         save{
-            CoreDataHelper.shared.setIsiKonten(title: "Grab Attention", content: "Do or say something shocking, intriguing, or dramatic to get attention of the audience from the very first minutes.", example: "Morgan robertson once wrote a book called The Wreck Of Titan.", isi: isii)
-            CoreDataHelper.shared.setIsiKonten(title: "Reason To Listen", content: "Give the audience a reason why your presentation is relevant / worth listening to", example: "Morgan robertson once wrote a book called The Wreck Of Titan.", isi: isii)
-            CoreDataHelper.shared.setIsiKonten(title: "State Topic", content: "Announce what your speech is about, and your position.", example: "Morgan robertson once wrote a book called The Wreck Of Titan.", isi: isii)
+            CoreDataHelper.shared.setIsiKonten(title: "Introduce your topic", content: "You need to explain your topic to those people who do not know about it. Do not go into the details, simple definition is enough. This speech element is required.", example: "Today topic is bitcoin. Bitcoin know as...", isi: isii)
+            CoreDataHelper.shared.setIsiKonten(title: "Explain your point", content: "This is where you explain your view in detail. State your point, State a Reason, Give an Example, Restate the Point", example: "Bitcoin and cryptocurrency is relatable. Example ....", isi: isii)
+            CoreDataHelper.shared.setIsiKonten(title: "Transition to next point", content: "Announce what your speech is about, and your position.", example: "Morgan robertson once wrote a book called The Wreck Of Titan.", isi: isii)
         }
     }
     

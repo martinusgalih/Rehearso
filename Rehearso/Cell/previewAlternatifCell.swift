@@ -10,7 +10,8 @@ import UIKit
 class previewAlternatifCell: UITableViewCell {
 
     @IBOutlet weak var judulPreviewCell: UILabel!
-    @IBOutlet weak var kontenPreviewCell: UITextView!
+    @IBOutlet var kontenPreviewCell: UITextView!
+    @IBOutlet var kontenPreviewText: UILabel!
     
     
     override func awakeFromNib() {

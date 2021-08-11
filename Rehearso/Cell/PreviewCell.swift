@@ -11,6 +11,7 @@ class PreviewCell: UITableViewCell {
 
     @IBOutlet weak var hasilPreview: UIView!
     @IBOutlet weak var isiLabel: UILabel!
+    @IBOutlet var judulLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -57,8 +57,6 @@ class HistoryController: UIViewController {
     private func loadSection() {
         section = CoreDataHelper.shared.fetchSection(cueCard: cueCardUpdate!)
     }
-    
-    
 
     private func setTableViewCell() {
         let nib = UINib(nibName: "ReahearsalCell", bundle: nil)
@@ -70,8 +68,15 @@ class HistoryController: UIViewController {
         tableViewRehearsal.dataSource = self
     }
 
+    @IBAction func editButton(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(identifier: "SectionEditorController") as? SectionEditorController {
+            vc.cueCardUpdate = cueCardUpdate
+//            vc.modalPresentationStyle = .fullScreen
+            self.navigationController?.show(vc, sender: self)
+        }
+    }
     @IBAction func startRehearseButton(_ sender: Any) {
-        if let vc = storyboard?.instantiateViewController(identifier: "StartRehearsalController") as? StartRehearsalViewController {
+        if let vc = storyboard?.instantiateViewController(identifier: "RehearsalViewController") as? RehearsalViewController {
             vc.cueCard = cueCardUpdate
             vc.modalPresentationStyle = .fullScreen
             self.navigationController?.present(vc, animated: true)
@@ -79,7 +84,7 @@ class HistoryController: UIViewController {
     }
 
     @IBAction func previewButtonAction(_ sender: Any) {
-        if let vc = storyboard?.instantiateViewController(identifier: "PreviewController") as? PreviewController {
+        if let vc = storyboard?.instantiateViewController(identifier: "PreviewAlternatifViewController") as? PreviewAlternatifViewController {
             vc.cueCard = cueCardUpdate
             vc.modalPresentationStyle = .fullScreen
             self.navigationController?.present(vc, animated: true)
@@ -168,8 +173,8 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
 
             // remove file
             do {
-                print(type(of: self.getFileURL(audioName: audio!)))
                 try self.fileManager.removeItem(at: self.getFileURL(audioName: audio!))
+                self.notifyUser(title: "Rehearsal Deleted", message: "Your rehearsal history successfully deleted")
                 self.load()
             } catch is NSError {
                 print("error remove file")
@@ -179,5 +184,13 @@ extension HistoryController: UITableViewDataSource, UITableViewDelegate{
         alert.addAction(UIAlertAction(title: "Batal", style: .cancel, handler: nil))
 
         self.present(alert, animated: true)
+    }
+    
+    func notifyUser(title: String, message: String) -> Void {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+      present(alert, animated: true, completion: nil)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+       self.dismiss(animated: true)
+      }
     }
 }

@@ -24,6 +24,8 @@ class DashboardController: UIViewController {
         viewDashboard.dropShadow()
         setTableViewCell()
         configureTableView()
+        
+        navigationItem.hidesBackButton = true
     }
     
     private func load(){
@@ -145,12 +147,21 @@ extension DashboardController: UITableViewDataSource, UITableViewDelegate{
         
         alert.addAction(UIAlertAction(title: "Hapus", style: .destructive, handler: { _ in
             CoreDataHelper.shared.deleteCueCard(cueCard: cue)
+            self.notifyUser(title: "Cue card deleted", message: "Your cue card successfully deleted")
             self.load()
         }))
         
         alert.addAction(UIAlertAction(title: "Batal", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)
+    }
+    
+    func notifyUser(title: String, message: String) -> Void {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+      present(alert, animated: true, completion: nil)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+       self.dismiss(animated: true)
+      }
     }
 }
 
