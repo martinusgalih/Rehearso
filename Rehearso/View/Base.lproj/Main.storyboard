@@ -666,7 +666,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDI-cP-rvO">
                                         <rect key="frame" x="0.0" y="0.0" width="115" height="131"/>
                                         <connections>
-                                            <segue destination="1ch-57-uMJ" kind="show" id="j7T-in-SUx"/>
+                                            <action selector="startRehearseButton:" destination="reO-cc-EWb" eventType="touchUpInside" id="bdp-sc-f6i"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1163,7 +1163,6 @@
         <!--View Controller-->
         <scene sceneID="FFy-1c-wDe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jMK-gy-0se" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="x32-gg-b2j" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g84-0g-VQP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -1431,6 +1430,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="gms-aI-aHi"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jMK-gy-0se" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6210" y="856"/>
         </scene>
@@ -1751,8 +1751,13 @@
                                 <color key="barTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="Rehearsal" id="Kgn-9s-CQh">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" style="done" id="s9m-Y1-z4U">
+                                        <barButtonItem key="leftBarButtonItem" title="Done" style="done" id="s9m-Y1-z4U">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Reset" id="qUu-Kb-mxg">
+                                            <connections>
+                                                <action selector="resetButtonBarAction:" destination="tb6-sw-2GR" id="Tbi-Fl-wxs"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -1850,20 +1855,15 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jjc-1V-QPB">
-                                        <rect key="frame" x="30" y="539" width="314" height="5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="5" id="Udm-tl-Suf"/>
-                                        </constraints>
-                                        <color key="progressTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clb-OP-fyg">
                                         <rect key="frame" x="30" y="554" width="53" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="dij-0S-wVJ">
+                                        <rect key="frame" x="28" y="521" width="318" height="31"/>
+                                    </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vha-zU-we5">
                                         <rect key="frame" x="291" y="554" width="53" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
@@ -1895,6 +1895,9 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="70"/>
                                             </preferredSymbolConfiguration>
                                         </state>
+                                        <connections>
+                                            <action selector="startRecordingButtonAction:" destination="tb6-sw-2GR" eventType="touchUpInside" id="BgC-R3-xmi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbj-ud-UoW">
                                         <rect key="frame" x="60" y="604" width="41" height="40"/>
@@ -1912,24 +1915,26 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.79607843140000001" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="jjc-1V-QPB" firstAttribute="leading" secondItem="8mp-1B-Z5f" secondAttribute="leading" constant="30" id="2l6-aq-8DD"/>
-                                    <constraint firstItem="Clb-OP-fyg" firstAttribute="top" secondItem="jjc-1V-QPB" secondAttribute="bottom" constant="10" id="5ek-3S-aXe"/>
+                                    <constraint firstAttribute="trailing" secondItem="dij-0S-wVJ" secondAttribute="trailing" constant="30" id="2rh-ky-b7H"/>
                                     <constraint firstItem="Clb-OP-fyg" firstAttribute="leading" secondItem="8mp-1B-Z5f" secondAttribute="leading" constant="30" id="6Cb-M2-4vB"/>
                                     <constraint firstAttribute="trailing" secondItem="Yfn-gr-8rS" secondAttribute="trailing" constant="8" id="8M6-hp-5g1"/>
                                     <constraint firstItem="y2u-4V-2qP" firstAttribute="leading" secondItem="gbj-ud-UoW" secondAttribute="trailing" constant="46" id="ByD-Gn-qBH"/>
                                     <constraint firstAttribute="bottom" secondItem="7I1-VN-5dy" secondAttribute="bottom" constant="20" symbolic="YES" id="Cnd-hQ-I00"/>
+                                    <constraint firstItem="dij-0S-wVJ" firstAttribute="leading" secondItem="8mp-1B-Z5f" secondAttribute="leading" constant="30" id="FEh-T3-QqB"/>
                                     <constraint firstAttribute="trailing" secondItem="7I1-VN-5dy" secondAttribute="trailing" constant="58" id="Gct-IS-dhz"/>
                                     <constraint firstAttribute="bottom" secondItem="Yfn-gr-8rS" secondAttribute="bottom" constant="145" id="IVW-YJ-C7U"/>
                                     <constraint firstItem="Yfn-gr-8rS" firstAttribute="top" secondItem="8mp-1B-Z5f" secondAttribute="top" constant="8" id="Idh-cW-HgA"/>
                                     <constraint firstItem="7I1-VN-5dy" firstAttribute="leading" secondItem="y2u-4V-2qP" secondAttribute="trailing" constant="46" id="Kun-QB-ZwK"/>
-                                    <constraint firstItem="Vha-zU-we5" firstAttribute="top" secondItem="jjc-1V-QPB" secondAttribute="bottom" constant="10" id="Udu-Z9-rIt"/>
-                                    <constraint firstItem="jjc-1V-QPB" firstAttribute="top" secondItem="Yfn-gr-8rS" secondAttribute="bottom" constant="20" id="Vpi-r7-KGN"/>
+                                    <constraint firstItem="Vha-zU-we5" firstAttribute="top" secondItem="dij-0S-wVJ" secondAttribute="bottom" constant="3" id="MU6-tR-2y1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vha-zU-we5" secondAttribute="trailing" constant="30" id="THC-iW-uxX"/>
+                                    <constraint firstItem="Clb-OP-fyg" firstAttribute="top" secondItem="dij-0S-wVJ" secondAttribute="bottom" constant="3" id="Tnt-NC-BTK"/>
                                     <constraint firstAttribute="trailing" secondItem="Vha-zU-we5" secondAttribute="trailing" constant="30" id="dTV-26-Brk"/>
+                                    <constraint firstItem="Clb-OP-fyg" firstAttribute="leading" secondItem="8mp-1B-Z5f" secondAttribute="leading" constant="30" id="ddd-ov-AMO"/>
                                     <constraint firstAttribute="bottom" secondItem="gbj-ud-UoW" secondAttribute="bottom" constant="20" symbolic="YES" id="fzl-0z-CGf"/>
                                     <constraint firstAttribute="bottom" secondItem="y2u-4V-2qP" secondAttribute="bottom" constant="8" id="iEO-5Y-UzO"/>
                                     <constraint firstItem="gbj-ud-UoW" firstAttribute="leading" secondItem="8mp-1B-Z5f" secondAttribute="leading" constant="60" id="kd1-3n-EtS"/>
                                     <constraint firstItem="Yfn-gr-8rS" firstAttribute="leading" secondItem="8mp-1B-Z5f" secondAttribute="leading" constant="8" id="ok4-l8-Jjo"/>
-                                    <constraint firstAttribute="trailing" secondItem="jjc-1V-QPB" secondAttribute="trailing" constant="30" id="zbA-oZ-YBH"/>
+                                    <constraint firstItem="y2u-4V-2qP" firstAttribute="top" secondItem="dij-0S-wVJ" secondAttribute="bottom" constant="25" id="rUl-Yp-oPv"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1950,13 +1955,19 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="doneButtonBar" destination="s9m-Y1-z4U" id="hRM-qv-Ydm"/>
+                        <outlet property="maximumTimeLabel" destination="Vha-zU-we5" id="hEj-ND-F8I"/>
+                        <outlet property="minimumTimeLabel" destination="Clb-OP-fyg" id="WEe-JP-mVo"/>
                         <outlet property="myPage" destination="a3c-VJ-edd" id="Gz4-S5-tJi"/>
+                        <outlet property="recordButton" destination="y2u-4V-2qP" id="xXl-vc-JGr"/>
+                        <outlet property="recordingSlider" destination="dij-0S-wVJ" id="vcO-4r-77P"/>
                         <outlet property="rehearsalCollection" destination="Yfn-gr-8rS" id="mMU-5V-HMw"/>
+                        <outlet property="resetButtonBar" destination="qUu-Kb-mxg" id="0Fr-UZ-l3h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WNr-C2-lbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4186" y="147"/>
+            <point key="canvasLocation" x="4185.507246376812" y="146.65178571428569"/>
         </scene>
         <!--Preview Alternatif View Controller-->
         <scene sceneID="6gf-L7-zkl">

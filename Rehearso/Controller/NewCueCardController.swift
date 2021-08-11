@@ -26,6 +26,7 @@ class NewCueCardController: UIViewController {
     var sectionData : [Section] = []
     var section : CueCard?
     var selectedDate: Date?
+    var lengthInSecond: String = ""
     
     let datePresentationPicker = UIDatePicker()
     let durationPresentationPicker = UIDatePicker()
@@ -78,10 +79,11 @@ class NewCueCardController: UIViewController {
             if syncToCalender.isOn {
                 self.syncWithCalendarAction()
                 calendarSynced = true
-                
             }
             
-            CoreDataHelper.shared.setCueCard(name: cueName, date: date, length: length, synced: calendarSynced)
+            print("length ====== \(lengthInSecond)")
+            
+            CoreDataHelper.shared.setCueCard(name: cueName, date: date, length: lengthInSecond, synced: calendarSynced)
             load()
             
             var sectionData : [Section] = []
@@ -225,6 +227,8 @@ class NewCueCardController: UIViewController {
         let hours = (Int(duration) / 3600)
         let minutes = (Int(duration) % 3600) / 60
         let seconds = (Int(duration) % 3600) % 60
+        
+        lengthInSecond = String(duration)
         
         tfDuration.text = ("\(String(format: "%02d", hours)) jam \(String(format: "%02d", minutes)) menit \(String(format: "%02d", seconds)) detik")
         self.view.endEditing(true)
