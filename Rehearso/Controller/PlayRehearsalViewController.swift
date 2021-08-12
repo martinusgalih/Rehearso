@@ -16,6 +16,7 @@ class PlayRehearsalViewController: UIViewController {
     var audioName: String = ""
     var audioPlayer: AVAudioPlayer!
     var audioSession: AVAudioSession!
+    var pausedTime: TimeInterval = 0
     
     @IBOutlet weak var playSlider: UISlider!
     @IBOutlet weak var maximumLength: UILabel!
@@ -65,13 +66,19 @@ class PlayRehearsalViewController: UIViewController {
     }
     
     @IBAction func playRehearsalButtonAction(_ sender: Any) {
-        playButton.setImage(UIImage(systemName: "pause.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: getFileURL(audioName: audioName))
-            audioPlayer.play()
-            
-        } catch is NSError {
-            print("Error playing")
+        if audioPlayer.isPlaying {
+            playButton.setImage(UIImage(systemName: "play.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)
+            audioPlayer.pause()
+            pausedTime = audioPlayer.currentTime
+        } else {
+            playButton.setImage(UIImage(systemName: "pause.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)), for: .normal)
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: getFileURL(audioName: audioName))
+                audioPlayer.play()
+                
+            } catch is NSError {
+                print("Error playing")
+            }
         }
     }
     

@@ -197,6 +197,8 @@ class RehearsalViewController: UIViewController {
             self.audioRecorder = nil
             let recordingName = alert.textFields![0].text
             
+            print(lastTimeRecorder)
+            
             CoreDataHelper.shared.setRehearsal(name: recordingName!, duration: Float(lastTimeRecorder), timestamp: Date(), audioName: self.filename, cueCard: cue)
 
             self.notifyUser(title: "Saved", message: "Your rehearsal is now saved. Keep repeat your rehearsal")
@@ -215,7 +217,8 @@ class RehearsalViewController: UIViewController {
     }
     
     @IBAction func doneButtonBarAction(_ sender: Any) {
-        stopRecording()
+        pauseRecording()
+        self.recordButton.setImage(UIImage(systemName: "play.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .large)), for: .normal)
         if audioRecorder == nil {
             self.dismiss(animated: true, completion: nil)
         } else {
