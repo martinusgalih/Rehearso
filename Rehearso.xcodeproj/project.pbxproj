@@ -7,12 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		174506BB26CD8CB10052C822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174506BA26CD8CB10052C822 /* Assets.xcassets */; };
+		174506C226CD8CB10052C822 /* RehearsoForWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 174506C126CD8CB10052C822 /* RehearsoForWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		174506C726CD8CB10052C822 /* RehearsoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174506C626CD8CB10052C822 /* RehearsoApp.swift */; };
+		174506C926CD8CB10052C822 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174506C826CD8CB10052C822 /* ContentView.swift */; };
+		174506CB26CD8CB10052C822 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174506CA26CD8CB10052C822 /* NotificationController.swift */; };
+		174506CD26CD8CB10052C822 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174506CC26CD8CB10052C822 /* NotificationView.swift */; };
+		174506CF26CD8CB10052C822 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174506CE26CD8CB10052C822 /* ComplicationController.swift */; };
+		174506D126CD8CB20052C822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174506D026CD8CB20052C822 /* Assets.xcassets */; };
+		174506D426CD8CB20052C822 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174506D326CD8CB20052C822 /* Preview Assets.xcassets */; };
+		174506E026CD8CB20052C822 /* RehearsoForWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174506DF26CD8CB20052C822 /* RehearsoForWatchTests.swift */; };
+		174506EB26CD8CB20052C822 /* RehearsoForWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174506EA26CD8CB20052C822 /* RehearsoForWatchUITests.swift */; };
+		174506EF26CD8CB20052C822 /* RehearsoForWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 174506B826CD8CB00052C822 /* RehearsoForWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1794B46E26BE4545001564CC /* SectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1794B46D26BE4545001564CC /* SectionViewController.swift */; };
 		1794B47026BE459D001564CC /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1794B46F26BE459D001564CC /* SectionTableViewCell.swift */; };
 		1794B47226BE4902001564CC /* IsiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1794B47126BE4902001564CC /* IsiViewController.swift */; };
 		1794B47426BE59E4001564CC /* IsiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1794B47326BE59E4001564CC /* IsiTableViewCell.swift */; };
 		1794B47626BE5B54001564CC /* IsiKontenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1794B47526BE5B54001564CC /* IsiKontenViewController.swift */; };
 		179B75B526BD6C7F0066E2DB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179B75B426BD6C7F0066E2DB /* Helper.swift */; };
+		17C66C3126C5928B00F9D268 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C66C2826C5926E00F9D268 /* CoreData.framework */; };
+		17C66C3326C5928C00F9D268 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C66C2C26C5928600F9D268 /* UIKit.framework */; };
+		17C66C3526C5961100F9D268 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C66C2A26C5927700F9D268 /* AVFoundation.framework */; };
 		17CB966926BE868600341011 /* PlayRehearsalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB966826BE868600341011 /* PlayRehearsalViewController.swift */; };
 		17CB966B26BE947000341011 /* StartRehearsalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB966A26BE947000341011 /* StartRehearsalViewController.swift */; };
 		8B149F2126C24B150044DB5F /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B149F2026C24B150044DB5F /* PreviewViewController.swift */; };
@@ -43,13 +58,91 @@
 		90A5EF8D26C0011D00B27EBF /* EditDataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5EF8C26C0011D00B27EBF /* EditDataCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		174506C326CD8CB10052C822 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B9A92EA26BA513C006F14BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 174506C026CD8CB10052C822;
+			remoteInfo = "RehearsoForWatch Extension";
+		};
+		174506DC26CD8CB20052C822 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B9A92EA26BA513C006F14BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 174506C026CD8CB10052C822;
+			remoteInfo = "RehearsoForWatch Extension";
+		};
+		174506E726CD8CB20052C822 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B9A92EA26BA513C006F14BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 174506B726CD8CB00052C822;
+			remoteInfo = RehearsoForWatch;
+		};
+		174506ED26CD8CB20052C822 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B9A92EA26BA513C006F14BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 174506B726CD8CB00052C822;
+			remoteInfo = RehearsoForWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		174506F026CD8CB20052C822 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				174506EF26CD8CB20052C822 /* RehearsoForWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		174506F326CD8CB20052C822 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				174506C226CD8CB10052C822 /* RehearsoForWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		174506B826CD8CB00052C822 /* RehearsoForWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RehearsoForWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		174506BA26CD8CB10052C822 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		174506BC26CD8CB10052C822 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		174506C126CD8CB10052C822 /* RehearsoForWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "RehearsoForWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		174506C626CD8CB10052C822 /* RehearsoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehearsoApp.swift; sourceTree = "<group>"; };
+		174506C826CD8CB10052C822 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		174506CA26CD8CB10052C822 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		174506CC26CD8CB10052C822 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		174506CE26CD8CB10052C822 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		174506D026CD8CB20052C822 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		174506D326CD8CB20052C822 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		174506D526CD8CB20052C822 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		174506D626CD8CB20052C822 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		174506DB26CD8CB20052C822 /* RehearsoForWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RehearsoForWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		174506DF26CD8CB20052C822 /* RehearsoForWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehearsoForWatchTests.swift; sourceTree = "<group>"; };
+		174506E126CD8CB20052C822 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		174506E626CD8CB20052C822 /* RehearsoForWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RehearsoForWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		174506EA26CD8CB20052C822 /* RehearsoForWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehearsoForWatchUITests.swift; sourceTree = "<group>"; };
+		174506EC26CD8CB20052C822 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1794B46D26BE4545001564CC /* SectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewController.swift; sourceTree = "<group>"; };
 		1794B46F26BE459D001564CC /* SectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
 		1794B47126BE4902001564CC /* IsiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsiViewController.swift; sourceTree = "<group>"; };
 		1794B47326BE59E4001564CC /* IsiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsiTableViewCell.swift; sourceTree = "<group>"; };
 		1794B47526BE5B54001564CC /* IsiKontenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsiKontenViewController.swift; sourceTree = "<group>"; };
 		179B75B426BD6C7F0066E2DB /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		17C66C2826C5926E00F9D268 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		17C66C2A26C5927700F9D268 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		17C66C2C26C5928600F9D268 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		17CB966826BE868600341011 /* PlayRehearsalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayRehearsalViewController.swift; sourceTree = "<group>"; };
 		17CB966A26BE947000341011 /* StartRehearsalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRehearsalViewController.swift; sourceTree = "<group>"; };
 		8B149F2026C24B150044DB5F /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -84,16 +177,91 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8B9A92EF26BA513C006F14BF /* Frameworks */ = {
+		174506BE26CD8CB10052C822 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		174506D826CD8CB20052C822 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		174506E326CD8CB20052C822 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B9A92EF26BA513C006F14BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C66C3126C5928B00F9D268 /* CoreData.framework in Frameworks */,
+				17C66C3326C5928C00F9D268 /* UIKit.framework in Frameworks */,
+				17C66C3526C5961100F9D268 /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		174506B926CD8CB00052C822 /* RehearsoForWatch */ = {
+			isa = PBXGroup;
+			children = (
+				174506BA26CD8CB10052C822 /* Assets.xcassets */,
+				174506BC26CD8CB10052C822 /* Info.plist */,
+			);
+			path = RehearsoForWatch;
+			sourceTree = "<group>";
+		};
+		174506C526CD8CB10052C822 /* RehearsoForWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				174506C626CD8CB10052C822 /* RehearsoApp.swift */,
+				174506C826CD8CB10052C822 /* ContentView.swift */,
+				174506CA26CD8CB10052C822 /* NotificationController.swift */,
+				174506CC26CD8CB10052C822 /* NotificationView.swift */,
+				174506CE26CD8CB10052C822 /* ComplicationController.swift */,
+				174506D026CD8CB20052C822 /* Assets.xcassets */,
+				174506D526CD8CB20052C822 /* Info.plist */,
+				174506D626CD8CB20052C822 /* PushNotificationPayload.apns */,
+				174506D226CD8CB20052C822 /* Preview Content */,
+			);
+			path = "RehearsoForWatch Extension";
+			sourceTree = "<group>";
+		};
+		174506D226CD8CB20052C822 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				174506D326CD8CB20052C822 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		174506DE26CD8CB20052C822 /* RehearsoForWatchTests */ = {
+			isa = PBXGroup;
+			children = (
+				174506DF26CD8CB20052C822 /* RehearsoForWatchTests.swift */,
+				174506E126CD8CB20052C822 /* Info.plist */,
+			);
+			path = RehearsoForWatchTests;
+			sourceTree = "<group>";
+		};
+		174506E926CD8CB20052C822 /* RehearsoForWatchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				174506EA26CD8CB20052C822 /* RehearsoForWatchUITests.swift */,
+				174506EC26CD8CB20052C822 /* Info.plist */,
+			);
+			path = RehearsoForWatchUITests;
+			sourceTree = "<group>";
+		};
 		17941C9826C2951E000FE433 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,13 +269,28 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		17C66C2726C5926E00F9D268 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17C66C2C26C5928600F9D268 /* UIKit.framework */,
+				17C66C2A26C5927700F9D268 /* AVFoundation.framework */,
+				17C66C2826C5926E00F9D268 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8B9A92E926BA513C006F14BF = {
 			isa = PBXGroup;
 			children = (
 				8B9A92F426BA513C006F14BF /* Rehearso */,
+				174506B926CD8CB00052C822 /* RehearsoForWatch */,
+				174506C526CD8CB10052C822 /* RehearsoForWatch Extension */,
+				174506DE26CD8CB20052C822 /* RehearsoForWatchTests */,
+				174506E926CD8CB20052C822 /* RehearsoForWatchUITests */,
 				8B9A92F326BA513C006F14BF /* Products */,
 				17941C9826C2951E000FE433 /* Recovered References */,
 				908ABDA626C2FD63007187A1 /* Recovered References */,
+				17C66C2726C5926E00F9D268 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +298,10 @@
 			isa = PBXGroup;
 			children = (
 				8B9A92F226BA513C006F14BF /* Rehearso.app */,
+				174506B826CD8CB00052C822 /* RehearsoForWatch.app */,
+				174506C126CD8CB10052C822 /* RehearsoForWatch Extension.appex */,
+				174506DB26CD8CB20052C822 /* RehearsoForWatchTests.xctest */,
+				174506E626CD8CB20052C822 /* RehearsoForWatchUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,6 +383,76 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		174506B726CD8CB00052C822 /* RehearsoForWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 174506FB26CD8CB20052C822 /* Build configuration list for PBXNativeTarget "RehearsoForWatch" */;
+			buildPhases = (
+				174506B626CD8CB00052C822 /* Resources */,
+				174506F326CD8CB20052C822 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				174506C426CD8CB10052C822 /* PBXTargetDependency */,
+			);
+			name = RehearsoForWatch;
+			productName = RehearsoForWatch;
+			productReference = 174506B826CD8CB00052C822 /* RehearsoForWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		174506C026CD8CB10052C822 /* RehearsoForWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 174506FA26CD8CB20052C822 /* Build configuration list for PBXNativeTarget "RehearsoForWatch Extension" */;
+			buildPhases = (
+				174506BD26CD8CB10052C822 /* Sources */,
+				174506BE26CD8CB10052C822 /* Frameworks */,
+				174506BF26CD8CB10052C822 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RehearsoForWatch Extension";
+			productName = "RehearsoForWatch Extension";
+			productReference = 174506C126CD8CB10052C822 /* RehearsoForWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		174506DA26CD8CB20052C822 /* RehearsoForWatchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 174506FC26CD8CB20052C822 /* Build configuration list for PBXNativeTarget "RehearsoForWatchTests" */;
+			buildPhases = (
+				174506D726CD8CB20052C822 /* Sources */,
+				174506D826CD8CB20052C822 /* Frameworks */,
+				174506D926CD8CB20052C822 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				174506DD26CD8CB20052C822 /* PBXTargetDependency */,
+			);
+			name = RehearsoForWatchTests;
+			productName = RehearsoForWatchTests;
+			productReference = 174506DB26CD8CB20052C822 /* RehearsoForWatchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		174506E526CD8CB20052C822 /* RehearsoForWatchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 174506FD26CD8CB20052C822 /* Build configuration list for PBXNativeTarget "RehearsoForWatchUITests" */;
+			buildPhases = (
+				174506E226CD8CB20052C822 /* Sources */,
+				174506E326CD8CB20052C822 /* Frameworks */,
+				174506E426CD8CB20052C822 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				174506E826CD8CB20052C822 /* PBXTargetDependency */,
+			);
+			name = RehearsoForWatchUITests;
+			productName = RehearsoForWatchUITests;
+			productReference = 174506E626CD8CB20052C822 /* RehearsoForWatchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		8B9A92F126BA513C006F14BF /* Rehearso */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B9A930926BA513D006F14BF /* Build configuration list for PBXNativeTarget "Rehearso" */;
@@ -203,10 +460,12 @@
 				8B9A92EE26BA513C006F14BF /* Sources */,
 				8B9A92EF26BA513C006F14BF /* Frameworks */,
 				8B9A92F026BA513C006F14BF /* Resources */,
+				174506F026CD8CB20052C822 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				174506EE26CD8CB20052C822 /* PBXTargetDependency */,
 			);
 			name = Rehearso;
 			productName = Rehearso;
@@ -222,6 +481,20 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					174506B726CD8CB00052C822 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					174506C026CD8CB10052C822 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					174506DA26CD8CB20052C822 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 174506C026CD8CB10052C822;
+					};
+					174506E526CD8CB20052C822 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 174506B726CD8CB00052C822;
+					};
 					8B9A92F126BA513C006F14BF = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -241,11 +514,46 @@
 			projectRoot = "";
 			targets = (
 				8B9A92F126BA513C006F14BF /* Rehearso */,
+				174506B726CD8CB00052C822 /* RehearsoForWatch */,
+				174506C026CD8CB10052C822 /* RehearsoForWatch Extension */,
+				174506DA26CD8CB20052C822 /* RehearsoForWatchTests */,
+				174506E526CD8CB20052C822 /* RehearsoForWatchUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		174506B626CD8CB00052C822 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				174506BB26CD8CB10052C822 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		174506BF26CD8CB10052C822 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				174506D426CD8CB20052C822 /* Preview Assets.xcassets in Resources */,
+				174506D126CD8CB20052C822 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		174506D926CD8CB20052C822 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		174506E426CD8CB20052C822 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B9A92F026BA513C006F14BF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -260,6 +568,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		174506BD26CD8CB10052C822 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				174506CB26CD8CB10052C822 /* NotificationController.swift in Sources */,
+				174506C926CD8CB10052C822 /* ContentView.swift in Sources */,
+				174506CF26CD8CB10052C822 /* ComplicationController.swift in Sources */,
+				174506C726CD8CB10052C822 /* RehearsoApp.swift in Sources */,
+				174506CD26CD8CB10052C822 /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		174506D726CD8CB20052C822 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				174506E026CD8CB20052C822 /* RehearsoForWatchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		174506E226CD8CB20052C822 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				174506EB26CD8CB20052C822 /* RehearsoForWatchUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B9A92EE26BA513C006F14BF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -299,6 +635,29 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		174506C426CD8CB10052C822 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 174506C026CD8CB10052C822 /* RehearsoForWatch Extension */;
+			targetProxy = 174506C326CD8CB10052C822 /* PBXContainerItemProxy */;
+		};
+		174506DD26CD8CB20052C822 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 174506C026CD8CB10052C822 /* RehearsoForWatch Extension */;
+			targetProxy = 174506DC26CD8CB20052C822 /* PBXContainerItemProxy */;
+		};
+		174506E826CD8CB20052C822 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 174506B726CD8CB00052C822 /* RehearsoForWatch */;
+			targetProxy = 174506E726CD8CB20052C822 /* PBXContainerItemProxy */;
+		};
+		174506EE26CD8CB20052C822 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 174506B726CD8CB00052C822 /* RehearsoForWatch */;
+			targetProxy = 174506ED26CD8CB20052C822 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		8B9A92FB26BA513C006F14BF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -319,6 +678,182 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		174506F126CD8CB20052C822 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
+				IBSC_MODULE = RehearsoForWatch_Extension;
+				INFOPLIST_FILE = RehearsoForWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		174506F226CD8CB20052C822 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
+				IBSC_MODULE = RehearsoForWatch_Extension;
+				INFOPLIST_FILE = RehearsoForWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		174506F426CD8CB20052C822 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RehearsoForWatch Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "RehearsoForWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		174506F526CD8CB20052C822 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RehearsoForWatch Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "RehearsoForWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		174506F626CD8CB20052C822 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
+				INFOPLIST_FILE = RehearsoForWatchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01.RehearsoForWatchTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RehearsoForWatch Extension.appex/RehearsoForWatch Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		174506F726CD8CB20052C822 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
+				INFOPLIST_FILE = RehearsoForWatchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01.RehearsoForWatchTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RehearsoForWatch Extension.appex/RehearsoForWatch Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		174506F826CD8CB20052C822 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
+				INFOPLIST_FILE = RehearsoForWatchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01.RehearsoForWatchUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = RehearsoForWatch;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		174506F926CD8CB20052C822 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
+				INFOPLIST_FILE = RehearsoForWatchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01.RehearsoForWatchUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = RehearsoForWatch;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
 		8B9A930726BA513D006F14BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -441,16 +976,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6H6PTB2XT8;
+				DEVELOPMENT_ASSET_PATHS = Rehearso/Assets.xcassets;
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
 				INFOPLIST_FILE = Rehearso/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DianaFL.Rehearso;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -460,22 +997,60 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6H6PTB2XT8;
+				DEVELOPMENT_ASSET_PATHS = Rehearso/Assets.xcassets;
+				DEVELOPMENT_TEAM = 45N4YCBZCJ;
 				INFOPLIST_FILE = Rehearso/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DianaFL.Rehearso;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "id.infinitelearning.XCode-01";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		174506FA26CD8CB20052C822 /* Build configuration list for PBXNativeTarget "RehearsoForWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				174506F426CD8CB20052C822 /* Debug */,
+				174506F526CD8CB20052C822 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		174506FB26CD8CB20052C822 /* Build configuration list for PBXNativeTarget "RehearsoForWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				174506F126CD8CB20052C822 /* Debug */,
+				174506F226CD8CB20052C822 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		174506FC26CD8CB20052C822 /* Build configuration list for PBXNativeTarget "RehearsoForWatchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				174506F626CD8CB20052C822 /* Debug */,
+				174506F726CD8CB20052C822 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		174506FD26CD8CB20052C822 /* Build configuration list for PBXNativeTarget "RehearsoForWatchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				174506F826CD8CB20052C822 /* Debug */,
+				174506F926CD8CB20052C822 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8B9A92ED26BA513C006F14BF /* Build configuration list for PBXProject "Rehearso" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

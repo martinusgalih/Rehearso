@@ -98,7 +98,7 @@ class NewCueCardController: UIViewController {
             }
             
             if syncToCalender.isOn {
-                self.notifyUser(title: "Calendar Synced!", message: "Your event now will remind you 1 day before event. Keep rehearsing.")
+                self.notifyUser(title: "Calendar Synced!", message: "Your event now will remind you 1 day before event. Let's arrange the content.")
             }
         }
         
