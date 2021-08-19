@@ -29,6 +29,7 @@ class IsiKontenViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         isiKontenCollectionView.backgroundColor = UIColor.clear
         if isiData.count == 0 && index == 0 {
             
@@ -107,7 +108,7 @@ class IsiKontenViewController: UIViewController {
     }
 }
 
-extension IsiKontenViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension IsiKontenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0

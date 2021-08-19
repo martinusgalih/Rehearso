@@ -10,25 +10,14 @@ import CoreData
 import WatchConnectivity
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        <#code#>
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        <#code#>
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        <#code#>
-    }
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if WCSession.isSupported() {
-            WCSession.default.delegate = self
-            WCSession.default.activate()
-        }
+//        if WCSession.isSupported() {
+//            WCSession.default.delegate = self
+//            WCSession.default.activate()
+//        }
         return true
     }
 
