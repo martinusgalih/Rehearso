@@ -28,8 +28,19 @@
 		17C66C3126C5928B00F9D268 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C66C2826C5926E00F9D268 /* CoreData.framework */; };
 		17C66C3326C5928C00F9D268 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C66C2C26C5928600F9D268 /* UIKit.framework */; };
 		17C66C3526C5961100F9D268 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C66C2A26C5927700F9D268 /* AVFoundation.framework */; };
+		17C96C0526D4A880008F027E /* CueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C96C0426D4A880008F027E /* CueModel.swift */; };
+		17C96C0726D4A9AD008F027E /* CueCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C96C0626D4A9AD008F027E /* CueCardList.swift */; };
+		17C96C0926D4AC27008F027E /* RehearsalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C96C0826D4AC27008F027E /* RehearsalModel.swift */; };
+		17C96C0B26D4AC85008F027E /* RehearsalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C96C0A26D4AC85008F027E /* RehearsalList.swift */; };
+		17C96C1026D4AF9E008F027E /* StartPerformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C96C0F26D4AF9E008F027E /* StartPerformance.swift */; };
+		17C96C1226D4B30D008F027E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C96C1126D4B30D008F027E /* Helper.swift */; };
+		17C96C1626D4BC90008F027E /* CountdownStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C96C1526D4BC90008F027E /* CountdownStart.swift */; };
+		17C96C1A26D4CAE8008F027E /* LivePerformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C96C1926D4CAE8008F027E /* LivePerformance.swift */; };
 		17CB966926BE868600341011 /* PlayRehearsalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB966826BE868600341011 /* PlayRehearsalViewController.swift */; };
 		17CB966B26BE947000341011 /* StartRehearsalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB966A26BE947000341011 /* StartRehearsalViewController.swift */; };
+		17D8D0DA26D3953F0082A15B /* RehearsalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D8D0D926D3953F0082A15B /* RehearsalView.swift */; };
+		17D8D0DC26D3A62B0082A15B /* RehearsalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D8D0DB26D3A62B0082A15B /* RehearsalRow.swift */; };
+		17DBF38A26CF6A3600164672 /* CueCardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DBF38926CF6A3600164672 /* CueCardRow.swift */; };
 		8B149F2126C24B150044DB5F /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B149F2026C24B150044DB5F /* PreviewViewController.swift */; };
 		8B36D9B626BB979500579573 /* SectionEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9B526BB979500579573 /* SectionEditorController.swift */; };
 		8B36D9B826BBB41600579573 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D9B726BBB41600579573 /* HistoryController.swift */; };
@@ -143,8 +154,19 @@
 		17C66C2826C5926E00F9D268 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		17C66C2A26C5927700F9D268 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		17C66C2C26C5928600F9D268 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		17C96C0426D4A880008F027E /* CueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CueModel.swift; sourceTree = "<group>"; };
+		17C96C0626D4A9AD008F027E /* CueCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CueCardList.swift; sourceTree = "<group>"; };
+		17C96C0826D4AC27008F027E /* RehearsalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehearsalModel.swift; sourceTree = "<group>"; };
+		17C96C0A26D4AC85008F027E /* RehearsalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehearsalList.swift; sourceTree = "<group>"; };
+		17C96C0F26D4AF9E008F027E /* StartPerformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPerformance.swift; sourceTree = "<group>"; };
+		17C96C1126D4B30D008F027E /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		17C96C1526D4BC90008F027E /* CountdownStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownStart.swift; sourceTree = "<group>"; };
+		17C96C1926D4CAE8008F027E /* LivePerformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePerformance.swift; sourceTree = "<group>"; };
 		17CB966826BE868600341011 /* PlayRehearsalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayRehearsalViewController.swift; sourceTree = "<group>"; };
 		17CB966A26BE947000341011 /* StartRehearsalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRehearsalViewController.swift; sourceTree = "<group>"; };
+		17D8D0D926D3953F0082A15B /* RehearsalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehearsalView.swift; sourceTree = "<group>"; };
+		17D8D0DB26D3A62B0082A15B /* RehearsalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehearsalRow.swift; sourceTree = "<group>"; };
+		17DBF38926CF6A3600164672 /* CueCardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CueCardRow.swift; sourceTree = "<group>"; };
 		8B149F2026C24B150044DB5F /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		8B36D9B526BB979500579573 /* SectionEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionEditorController.swift; sourceTree = "<group>"; };
 		8B36D9B726BBB41600579573 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
@@ -223,8 +245,8 @@
 		174506C526CD8CB10052C822 /* RehearsoForWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				17C96C0C26D4AF3E008F027E /* View */,
 				174506C626CD8CB10052C822 /* RehearsoApp.swift */,
-				174506C826CD8CB10052C822 /* ContentView.swift */,
 				174506CA26CD8CB10052C822 /* NotificationController.swift */,
 				174506CC26CD8CB10052C822 /* NotificationView.swift */,
 				174506CE26CD8CB10052C822 /* ComplicationController.swift */,
@@ -232,6 +254,9 @@
 				174506D526CD8CB20052C822 /* Info.plist */,
 				174506D626CD8CB20052C822 /* PushNotificationPayload.apns */,
 				174506D226CD8CB20052C822 /* Preview Content */,
+				17C96C0426D4A880008F027E /* CueModel.swift */,
+				17C96C0826D4AC27008F027E /* RehearsalModel.swift */,
+				17C96C1126D4B30D008F027E /* Helper.swift */,
 			);
 			path = "RehearsoForWatch Extension";
 			sourceTree = "<group>";
@@ -277,6 +302,38 @@
 				17C66C2826C5926E00F9D268 /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		17C96C0C26D4AF3E008F027E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17C96C0E26D4AF4B008F027E /* CueCard */,
+				17C96C0D26D4AF42008F027E /* Rehearsal */,
+				17C96C0F26D4AF9E008F027E /* StartPerformance.swift */,
+				17C96C1526D4BC90008F027E /* CountdownStart.swift */,
+				17C96C1926D4CAE8008F027E /* LivePerformance.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		17C96C0D26D4AF42008F027E /* Rehearsal */ = {
+			isa = PBXGroup;
+			children = (
+				17D8D0D926D3953F0082A15B /* RehearsalView.swift */,
+				17D8D0DB26D3A62B0082A15B /* RehearsalRow.swift */,
+				17C96C0A26D4AC85008F027E /* RehearsalList.swift */,
+			);
+			path = Rehearsal;
+			sourceTree = "<group>";
+		};
+		17C96C0E26D4AF4B008F027E /* CueCard */ = {
+			isa = PBXGroup;
+			children = (
+				17DBF38926CF6A3600164672 /* CueCardRow.swift */,
+				17C96C0626D4A9AD008F027E /* CueCardList.swift */,
+				174506C826CD8CB10052C822 /* ContentView.swift */,
+			);
+			path = CueCard;
 			sourceTree = "<group>";
 		};
 		8B9A92E926BA513C006F14BF = {
@@ -572,10 +629,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D8D0DA26D3953F0082A15B /* RehearsalView.swift in Sources */,
+				17C96C1226D4B30D008F027E /* Helper.swift in Sources */,
+				17C96C0526D4A880008F027E /* CueModel.swift in Sources */,
 				174506CB26CD8CB10052C822 /* NotificationController.swift in Sources */,
+				17C96C0726D4A9AD008F027E /* CueCardList.swift in Sources */,
+				17DBF38A26CF6A3600164672 /* CueCardRow.swift in Sources */,
+				17C96C1026D4AF9E008F027E /* StartPerformance.swift in Sources */,
+				17C96C0926D4AC27008F027E /* RehearsalModel.swift in Sources */,
 				174506C926CD8CB10052C822 /* ContentView.swift in Sources */,
+				17C96C1A26D4CAE8008F027E /* LivePerformance.swift in Sources */,
+				17D8D0DC26D3A62B0082A15B /* RehearsalRow.swift in Sources */,
 				174506CF26CD8CB10052C822 /* ComplicationController.swift in Sources */,
+				17C96C0B26D4AC85008F027E /* RehearsalList.swift in Sources */,
 				174506C726CD8CB10052C822 /* RehearsoApp.swift in Sources */,
+				17C96C1626D4BC90008F027E /* CountdownStart.swift in Sources */,
 				174506CD26CD8CB10052C822 /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
