@@ -7,12 +7,14 @@
 
 import UIKit
 import CoreData
+import WatchConnectivity
 
 class DashboardController: UIViewController {
-
     @IBOutlet weak var tableViewRecents: UITableView!
     @IBOutlet weak var viewStartScripting: UIView!
     @IBOutlet weak var viewDashboard: UIView!
+    
+    var session: WCSession?
     
     var sectionData : [Section] = []
     var section: Section?
@@ -25,8 +27,17 @@ class DashboardController: UIViewController {
         viewDashboard.dropShadow()
         setTableViewCell()
         configureTableView()
+        configureWatchKitSession()
         
         navigationItem.hidesBackButton = true
+    }
+    
+    func configureWatchKitSession() {
+        if WCSession.isSupported() {
+            session = WCSession.default
+            session?.delegate = self
+            session?.activate()
+        }
     }
     
     private func load(){
@@ -176,5 +187,21 @@ extension UIView {
         
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
+}
+
+
+extension DashboardController: WCSessionDelegate {
+    func sessionDidBecomeInactive(_ session: WCSession) {
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    }
+    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+        print("received message: \(messageData)")
     }
 }
